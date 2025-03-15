@@ -3,7 +3,7 @@ $heading = "Home";
 
 $_SESSION['name']= "Developer";
 
-require "views/home_view.php";
+require "views/pages/home_view.php";
 
 ?>
 

@@ -98,13 +98,19 @@ footer {
     flex-direction: column;
     align-content: center;
     justify-content: center;
-    & img {
-        top: 15px;
-        height: 60%;
-        width: auto;
+
+
+    & img{
+        top:15px;
+        height:60%;
+        width:auto;
         display: block;
-    }
-    & a {
+      
+     
+      }
+
+
+    & a{
         display: flex;
         align-items: center;
         color: red;
@@ -112,7 +118,9 @@ footer {
     & p {
         color: red;
     }
-    &:hover {
+
+
+    &:hover{
         background-color: var(--card-hover-bgcolor);
     }
 }

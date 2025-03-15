@@ -3,7 +3,7 @@ $heading = "Contact";
 
 
 
-require "views/contact_view.php";
+require "views/pages/contact_view.php";
 
 
 ?>
