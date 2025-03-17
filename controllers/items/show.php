@@ -11,12 +11,12 @@ $userID = 1;
 
 
 
-$note = $db->query("SELECT * from items where id = :id ", [
-  'id' => $_GET['id'],
-])->findOrFail();
+// $note = $db->query("SELECT * from items where id = :id ", [
+//   'id' => $_GET['id'],
+// ])->findOrFail();
 
 //authorize($note['other_id'] == $userID);
 
 
 
-require "views/items/show_view.php";
+require "views/pages/items/show_view.php";

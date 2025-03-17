@@ -23,9 +23,9 @@ if (! empty($erorrs)) {
     require 'views/sessions/create_view.php';
 }
 
-$user = $db->query("select * from users where email = :email ; ", [
-    "email" => $email
-])->fetch();
+// $user = $db->query("select * from users where email = :email ; ", [
+//     "email" => $email
+// ])->fetch();
 
 if ($user) {
     if (password_verify($password, $user['password'])) {
