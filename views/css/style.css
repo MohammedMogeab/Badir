@@ -9,13 +9,29 @@
     --header-bgcolor: #ffffff;
     --footer-bgcolor: #ffffff;
     --font-color: #ffffff;
+    --font-color-bl: #00A7B5;
+    --font-color-bh: #00575F;
     --font-hover-color: #ffffff;
     --card-bgcolor: #ffffff;
     --card-hover-bgcolor: #ffffff;
-    --button-bgcolor: #ffffff;
+    --button-bgcolor: #00575F;
     --button-hover-bgcolor: #ffffff;
     --link-color: #ffffff;
     --link-hover-color: #ffffff;
+    --border-color: #dadada;
+    --bgcolor-Hh:#003337;
+    --bgcolor-H:#00646E;
+    --bgcolor-N:#00A7B5;
+    --bgcolor-light:#f0f0f0;
+
+    --bg-border: 1px solid #dddddd ;
+    --bg-border-l: 1px solid #dddddd;
+    --border-radius: 1em;
+
+
+
+
+
     /* المسافات الخارجية  */
     --padding-xs: 0.25em;
     --padding-s: 0.5em;
@@ -39,24 +55,28 @@
     /*البطاقات  */
     --card-height: auto;
     --card-width: auto;
-    --card-radius: 0.5em;
+    --card-radius: 20px;
     --card-shadow: 0 0 0.5em rgba(0, 0, 0, 0.1);
     --card-border: 1px solid #ffffff;
     --card-hover-shadow: 0 0 1em rgba(0, 0, 0, 0.1);
     --card-hover-border: 1px solid #ffffff;
     /* الازرار  */
-    --button-height: auto;
-    --button-width: auto;
+    --button-color: #ffffff;
+    --button-bg-h: #00575F;
+    --button-bg-l: #00A7B5;
+
+    --button-height: 4em;
+    --button-width: 10em;
     --button-radius: 0.5em;
     --button-shadow: 0 0 0.5em rgba(0, 0, 0, 0.1);
-    --button-border: 1px solid #ffffff;
+    --button-border: 1px solid #dddddd ;
     --button-hover-shadow: 0 0 1em rgba(0, 0, 0, 0.1);
     --button-hover-border: 1px solid #ffffff;
 }
 
 
 /* الشكل العام للموقع */
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
 * {
     padding: 0;
     margin: 0;
@@ -64,26 +84,26 @@
 }
 
 body {
-    height: 100vh;
+    height: auto;
 }
 
 nav {
-    background-color: royalblue;
+    background-color: rgb(255, 255, 255);
     height: 10vh;
 }
 
-header {
-    background-color: aquamarine;
+/*header {
+    background-color: rgb(118, 118, 118);
     height: 10vh;
-}
+}*/
 
 main {
-    background-color: lime;
-    height: 70vh;
+    background-color: rgb(255, 255, 255);
+    height: auto;
 }
 
 footer {
-    background-color: rebeccapurple;
+    background-color: rgb(255, 255, 255);
     height: 10vh;
 }
 
@@ -98,13 +118,19 @@ footer {
     flex-direction: column;
     align-content: center;
     justify-content: center;
-    & img {
-        top: 15px;
-        height: 60%;
-        width: auto;
+
+
+    & img{
+        top:15px;
+        height:60%;
+        width:auto;
         display: block;
-    }
-    & a {
+      
+     
+      }
+
+
+    & a{
         display: flex;
         align-items: center;
         color: red;
@@ -112,7 +138,1154 @@ footer {
     & p {
         color: red;
     }
-    &:hover {
+
+
+    &:hover{
         background-color: var(--card-hover-bgcolor);
     }
 }
+
+/* صحفة navgtion  */
+
+.main_nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 15px 30px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    direction: rtl;
+
+
+}
+
+.logo_image{
+    display: inline;
+    width: 50px;
+    height: 100%;
+
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: right;
+    gap: 20px;
+}
+.nav-links li {
+    display: inline;
+    height: 30px;
+    /* background-color: #003337; */
+}
+.nav-links a {
+    text-decoration: none;
+    color: var(--font-color-bh);
+    font-size: 16px;
+    transition: color 0.3s ease;
+
+}
+.nav-links a:hover {
+    color: #ffffff;
+    background-color: var(--bgcolor-H);
+    
+}
+
+.all_icon_nav{
+display: flex;
+    
+}
+.icon_img{
+    width: 40px;
+    height: 40px;
+    background-color: #ffffff;
+
+}
+.but_login{
+    width: 100px;
+    background-color:var(--button-bgcolor) ;
+    color: #ffffff;
+    border: none;
+    border-radius: var(--button-radius);
+}
+
+/* صحفة footer  */
+
+
+.photo_padir{
+    height: auto;
+    background-color: #003337;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & img {
+        width: 150px;
+        height: 180px;
+        background-color: #00646E;
+        border-radius: 20px;
+        opacity: 0.5;
+
+    }
+
+}
+
+
+.main_foter{
+    display: flex;
+    direction: rtl;
+    background-color: #003337;
+    color: #ffffff;
+    & div {
+        width: 20%;
+        margin: 20px 10px 0 10px;
+    }
+    & .photo_padi{
+        width: 10%;
+    }
+    & input{
+        background-color: white;
+        border-radius: 8px;
+        height: 30px;
+        width: 150px;
+    }
+    & button{
+        width: 150px;
+        height: 25px;
+        background-color: #00646E;
+        color: #fff;
+        border-radius: 5px;
+        border: none;
+        margin-top: 5px;
+    }
+    & h1{
+        font-size: 20px;
+        margin-bottom: 10px;
+
+    }
+    & p{
+        font-size: 12px;
+        font-weight:100;
+        margin-top: 10px;
+        
+    }
+}
+
+.icon_foter {
+    display: flex;
+
+& img{
+    width: 25px;
+    height: 25px;
+}
+}
+
+.service_and_privacy_policy_agreement{
+    & a {
+    color: #fff;
+    }
+}
+
+.end_foter{
+    background-color: #003337;
+    text-align: center;
+    color: white;
+}
+
+/* users */
+
+/* users_create */
+
+
+.main_user {
+    display: flex;
+    justify-content: center;
+    direction: rtl;
+   
+
+
+}
+.form_signup{
+    padding: var(--padding-xl);
+    margin: var(--margin-xl);
+    background-color: #00a7b5;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+   
+
+}
+
+/* صفحة الشكاوي والاقتارحات */
+.main_contact{
+    display: flex;
+    justify-content: center;
+ 
+}
+.contact{
+    padding: var(--padding-xl);
+    margin: var(--margin-xl);
+
+    width: 60%;
+    background-color: #ffffff;
+    border-radius: 20px;
+    border: 1px solid rgb(199, 199, 199) ;
+    & h1{
+    text-align: center;
+    margin-top: 20px;
+    color: var(--font-color-bh);
+    }
+    & select{
+        height: 30px;
+        border-radius: 5px;
+        background-color: rgb(240, 240, 240);
+        border-color:rgb(205, 205, 205) ;
+    }
+    & label{
+        display: block;
+        width: 100%;
+        background-color: #ffffff;
+        text-align: right;
+        margin: 10px 0 0 0;
+        padding: 10px 0 5px 0;
+        
+        
+    }
+    & input {
+        width: 100%;
+        height: 30px;
+        border-radius: 5px;
+        border-color: rgb(205, 205, 205);
+        background-color: rgb(240, 240, 240);
+    }
+    & textarea {
+        width: 100%;
+        height: 100px;
+        border-radius: 5px;
+        background-color: rgb(255, 255, 255) ;
+        border-color: rgb(205, 205, 205);
+        
+    }
+    & button {
+        margin-top: 10px;
+        width: 100%;
+        background-color: var(--button-bgcolor);
+        height: 35px;
+        color: #fff;
+        border: none;
+        border-radius:  var(--button-radius);
+
+    }
+
+}
+.form_contact{
+    display: flex;
+    justify-content: center;
+
+    & h3 {
+        text-align: right;
+        margin-top: 10px;
+    }
+
+    & p {
+        text-align: right;
+        background-color: #ffffff;
+        margin-top: 10px;
+        color: var(--font-color-bl);
+    }
+    & .no3{
+        width: 100%;
+    }
+    & .questu_ions{
+        width: 100%;
+
+    }
+}
+
+.group_type{
+    background-color: rgb(240, 240, 240);
+    border: 1px solid;
+    border-radius: 5px;
+    border-color: rgb(205, 205, 205);
+
+}
+
+
+/* ساسية الخصوصية */
+.privacy{
+    background-color: #003337;
+
+}
+.privacy-container {
+    direction: rtl;
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+
+    & h1{
+        color: #ffffff;
+        margin-bottom: 10px;
+        text-align: center;
+    }  
+    & h2 {
+        color: #ffffff;
+        margin-bottom: 10px;
+         margin: 20px 0 20px 0;
+
+    }
+    & ul {
+        padding-right: 20px;
+        color:#00a7b5;
+        margin: 20px 0 20px 0;
+
+    }
+
+    & il {
+        margin-bottom: 5px;
+        color:#00a7b5;
+        margin: 20px 0 20px 0;
+
+    }
+
+    & p {
+        margin-bottom: 15px;
+        color:#00a7b5;
+        margin: 20px 0 20px 0;
+
+    }
+}
+
+/* البطاقة  */
+.Carousel_card{
+    & h1{
+        text-align: center;
+        margin: 40px 0 40px 0;
+    }
+
+}
+.main_cart{
+    display: flex;
+    justify-content: center;
+    direction: rtl;
+
+}
+.aghtha {
+    display: flex;
+    justify-content: space-evenly;
+}
+.donation-card {
+    width: 80%;
+    max-width: 420px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 20px;
+    transition: transform 0.3s ease-in-out;
+
+    & img {
+        width: 100%;
+        height: auto;
+    }
+}
+.donation-card:hover {
+    transform: translateY(-5px);
+}
+
+.progress-bar {
+    background: #e0e0e0;
+    height: 12px;
+    margin: 15px;
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+}
+.progress {
+    background:#00646E;
+    width: 55%;
+    height: 100%;
+    border-radius: 6px;
+    transition: width 0.5s ease-in-out;
+}
+.donation-info {
+    padding: 15px;
+
+    & h3 {
+        text-align: right;
+        padding-right: 10px;
+        margin-bottom: 10px;
+        font-size: 20px;
+        color: #333;
+    }
+    & h6 {
+        text-align: center;
+        padding-top:5px ;
+        border-radius: 10px;
+        margin-right: 10px;
+        background-color: #f5f5f5;
+        width: 20%;
+        height: 30px;
+        font-weight: bold;
+    }
+}
+.donation-details {
+    padding: 5px;
+    background: #f1f1f1;
+    border-radius: 6px;
+    margin: 0 10px 0 10px;
+    font-size: 16px;
+
+    & p{
+        direction: ltr;
+        width: 100%;
+        text-align: left;
+    }
+}
+
+.donate-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+.donate-section input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    text-align: right;
+    width: 60%;
+    font-size: 16px;
+}
+.details{
+    margin-top: 20px ;
+    opacity: 0.5;
+    border-top:solid beige 1px;
+    padding-top: 10px;
+
+
+}
+.donate-btn {
+    background: #1a676b;
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out;
+}
+.donate-btn:hover {
+    background: #448e92;
+}
+
+@media (max-width: 480px) {
+    .donation-card {
+        max-width: 350px;
+    }
+    .donate-section {
+        flex-direction: column;
+    }
+    .donate-section input {
+        width: 100%;
+    }
+}
+
+/* home */
+
+
+.hero{
+    & h1 {
+        background-color: #003337;
+    }
+
+    & img {
+        width: 100%;
+        height: 400px;
+        max-width: none; /* يسمح للصورة بالزيادة إذا لزم الأمر */
+        object-fit: cover; 
+
+
+    }
+}
+
+.tbr3 {    
+
+    & h1 {
+        background-color: white;
+        text-align: center;
+        padding: 40px 0 40px 0;
+    }
+    & p {
+        color:#00575F;
+        padding: 20px 20px;
+    }
+
+    & hr{
+        width: 50%;
+        margin: auto; /* توسيط الخط أفقيًا مع إضافة مسافة من الأعلى والأسفل */
+        border: 1px solid #ffffff
+    }
+
+    & .t3 {
+        display: flex;
+        justify-content: space-between;
+        direction: rtl;
+    }
+
+    & .pt {
+        background-color: #00575F;
+        color: #ffffff;
+        width: 300px;
+        border-radius: 20px;
+        margin: 20px;
+    }
+    & br {
+        color:#00a7b5;
+    }
+
+
+}
+
+.login_home{
+    background-color: #ffffff;
+    & h1 {
+        text-align: center;
+        padding-top: 40px;
+    }
+    & #plogin {
+        text-align: center;
+        padding-bottom: 40px;
+    }
+    & .login_tbr3{
+        display: flex;
+        justify-content: space-around;
+        direction: rtl;
+    }
+
+    & .login_for_home_and_tbr3 {
+        background-color: #ffffff;
+        padding: 50px;
+        margin: 20px;
+        border-radius: 20px;
+        border: 1px solid #c3c3c3;
+    }
+
+    & button {
+        width: 200px;
+        height: 40px;
+    }
+
+}
+
+/* cart_view */
+.main_cart_view{
+    text-align: right;
+    direction: rtl;
+    & h2 {
+        text-align: center;
+        margin: 20px;
+    }
+
+}
+.div_cart_view{
+    gap: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    background-color: #f4f4f4;
+
+
+}
+
+
+.projects-list, .donation-cart {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.project {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: white;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+    border: 1px solid rgb(240, 240, 240);
+    border-radius: 10px;
+    & img {
+        width: 100px;
+        height: 100px;
+        border-radius: 8px;
+        margin-left: 15px;
+    }
+
+    & .input_delet{
+        display: flex;
+        justify-content: left;
+        margin-left: 10px;
+    }
+}
+
+.project-details {
+    flex: 1;
+
+    & h3 {
+        margin: 10px 0 10px 0;
+        font-size: 18px;
+
+    }
+
+    & p {
+        margin: 5px 0;
+        color: #555;
+    }
+ 
+    & input {
+        width: 100px;
+        padding: 5px;
+        margin-top: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    & button {
+        background-color: #ab1313;
+        color: #fff;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+        margin-right: 5px;
+
+    }
+    & button:hover {
+        background-color: #ffffff;
+        color: red;
+        border: 1px solid red;
+    }
+}
+
+.center-cart{
+    display: flex;
+    justify-content: center;
+
+}
+.donation-cart {
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+    width: 80%;
+}
+
+#cart-items {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+}
+
+.cart-item-details {
+    flex: 1;
+    margin-right: 10px;
+
+    & h4 {
+        margin: 0;
+        font-size: 16px;
+    }
+    & p {
+        margin: 5px 0;
+        color: #555;
+    }
+
+}
+
+
+.remove-item {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.remove-item:hover {
+    background-color: #c82333;
+}
+
+.total-amount {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.total-amount label {
+    font-weight: bold;
+}
+
+.total-amount input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.cart-actions {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.cart-actions{
+    
+
+ & button {
+    background-color: var(--button-color);
+    color: white;
+    border-radius: var(--button-radius);
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+}
+
+& button :hover{
+    background-color: var(--font-color-bl);
+    color: white;
+
+}
+}
+
+
+/* charity_projects */
+
+/* create */
+/* تنسيق عام */
+
+.main_create_chatity {
+    
+    & h1 {
+    text-align: center;
+    margin: 40px;
+    color: var(--font-color-bh);
+}
+
+    &  .request-status {
+        display: flex;
+        justify-self: center;
+        direction: rtl;
+
+    }
+
+}
+.div_tbr3{
+
+    text-align: right;
+    direction: rtl;
+    display: flex;
+    justify-content: center;
+    direction: rtl;
+}
+
+.donation-form, .request-status {
+    width: 70%;
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    border: 0.5px solid rgb(173, 173, 173);
+
+
+    & h2 {
+        color: #333;
+        margin-bottom: 20px;
+        color: var(--font-color-bh);
+
+    }
+
+    & .form-group {
+        margin-bottom: 15px;
+    }
+
+    & label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: var(--font-color-bl);
+
+
+    }
+
+    & input[type="text"],
+    input[type="number"],
+    textarea,
+    select,
+    input[type="file"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        font-size: 16px;
+    }
+
+    & button {
+        background-color: var(--button-color);
+        color: #fff;
+        padding: 10px 40px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    & button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
+
+    &.error-message {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+    
+
+}
+
+/* executive_partners */
+
+/* create */
+.modal {
+    width: 100%;
+    height: 100%;
+    direction: rtl;
+    display: flex;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% 20px;
+    padding: 20px;
+    border-radius: 15px;
+    width: 80%;
+    border: 1px solid var(--border-color);
+    & h2 {
+        color: var(--font-color-bh);
+    }
+
+}
+
+
+.form-group {
+    margin-bottom: 15px;
+
+    & label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: var(--font-color-bl);
+    }
+
+    
+}
+
+
+
+.form-group input, .form-group textarea {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+button[type="submit"] {
+    background-color: var(--font-color-bh);
+    color: #fff;
+    border: none;
+    padding: 10px 40px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--button-bgcolor);
+}
+.ash3t{
+   margin: 5% 20px;
+   height: 200px;
+   padding: 30px;
+   border-radius:var(--card-radius) ;
+   border: 1px solid var(--border-color);
+}
+
+/* index */
+
+.main_executive_partners_index{
+    background-color: #fff;
+    color: var(--bgcolor-H);
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    direction: rtl;
+    padding: 20px;
+    
+    & h1 {
+        text-align: center;
+    }
+
+
+}
+
+
+
+.management-buttons {
+    margin-bottom: 20px;
+}
+
+.management-buttons button {
+    background-color: var(--button-color);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.management-buttons button:hover {
+    background-color: var(--button-bgcolor);
+}
+
+.partners-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: var(--button-radius);
+
+    & th {
+        background-color:var(--bgcolor-H);
+        color: #fff;
+    
+    }
+
+    & img {
+        width: 50px;
+        height: 50px;
+        border-radius: 4px;
+    }
+}
+
+.partners-table th, .partners-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-btn {
+    background-color: var(--bgcolor-N);
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+
+    & a {
+        color: #333;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    & a:hover {
+        background-color: #ddd;
+    }
+    
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+/* charity_campaigns */
+
+/* show */
+
+.div_show_ch{
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    width: 100%;
+    direction: rtl;
+}
+
+.card_islamic_endowments{
+    background-color: #ffffff;
+    margin: 30px;
+    padding: 40px;
+    border: var(--bg-border);
+    border-radius: var(--border-radius);
+    width: 100%;
+
+    & h5 {
+        padding-bottom: var(--padding-m);
+        color: var(--font-color-bh);
+    }
+
+    & h6 {
+        font-size: 15px;
+        color: var(--font-color-bh);
+
+    }
+
+    & p {
+        width: 100%;
+        margin-bottom: var(--margin-m);
+        background-color: var(--bgcolor-light);
+        border-radius: var(--border-radius);
+        padding: var(--padding-m);
+        color: var(--font-color-bl);
+    }
+
+    & .details_show_ch{
+        background-color: var(--bgcolor-light);
+        padding: 20px;
+        border-radius: var(--border-radius);
+
+        & p{
+            padding: 0;
+
+        }
+    }
+    & img {
+        padding: var(--padding-m) 0 var(--padding-m) 0;
+        border-radius: var(--border-radius);
+        width: 100%;
+        height: auto;
+
+    }
+
+
+
+}
+
+.card_insid{
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--bgcolor-light);
+    padding: var(--padding-xl);
+    width: 100%;
+    border-radius: var(--border-radius);
+    border: var(--bg-border-l);
+
+
+    & h6{
+        width: 100%;
+        padding: var(--padding-m);
+
+    }
+    & p {
+        width: 100%;
+    }
+
+}
+#card_insid{
+    margin-bottom: var(--margin-xl);
+}
+#card_insid2{
+    margin-bottom: var(--margin-xl);
+}
+.bar_actions{
+    justify-content: center;
+    direction: rtl;
+    padding: var(--padding-xl);
+    margin: var(--margin-xl);
+    border-radius: var(--border-radius);
+    border: var(--bg-border);
+    
+    & p {
+        text-align: center;
+    }
+
+    & button{
+        background-color: var(--button-bg-h);
+        width: var(--button-width);
+        height: var(--button-height);
+        border-radius:var(--button-radius) ;
+        color: white;
+        margin: var(--margin-m);
+        font-weight: bold;
+        border: none;
+
+    }
+
+    & .donate{
+        display: flex;
+        justify-content: center;
+    }
+
+    & .add_to_cart{
+        background-color: yellow;
+      
+        color: black;
+    }
+
+    & .donate_now{
+        background-color: var(--bgcolor-N);
+        
+    }
+
+    
+}
+
+
+
+
+

@@ -1,0 +1,22 @@
+{
+    "name": "lenovo/badir",
+    "authors": [
+        {
+            "name": "Mohammed Mogeab Ahmed Al-hajj",
+            "email": "ma8935745@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "pestphp/pest": "^3.7",
+        "phpunit/phpunit": "^11.5"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "require": {
+        "phpmailer/phpmailer": "^6.9",
+        "vlucas/phpdotenv": "^5.6"
+    }
+}

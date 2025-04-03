@@ -29,6 +29,10 @@ class Validator
         return is_numeric($value);
     }
 
+    public static function greaterThan(int $value, int $greaterThan): bool
+    {
+        return $value > $greaterThan;
+    }
 
 
 }
