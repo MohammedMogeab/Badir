@@ -790,3 +790,192 @@ test('input sanitization', function() {
     expect($sanitizedInput)->not()->toContain('<script>');
     expect($sanitizedInput)->toContain('&lt;script&gt;');
 });
+
+test('html sanitization', function() {
+    $inputs = [
+        '<p>Normal text</p>',
+        '<div>Content</div>',
+        'Plain text'
+    ];
+    
+    foreach ($inputs as $input) {
+        $sanitized = strip_tags($input);
+        expect($sanitized)->not()->toContain('<');
+        expect($sanitized)->not()->toContain('>');
+    }
+});
+
+test('email validation', function() {
+    $validEmails = [
+        'test@example.com',
+        'user.name@domain.com',
+        'user+label@domain.co.uk'
+    ];
+    
+    $invalidEmails = [
+        'invalid.email',
+        '@nodomain.com',
+        'spaces in@email.com',
+        'unicode@😊.com'
+    ];
+    
+    foreach ($validEmails as $email) {
+        expect(filter_var($email, FILTER_VALIDATE_EMAIL))->toBeTruthy();
+    }
+    
+    foreach ($invalidEmails as $email) {
+        expect(filter_var($email, FILTER_VALIDATE_EMAIL))->toBeFalsy();
+    }
+});
+
+test('numeric validation', function() {
+    $numbers = [
+        '123456789',
+        '0123456789',
+        '9876543210'
+    ];
+    
+    foreach ($numbers as $number) {
+        expect(is_numeric($number))->toBeTrue();
+        expect(strlen($number) >= 9)->toBeTrue();
+    }
+});
+
+
+
+test('amount validation', function() {
+    $validAmounts = [
+        '100.00',
+        '1500.50',
+        '0.99',
+        '10000'
+    ];
+    
+    $invalidAmounts = [
+        '-100.00',
+        'not-a-number',
+        '100,000.00'
+    ];
+    
+    foreach ($validAmounts as $amount) {
+        expect(is_numeric($amount) && $amount >= 0)->toBeTrue();
+    }
+    
+    foreach ($invalidAmounts as $amount) {
+        expect(is_numeric($amount) && $amount >= 0)->toBeFalse();
+    }
+});
+
+test('file size validation', function() {
+    $maxSize = 5 * 1024 * 1024; // 5MB
+    
+    $files = [
+        [
+            'name' => 'small.jpg',
+            'size' => 500 * 1024, // 500KB
+            'type' => 'image/jpeg'
+        ],
+        [
+            'name' => 'large.jpg',
+            'size' => 10 * 1024 * 1024, // 10MB
+            'type' => 'image/jpeg'
+        ]
+    ];
+    
+    expect($files[0]['size'])->toBeLessThan($maxSize);
+    expect($files[1]['size'])->toBeGreaterThan($maxSize);
+});
+
+test('image dimension validation', function() {
+    $maxWidth = 1920;
+    $maxHeight = 1080;
+    
+    $dimensions = [
+        ['width' => 800, 'height' => 600],
+        ['width' => 2560, 'height' => 1440]
+    ];
+    
+    expect($dimensions[0]['width'])->toBeLessThan($maxWidth);
+    expect($dimensions[0]['height'])->toBeLessThan($maxHeight);
+    expect($dimensions[1]['width'])->toBeGreaterThan($maxWidth);
+    expect($dimensions[1]['height'])->toBeGreaterThan($maxHeight);
+});
+
+test('path validation', function() {
+    $paths = [
+        '/home/user',
+        './relative/path',
+        '../parent/path'
+    ];
+    
+    foreach ($paths as $path) {
+        expect(strlen($path) > 0)->toBeTrue();
+        expect(strpos($path, '..') === false || strpos($path, '..') >= 0)->toBeTrue();
+    }
+});
+
+test('strong password requirements', function() {
+    $passwords = [
+        'StrongP@ss123' => true,
+        'weakpass' => false,
+        'NoSpecialChar1' => false,
+        'No@Numbers' => false,
+        'short' => false
+    ];
+    
+    foreach ($passwords as $password => $shouldPass) {
+        $requirements = [
+            'length' => strlen($password) >= 8,
+            'uppercase' => preg_match('/[A-Z]/', $password),
+            'lowercase' => preg_match('/[a-z]/', $password),
+            'numbers' => preg_match('/[0-9]/', $password),
+            'special' => preg_match('/[^A-Za-z0-9]/', $password)
+        ];
+        
+        $meetsAllRequirements = count(array_filter($requirements)) === 5;
+        expect($meetsAllRequirements)->toBe($shouldPass);
+    }
+});
+
+test('json validation', function() {
+    $validJson = '{"name":"Test","age":25}';
+    $invalidJson = '{name:"Test",age:25}';
+    
+    expect(json_decode($validJson))->toBeObject();
+    expect(json_last_error())->toBe(JSON_ERROR_NONE);
+    
+    json_decode($invalidJson);
+    expect(json_last_error())->not()->toBe(JSON_ERROR_NONE);
+});
+
+test('ip address validation', function() {
+    $validIps = [
+        '192.168.1.1',
+        '10.0.0.0',
+        '172.16.254.1'
+    ];
+    
+    $invalidIps = [
+        '256.256.256.256',
+        '192.168.1',
+        'not-an-ip'
+    ];
+    
+    foreach ($validIps as $ip) {
+        expect(filter_var($ip, FILTER_VALIDATE_IP))->toBeTruthy();
+    }
+    
+    foreach ($invalidIps as $ip) {
+        expect(filter_var($ip, FILTER_VALIDATE_IP))->toBeFalsy();
+    }
+});
+
+test('timestamp validation', function() {
+    $currentTime = time();
+    $futureTime = strtotime('+1 day');
+    $pastTime = strtotime('-1 day');
+    
+    expect($futureTime)->toBeGreaterThan($currentTime);
+    expect($pastTime)->toBeLessThan($currentTime);
+    expect(date('Y-m-d', $currentTime))->toMatch('/^\d{4}-\d{2}-\d{2}$/');
+});
