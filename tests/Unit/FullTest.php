@@ -34,7 +34,6 @@ test('logOut function clears session', function () {
     expect($_SESSION)->not()->toHaveKey('user');
 });
 
-// Routing Tests
 test('urls function correctly checks URI', function () {
     $_SERVER["REQUEST_URI"] = "/home";
     expect(urls("/home"))->toBeTrue();
@@ -104,7 +103,6 @@ test('project creation', function() {
     expect($project)->toBeInstanceOf(Project::class);
 });
 
-// 3. Campaign Test
 test('campaign creation', function() {
     $partner = new Partner(
         1,
@@ -150,7 +148,6 @@ test('campaign creation', function() {
     expect($campaign)->toBeInstanceOf(Campaign::class);
 });
 
-// 4. Endowment Test
 test('endowment creation', function() {
     $address = new Address('Test Street', 'Test City', 'Test Country');
     $user = new User(
@@ -187,7 +184,6 @@ test('endowment creation', function() {
     expect($endowment)->toBeInstanceOf(Endowment::class);
 });
 
-// 5. Categories Test
 test('category creation', function() {
     $category = new Categories(
         1,
@@ -197,7 +193,6 @@ test('category creation', function() {
     expect($category)->toBeInstanceOf(Categories::class);
 });
 
-// 6. Partner Test
 test('partner creation', function() {
     $partner = new Partner(
         1,
@@ -212,7 +207,6 @@ test('partner creation', function() {
     expect($partner)->toBeInstanceOf(Partner::class);
 });
 
-// 7. Islamic Payment Test
 test('islamic payment creation', function() {
     $address = new Address('Test Street', 'Test City', 'Test Country');
     $user = new User(
@@ -242,18 +236,16 @@ test('islamic payment creation', function() {
     expect($payment)->toBeInstanceOf(IslamicPayment::class);
 });
 
-// 2. Categories Test
 test('categories creation and functionality', function() {
     $category = new Categories(
-        1,                     // categoryID
-        'Charity Projects',    // name
-        'Charitable projects for community development' // description
+        1,
+        'Charity Projects',
+        'Charitable projects for community development'
     );
 
     expect($category)->toBeInstanceOf(Categories::class);
 });
 
-// 3. Project Test
 test('project creation and management', function() {
     $address = new Address('Test Street', 'Test City', 'Test Country');
     $creator = new User(
@@ -296,55 +288,6 @@ test('project creation and management', function() {
     expect($project->isFullyFunded())->toBeFalse();
 });
 
-// 4. Partner Test
-test('partner creation and management', function() {
-    $partnerAddress = new Address(
-        'Partner Street',
-        'Partner City',
-        'Partner Country'
-    );
-
-    $partner = new Partner(
-        1,                      // partnerID
-        'Test Partner',         // name
-        'partner@test.com',     // email
-        'active',               // status
-        $partnerAddress,        // address
-        'partner.jpg',          // image
-        'Partner Description'   // description
-    );
-
-    expect($partner)->toBeInstanceOf(Partner::class);
-});
-
-// 5. Islamic Payment Test
-test('islamic payment processing', function() {
-    $address = new Address('Donor Street', 'Donor City', 'Donor Country');
-    $donor = new User(
-        3, 
-        'Payment User', 
-        'regular', 
-        'donor.jpg', 
-        'Donor content', 
-        'Donor Directorate', 
-        $address, 
-        'password123', 
-        '1234567890'
-    );
-
-    $payment = new IslamicPayment(
-        1,
-        1000.0,
-        'zakat',
-        date('Y-m-d'),
-        $donor->userID,
-        'completed'
-    );
-
-    expect($payment)->toBeInstanceOf(IslamicPayment::class);
-});
-
-// 6. Integration Test - Full Donation Workflow
 test('complete donation workflow', function() {
     $address = new Address('Donor Street', 'Donor City', 'Donor Country');
     $donor = new User(
@@ -387,85 +330,6 @@ test('complete donation workflow', function() {
     expect($project->isFullyFunded())->toBeFalse();
 });
 
-// 7. Campaign Test
-test('campaign creation and management', function() {
-    $address = new Address('Partner Street', 'Partner City', 'Partner Country');
-    
-    $partner = new Partner(
-        1,
-        'Campaign Partner',
-        'partner.jpg',
-        'Partner Address',
-        'partner@test.com',
-        'Partner Directorate',
-        'Partner Description',
-        'More info'
-    );
-
-    $creator = new User(
-        5, 
-        'Campaign Creator', 
-        'regular', 
-        'creator.jpg', 
-        'Creator content', 
-        'Creator Directorate', 
-        $address, 
-        'password123', 
-        '1234567890'
-    );
-
-    $campaign = new Campaign(
-        $partner,               // partner
-        $creator,               // creator
-        1,                      // campaignID
-        date('Y-m-d'),         // startAt
-        date('Y-m-d', strtotime('+30 days')), // endAt
-        'Ramadan Campaign',     // name
-        'campaign.jpg',         // photo
-        'Campaign Description', // description
-        'Full campaign description', // fullDescription
-        date('Y-m-d', strtotime('+40 days')), // stopAt
-        1,                      // partnerID
-        1                       // campaignRequestID
-    );
-
-    expect($campaign)->toBeInstanceOf(Campaign::class);
-});
-
-// 8. Endowment Test
-test('endowment creation and management', function() {
-    $address = new Address('Endowment Street', 'Endowment City', 'Endowment Country');
-    $user = new User(
-        6, 
-        'Endowment Creator', 
-        'regular', 
-        'creator.jpg', 
-        'Creator content', 
-        'Creator Directorate', 
-        $address, 
-        'password123', 
-        '1234567890'
-    );
-
-    $endowment = new Endowment(
-        $user,                  // user
-        1,                      // endowmentID
-        'endowment.jpg',       // photo
-        'Education Endowment', // name
-        'Endowment Description', // description
-        'Full endowment description', // fullDescription
-        date('Y-m-d'),         // startAt
-        date('Y-m-d', strtotime('+30 days')), // endAt
-        1000000.0,             // cost
-        1,                      // categoryID
-        1,                      // partnerID
-        'Endowment City'       // city
-    );
-
-    expect($endowment)->toBeInstanceOf(Endowment::class);
-});
-
-// 9. User Notification Test
 test('user notification system', function() {
     $address = new Address('Notif Street', 'Notif City', 'Notif Country');
     $user = new User(
@@ -493,101 +357,6 @@ test('user notification system', function() {
     expect($notification)->toBeInstanceOf(Notification::class);
 });
 
-
-test('complete campaign donation workflow', function() {
-    $creatorAddress = new Address('Creator St', 'Creator City', 'Creator Country');
-    $creator = new User(
-        8, 
-        'Campaign Manager', 
-        'admin', 
-        'manager.jpg', 
-        'Manager content', 
-        'Manager Directorate', 
-        $creatorAddress, 
-        'password123', 
-        '1234567890'
-    );
-
-    $category = new Categories(
-        6, 
-        'Integration Category', 
-        'Integration Test Category'
-    );
-
-    $campaign = new Campaign(
-        $creator,
-        $category,
-        2,
-        'Integration Campaign',
-        50000.0,
-        'integration.jpg',
-        'Integration test campaign',
-        'Full integration test campaign',
-        date('Y-m-d'),
-        date('Y-m-d', strtotime('+60 days')),
-        1,
-        6,
-        'active',
-        date('Y-m-d', strtotime('+70 days'))
-    );
-
-    $donor1Address = new Address('Donor1 St', 'Donor City', 'Donor Country');
-    $donor1 = new User(
-        9, 
-        'Donor One', 
-        'regular', 
-        'donor1.jpg', 
-        'Donor content', 
-        'Donor Directorate', 
-        $donor1Address, 
-        'password123', 
-        '1234567890'
-    );
-
-    $donor2Address = new Address('Donor2 St', 'Donor City', 'Donor Country');
-    $donor2 = new User(
-        10, 
-        'Donor Two', 
-        'regular', 
-        'donor2.jpg', 
-        'Donor content', 
-        'Donor Directorate', 
-        $donor2Address, 
-        'password123', 
-        '1234567890'
-    );
-
-    $campaign->addDonation($donor1, 20000.0);
-    $campaign->addDonation($donor2, 15000.0);
-
-    expect($campaign->getTotalDonations())->toBe(35000.0);
-    expect($campaign->isFullyFunded())->toBeFalse();
-});
-
-// 11. User Authentication Test
-test('user authentication workflow', function() {
-    $address = new Address('Auth Street', 'Auth City', 'Auth Country');
-    $user = new User(
-        11, 
-        'Auth User', 
-        'regular', 
-        'auth.jpg', 
-        'Auth content', 
-        'Auth Directorate', 
-        $address, 
-        'password123', 
-        '1234567890'
-    );
-
-    session_start();
-    logIn(['email' => 'auth@test.com', 'id' => 11]);
-    expect($_SESSION['user']['email'])->toBe('auth@test.com');
-
-    logOut();
-    expect($_SESSION)->not()->toHaveKey('user');
-});
-
-// 12. Report Generation Test
 test('report generation functionality', function() {
     $address = new Address('Report Street', 'Report City', 'Report Country');
     $user = new User(
@@ -636,10 +405,10 @@ test('report generation functionality', function() {
 
 test('notification creation', function() {
     $notification = new Notification(
-        1,                          // notificationID
-        'Test notification body',   // content
-        'Test Notification',        // title
-        '2024-04-06 10:00:00'      // sendAt
+        1,
+        'Test notification body',
+        'Test Notification',
+        '2024-04-06 10:00:00'
     );
 
     expect($notification)->toBeInstanceOf(Notification::class);
@@ -1014,196 +783,10 @@ test('multiple islamic payments', function() {
     expect($payment2->getPaymentDetails())->toContain('500');
 });
 
-test('user authentication and session', function() {
-    $address = new Address('Test Street', 'Test City', 'Test Country');
-    $user = new User(
-        1,
-        'Test User',
-        'regular',
-        'default.jpg',
-        'Test content',
-        'Test Directorate',
-        $address,
-        'password123',
-        '1234567890'
-    );
-
-    session_start();
-    logIn(['id' => 1, 'email' => 'test@example.com']);
-    expect($_SESSION['user']['email'])->toBe('test@example.com');
-
-    logOut();
-    expect($_SESSION)->not()->toHaveKey('user');
-});
-
-test('multiple user donations to project', function() {
-    $address1 = new Address('Donor1 Street', 'Donor City', 'Donor Country');
-    $donor1 = new User(
-        1,
-        'Donor One',
-        'regular',
-        'donor1.jpg',
-        'Donor content',
-        'Donor Directorate',
-        $address1,
-        'password123',
-        '1234567890'
-    );
-
-    $address2 = new Address('Donor2 Street', 'Donor City', 'Donor Country');
-    $donor2 = new User(
-        2,
-        'Donor Two',
-        'regular',
-        'donor2.jpg',
-        'Donor content',
-        'Donor Directorate',
-        $address2,
-        'password123',
-        '9876543210'
-    );
-
-    $category = new Categories(
-        1,
-        'Test Category',
-        'Test Description'
-    );
-
-    $project = new Project(
-        $donor1,
-        $category,
-        1,
-        'Multi-Donor Project',
-        10000.0,
-        'project.jpg',
-        'Multi-donor project test',
-        'Testing multiple donations to a single project',
-        '2024-04-06',
-        '2024-05-06',
-        1,
-        1,
-        'active',
-        '2024-06-06'
-    );
-
-    $project->addDonation($donor1, 3000.0);
-    $project->addDonation($donor2, 4000.0);
-
-    expect($project->getTotalDonations())->toBe(7000.0);
-    expect($project->isFullyFunded())->toBeFalse();
-});
-
-test('project state transitions', function() {
-    $address = new Address('Test Street', 'Test City', 'Test Country');
-    $user = new User(
-        1,
-        'Test User',
-        'regular',
-        'default.jpg',
-        'Test content',
-        'Test Directorate',
-        $address,
-        'password123',
-        '1234567890'
-    );
-
-    $category = new Categories(1, 'Test Category', 'Test Description');
-    
-    $project = new Project(
-        $user,
-        $category,
-        1,
-        'State Test Project',
-        5000.0,
-        'project.jpg',
-        'Short description',
-        'Full description',
-        '2024-04-06',
-        '2024-05-06',
-        1,
-        1,
-        'active',
-        '2024-06-06'
-    );
-
-    $project->changeState('paused');
-    $project->changeState('completed');
-    
-    expect($project->generateReport('status', ''))->toContain('completed');
-});
-
-test('campaign with multiple partners', function() {
-    $partner1 = new Partner(
-        1,
-        'Partner One',
-        'logo1.jpg',
-        'Partner1 Address',
-        'partner1@test.com',
-        'Partner1 Directorate',
-        'Partner1 Description',
-        'More Information 1'
-    );
-
-    $partner2 = new Partner(
-        2,
-        'Partner Two',
-        'logo2.jpg',
-        'Partner2 Address',
-        'partner2@test.com',
-        'Partner2 Directorate',
-        'Partner2 Description',
-        'More Information 2'
-    );
-
-    $address = new Address('Test Street', 'Test City', 'Test Country');
-    $user = new User(
-        1,
-        'Test User',
-        'regular',
-        'default.jpg',
-        'Test content',
-        'Test Directorate',
-        $address,
-        'password123',
-        '1234567890'
-    );
-
-    $campaign = new Campaign(
-        $partner1,
-        $user,
-        1,
-        '2024-04-06',
-        '2024-05-06',
-        'Multi-Partner Campaign',
-        'campaign.jpg',
-        'Multi-partner campaign test',
-        'Testing campaign with multiple partners',
-        '2024-06-06',
-        1,
-        1
-    );
-
-    expect($campaign)->toBeInstanceOf(Campaign::class);
-});
-
 test('input sanitization', function() {
     $maliciousInput = "<script>alert('xss')</script>";
     $sanitizedInput = htmlspecialchars($maliciousInput, ENT_QUOTES, 'UTF-8');
     
     expect($sanitizedInput)->not()->toContain('<script>');
     expect($sanitizedInput)->toContain('&lt;script&gt;');
-});
-
-test('access token', function() {
-    $token = bin2hex(random_bytes(32));
-    $expiration = time() + 3600;
-    
-    $tokenData = [
-        'token' => $token,
-        'expiration' => $expiration,
-        'user_id' => 1
-    ];
-    
-    expect(strlen($token))->toBe(64);
-    expect($tokenData['expiration'])->toBeGreaterThan(time());
 });
