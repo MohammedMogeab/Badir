@@ -1,0 +1,78 @@
+name: PHP Tests
+
+# Author: Mohammed Mogeab Ahmed Alhajj
+# GitHub: https://github.com/MogeabAhmed
+# Project: Badir - Islamic Charity and Endowment Platform
+# Created: April 2024
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+        extensions: mbstring, intl
+        coverage: xdebug
+
+    - name: Validate composer.json and composer.lock
+      run: composer validate --strict
+
+    - name: Cache Composer packages
+      id: composer-cache
+      uses: actions/cache@v3
+      with:
+        path: vendor
+        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-php-
+
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress
+
+    - name: Run test suite
+      run: vendor/bin/pest
+
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v3
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+    - name: Project Information
+      run: |
+        echo "Project: Badir - Islamic Charity and Endowment Platform"
+        echo "Author: Mohammed Mogeab Ahmed Alhajj"
+        echo "Test Suite Execution Completed"
+
+    - name: Check PHP syntax
+      run: |
+        find . -name "*.php" -not -path "./vendor/*" -print0 | xargs -0 -n1 php -l
+
+    - name: Security check
+      run: |
+        composer require --dev roave/security-advisories:dev-latest
+        
+    - name: Generate test coverage report
+      run: vendor/bin/pest --coverage
+
+    - name: Display project information
+      run: |
+        echo "================================="
+        echo "Badir Platform - Test Results"
+        echo "Author: Mohammed Mogeab Ahmed Alhajj"
+        echo "Email: ma8935745@gmail.com"
+        echo "================================="
+        echo "Test execution completed"
+        echo "Coverage report generated"
+        echo "Security checks completed"
+        echo "================================="
