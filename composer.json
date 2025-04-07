@@ -1,5 +1,8 @@
 {
     "name": "lenovo/badir",
+    "description": "Badir - Islamic Charity and Endowment Platform: A comprehensive system for managing Islamic charitable donations, endowments, and campaigns",
+    "type": "project",
+    "license": "proprietary",
     "authors": [{
         "name": "Mohammed Mogeab Ahmed Al-hajj",
         "email": "ma8935745@gmail.com"
@@ -21,7 +24,6 @@
         "psr-4": {
             "core\\": "core/",
             "models\\": "models/"
-
         }
     },
     "autoload-dev": {
