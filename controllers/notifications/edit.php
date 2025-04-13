@@ -15,10 +15,10 @@ try {
     $partners = $db->query(
         "SELECT * FROM partners"
     )->fetchAll(); // Fetch all rows from the query result
-    $notifications = $db->query(
+    $notification = $db->query(
         "SELECT * FROM notifications WHERE notification_id = :notification_id",[
             'notification_id'=>$_GET['notification_id']]
-    )->fetchAll();
+    )->findOrFail();
 
 } catch (PDOException $e) {
     error_log($e->getMessage());

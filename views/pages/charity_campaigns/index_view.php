@@ -33,7 +33,7 @@
               </div>
               <div class="donate-section">
                 <form action="/charity_campaigns_donate" method="post" class="donate-section">
-                  <input class="inp" type="number" name="cost" placeholder="$">
+                  <input class="inp" type="number" name="cost" placeholder="$" required >
                   <input type="hidden" name="campaign_id" value="<?= htmlspecialchars($campaign['campaign_id']) ?>">
                   <button type="submit" class="donate-btn">تبرع الأن</button>
                 </form>

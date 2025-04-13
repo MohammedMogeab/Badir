@@ -8,7 +8,7 @@
     
   <div class="modal-content">
     <h2>تسجيل مستخدم جديد</h2>
-    <form id="register-user-form" action="/users_store" method="post" enctype="multipart/form-data">
+    <form id="register-user-form" action="/users_verification" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="username">اسم المستخدم:</label>
             <input type="text" id="username" name="username" required>

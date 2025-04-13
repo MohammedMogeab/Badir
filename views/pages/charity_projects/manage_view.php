@@ -46,21 +46,21 @@
                     <li>
                       <form action="/charity_projects_show" method="get" >
                         <input type="hidden" name="" value="">
-                        <input type="hidden" name="project_id" value="<?= htmlspecialchars($campaign['project_id']) ?>">
+                        <input type="hidden" name="project_id" value="<?= htmlspecialchars($project['project_id']) ?>">
                         <button type="submit">عرض</button>
                       </form>
                   </li>
                   <li>
                       <form action="/charity_projects_edit" method="get">
                         <input type="hidden" name="" value="">
-                        <input type="hidden" name="project_id" value="<?= htmlspecialchars($campaign['project_id']) ?>">
+                        <input type="hidden" name="project_id" value="<?= htmlspecialchars($project['project_id']) ?>">
                         <button type="submit">تعديل</button>
                       </form>
                   </li>
                   <li>
                       <form action="/charity_projects_destroy" method="post">
                         <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="project_id" value="<?= htmlspecialchars($campaign['project_id']) ?>">
+                        <input type="hidden" name="project_id" value="<?= htmlspecialchars($project['project_id']) ?>">
                         <button type="submit">حذف</button>
                       </form>
                   </li>

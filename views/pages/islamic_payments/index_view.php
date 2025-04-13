@@ -42,7 +42,7 @@
                   </div>
                 </div>
                 <div class="donate-section">
-                  <form action="/islamic_payments_donate" method="post" class="donate-section">
+                  <form action="/islamic_payments_donate" method="post" class="donate-section" required>
                     <input class="inp" type="number" name="cost" placeholder="$">
                     <input type="hidden" name="islamic_payment_id" value="<?= htmlspecialchars($islamic_payment['islamic_payment_id']) ?>">
                     <button type="submit" class="donate-btn">تبرع الأن</button>

@@ -16,7 +16,7 @@
 
   <!-- الصوره الكبير الي بل البدايه -->
   <section class="hero">
-    <img src="views/media/images/andrewSmall.jpg" alt="">
+    <img src="views/media/images/andrewSmall.jpg" alt="" fetchprorty="low">
     <h1  style="         font-size: var(--font-size-ll);  color : white;  margin: -110px 10px 0 0; text-align: right;">بِفَضْلِ تَبَرُّعاتِكُمْ، نَصْنَعُ فَرْقًا حَقِيقِيًّا فِي حَياةِ الْمُحْتاجِين</h1>
 
 
@@ -52,7 +52,7 @@
               </div>
               <div class="donate-section">
                 <form action="/charity_campaigns_donate" method="post" class="donate-section">
-                  <input class="inp" type="number" name="cost" placeholder="$">
+                  <input class="inp" type="number" name="cost" placeholder="$" required>
                   <input type="hidden" name="campaign_id" value="<?= htmlspecialchars($campaign['campaign_id']) ?>">
                   <button type="submit" class="donate-btn">تبرع الأن</button>
                 </form>

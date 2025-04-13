@@ -111,6 +111,7 @@ $router->get('/users_index_view', 'views/pages/users/index_view.php');
 $router->get('/users_show_view', 'views/pages/users/show_view.php');
 $router->get('/users_store_view', 'views/pages/users/store_view.php');
 $router->get('/users_update_view', 'views/pages/users/update_view.php');
+$router->get('/users_verification_view', 'views/pages/users/verification_view.php');
 
 
 
@@ -228,12 +229,23 @@ $router->delete('/users_destroy', 'controllers/users/destroy.php')->only('manage
 $router->get('/users_edit', 'controllers/users/edit.php');
 $router->get('/users_index', 'controllers/users/index.php');
 $router->get('/users_show', 'controllers/users/show.php');
+//$router->get('/users_verification', 'controllers/users/verification.php');
+$router->post('/users_verification', 'controllers/users/verification.php');
 $router->get('/users_manage', 'controllers/users/manage.php')->only('manager');
 $router->post('/users_store', 'controllers/users/store.php');
 $router->put('/users_update', 'controllers/users/update.php');
 
 
 
+
 $router->get('/sessions_create', 'controllers/sessions/create.php')->only('guest');
 $router->delete('/sessions_destroy', 'controllers/sessions/destroy.php')->only('registered');
 $router->post('/sessions_store', 'controllers/sessions/store.php')->only('guest');
+
+
+
+
+
+//$router->get('/robots.txt', '/robots.txt');
+
+

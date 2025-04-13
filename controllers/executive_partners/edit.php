@@ -15,7 +15,7 @@ try {
     $partners = $db->query(
         "SELECT * FROM partners"
     )->fetchAll(); // Fetch all rows from the query result
-    $partners = $db->query("SELECT * from partners where partner_id = :partner_id",[
+    $partner = $db->query("SELECT * from partners where partner_id = :partner_id",[
         'partner_id' => $_GET['partner_id']
     ])->findOrFail();
 

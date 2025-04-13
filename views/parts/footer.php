@@ -27,7 +27,7 @@
                 <h1> اتفاقية الخدمة وسياسات الخصوصية</h1><hr>
                 <a id="service_agreement" class="service_agreement" href="">اتفاقية الخدمة</a><br>
                 <a id="privacy_policy" class="privacy_policy" href="">سياسة الخصوصية</a><br>
-                <a id="terms_and_conditions" class="terms_and_conditions" href="">الشروط والأحكام</a><br>
+                <a id="terms_and_conditions" class="terms_and_conditions" href="/policies_privacy">الشروط والأحكام</a><br>
             </div>
         <div class="contact_us">
             <h1>تواصل معنا</h1><hr>

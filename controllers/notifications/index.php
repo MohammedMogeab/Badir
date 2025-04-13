@@ -15,7 +15,7 @@ try {
     $sort = $_GET['sort'] ?? 'latest'; // Default: show latest notifications
 
     // Base Query
-    $query = "SELECT * FROM notifications WHERE 1=1";
+    $query = "SELECT * FROM notifications l WHERE 1=1";
     $params = [];
 
     // 🔎 Add Search Filter (Full-Text Search)
@@ -23,10 +23,10 @@ try {
         $query .= " AND MATCH(title, content) AGAINST (:search IN NATURAL LANGUAGE MODE)";
         $params['search'] = $search;
     }
-    if ($_GET['submit'] == "foryou") {
-        $query .= " AND u.user_id = :user_id";
-        $params['user_id'] = $_SESSION['user']['id'];
-    }
+    // if ($_GET['submit'] == "foryou") {
+    //     $query .= " AND u.user_id = :user_id";
+    //     $params['user_id'] = $_SESSION['user']['id'];
+    // }
 
 
     // 📌 Add Sorting Option

@@ -18,7 +18,7 @@ try {
 
     // 🔎 Add Search Filter
     if (!empty($search)) {
-        $query .= " AND MATCH(name, short_description) AGAINST (:search IN NATURAL LANGUAGE MODE)";
+        $query .= " AND MATCH(name, short_description,type) AGAINST (:search IN NATURAL LANGUAGE MODE)";
         $params['search'] = $search;
     }
 

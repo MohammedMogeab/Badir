@@ -40,7 +40,7 @@ try {
                             </option>
                         <?php endforeach; ?>
                     </select>
-                    <?php if ($_SESSION['user'] ?? false) : ?>
+                    <?php if ( false) : ?>
                         <button type="submit" name="submit" value="foryou">خاصه بك</button>
                     <?php endif; ?>
                 </form>

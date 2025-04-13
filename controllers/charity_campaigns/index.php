@@ -15,7 +15,7 @@ try {
 
     // Get search and filter inputs
     $search = $_GET['search'] ?? '';
-    $filter = $_Get['filter'] ?? 'all';
+    $filter = $_GET['filter'] ?? 'all';
 
     // Base Query
     $query = "
