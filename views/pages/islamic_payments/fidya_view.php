@@ -6,7 +6,7 @@
 
 
 <main class="main_islamic_payments_zakat">
-<label for="fidya-calculator" class="section-label visually-hidden">حاسبة الفدية</label>
+<label for="fidya-calculator" class="section-label visually-hidden"></label>
 
   <section id="fidya-calculator" class="form_zakat">
   <!-- حسابة الفديه-->
@@ -48,7 +48,7 @@
   </section>
 
      
-  <label for="fidya-info" class="section-label visually-hidden">معلومات عن الفدية</label>
+  <label for="fidya-info" class="section-label visually-hidden"></label>
 
   <section id="fidya-info" >
   <!-- تعريف عام  -->

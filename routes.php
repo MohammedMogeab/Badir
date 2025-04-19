@@ -248,6 +248,8 @@ $router->post('/users_verification', 'controllers/users/verification.php');
 $router->get('/users_manage', 'controllers/users/manage.php')->only('manager');
 $router->post('/users_store', 'controllers/users/store.php');
 $router->put('/users_update', 'controllers/users/update.php');
+$router->get('/users_changePassword', 'controllers/users/changePassword.php');
+$router->post('/users_changePassword', 'controllers/users/changePassword.php');
 
 
 
