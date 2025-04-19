@@ -1,12 +1,18 @@
-<?php require('views/parts/head.php') ?>
-<?php require('views/parts/adminbar.php') ?>
-<?php require('views/parts/navgtion.php') ?>
-<?php require('views/parts/header.php') ?>
-<main>
-    <h1 class="text-2xl font-bold"> you are not authorized to view this page  403 !</h1>
-    <p class="mt-4">
-        <a href="/" class=" text-blue-500 underline">Go Back Home</a>
-    </p>
+<?php http_response_code(403); // مهم لضبط كود الحالة الصحيح ?>
+<?php require('views/parts/head.php'); ?>
+<?php require('views/parts/adminbar.php'); ?>
+<?php require('views/parts/navgtion.php'); ?>
+<?php require('views/parts/header.php'); ?>
+
+<main class="safha_error_container">
+    <div class="risala_card">
+        <div class="error_code">٤٠٣</div>
+        <h1>ممنوع الوصول</h1>
+        <p>
+            عفوًا، ليس لديك الإذن اللازم للوصول إلى هذه الصفحة أو المصدر.
+        </p>
+        <a href="/">العودة إلى الرئيسية</a>
+    </div>
 </main>
 
-<?php include ('views/parts/footer.php'); ?>
+<?php require('views/parts/footer.php'); ?>

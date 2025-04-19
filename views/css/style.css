@@ -3023,6 +3023,95 @@ margin-bottom: var(--margin-s) ;
   }
 
 
+/* --- أنماط صفحة الخطأ 404 --- */
+
+.safha_error_container {
+    display: flex;
+    justify-content: center; /* توسيط أفقي */
+    align-items: center;     /* توسيط رأسي */
+    min-height: 70vh;        /* ارتفاع أدنى لملء جزء كبير من الشاشة */
+    padding: var(--padding-l);
+    background-color: var(--bgcolor-light, #f4f4f9); /* لون خلفية فاتح مع قيمة احتياطية */
+    direction: rtl; /* ضمان اتجاه النص من اليمين لليسار */
+    font-family: var(--font-family-main, sans-serif); /* استخدام الخط الرئيسي */
+  }
+  
+  /* بطاقة الرسالة الرئيسية - تكييف لأسلوب .main_card */
+  .risala_card {
+    background-color: var(--card-bgcolor, #ffffff);
+    padding: var(--padding-xl); /* حشوة داخلية واسعة */
+    border-radius: var(--card-radius, var(--border-radius, 10px));
+    box-shadow: var(--card-shadow, 0 0 0.5em rgba(0, 0, 0, 0.1));
+    border: var(--card-border, 1px solid var(--border-color, #dadada));
+    max-width: 550px; /* استخدام عرض أقصى بدلاً من نسبة مئوية ثابتة للعرض */
+    width: 90%;       /* أكثر استجابة من عرض ثابت مثل 20% */
+    /* min-height: 30vh; */ /* يمكن استخدام ارتفاع أدنى بدلاً من ارتفاع ثابت */
+    display: flex;
+    flex-direction: column;   /* ترتيب العناصر عمودياً */
+    align-items: center;      /* توسيط العناصر أفقياً داخل العمود */
+    justify-content: center; /* توسيط المحتوى رأسياً */
+    text-align: center;       /* توسيط النصوص داخل العناصر */
+    transition: background-color 0.3s ease; /* تأثير انتقال ناعم للخلفية عند المرور */
+  }
+  
+  /* تصميم العناصر داخل البطاقة */
+  
+  /* تصميم رمز الخطأ ٤٠٤ */
+  .risala_card .error_code {
+    font-size: 6em; /* حجم خط كبير جداً */
+    font-weight: bold;
+    color: var(--font-color-bh, #00575F); /* لون مميز */
+    margin-bottom: var(--margin-s);
+    line-height: 1; /* تعديل ارتفاع السطر للخط الكبير */
+    font-family: var(--font-family-secandry, var(--font-family-main, sans-serif)); /* خط ثانوي أو رئيسي */
+  }
+  
+  /* تصميم العنوان H1 */
+  .risala_card h1 {
+    font-size: var(--font-size-ll, 2em); /* حجم خط كبير */
+    color: var(--font-color-black, #000000);
+    margin-bottom: var(--margin-m);
+    font-weight: bold;
+  }
+  
+  /* تصميم الفقرة P */
+  .risala_card p {
+    font-size: var(--font-size-m, 1em); /* حجم خط عادي */
+    color: var(--text-color, #424242); /* لون نص عام */
+    margin-bottom: var(--margin-l);
+    line-height: 1.7; /* ارتفاع سطر مناسب للعربية */
+  }
+  
+  /* تصميم الرابط A (المظهر كزر) */
+  .risala_card a {
+    display: inline-block; /* للسماح بالحشوة والهوامش */
+    padding: var(--padding-s) var(--padding-l); /* استخدام متغيرات الحشوة */
+    background-color: var(--button-bgcolor, var(--button-bg-h, #00575F)); /* لون خلفية الزر */
+    color: var(--button-color, #ffffff); /* لون نص الزر */
+    font-size: var(--font-size-m, 1em);
+    font-weight: bold;
+    text-decoration: none; /* إزالة الخط تحت الرابط */
+    border-radius: var(--button-radius, 0.2em); /* استخدام متغير نصف قطر الزر */
+    border: var(--button-border, 1px solid #dddddd); /* استخدام متغير إطار الزر */
+    box-shadow: var(--button-shadow, 0 0 0.5em rgba(0, 0, 0, 0.1)); /* استخدام متغير ظل الزر */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* تأثير انتقال ناعم */
+    cursor: pointer; /* تغيير شكل المؤشر */
+  }
+  
+  /* تصميم حالة المرور والتركيز للرابط (الزر) */
+  .risala_card a:hover,
+  .risala_card a:focus {
+    background-color: var(--button-hover-bgcolor, var(--bgcolor-white, #ffffff)); /* لون الخلفية عند المرور/التركيز */
+    color: var(--button-hover-color, #00575F); /* لون النص عند المرور/التركيز */
+    border-color: var(--button-hover-border, #006770); /* لون الإطار عند المرور/التركيز */
+    box-shadow: var(--button-hover-shadow, 0 0 1em rgba(0, 0, 0, 0.1)); /* الظل عند المرور/التركيز */
+    outline: none; /* إزالة المخطط الافتراضي عند التركيز */
+  }
+  
+  /* تأثير المرور على البطاقة نفسها */
+  .risala_card:hover {
+    background-color: var(--card-hover-bgcolor, var(--bgcolor-light)); /* استخدام متغير لون الخلفية عند المرور */
+  }
 /* islamic payments */
 /* zalat */
 /* تنسيق عام للصفحة */
@@ -3429,6 +3518,18 @@ table input[type="text"]:focus, table select:focus {
     color: var(--primary-color);
     font-weight: bold;
   }
+
+.titel{
+    text-align: center;
+    color: var(--font-color-bh);
+    margin: var(--margin-xl);
+}
+.error_mseage{
+    color: red;
+}
+
+
+
   
   /* استجابة الشاشة */
   @media (max-width: 768px) {
