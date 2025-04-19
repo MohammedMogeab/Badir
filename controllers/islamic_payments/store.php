@@ -3,7 +3,7 @@ $heading = "Create test";
 
 
 
-use core\App ;
+use core\App;
 use core\Database;
 
 $db = App::resolve(Database::class);
@@ -76,21 +76,19 @@ try {
             'paid_cost' => filter_var($_POST['paid_cost'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION),
             'payment_date' => $_POST['payment_date'] ?? date('Y-m-d H:i:s'), // Default to current timestamp
             'user_id' => $_POST['user_id'] ?? 1,
-            'photo' => $filenamenew ,
-            'name' => $_POST['name'], 
-            'short_description' => $_POST['short_description']  
+            'photo' => $filenamenew,
+            'name' => $_POST['name'],
+            'short_description' => $_POST['short_description']
 
         ]
     );
-      
-    }catch (PDOException $e) {
-        error_log($e->getMessage());
-        $_SESSION['error'] = "حدث خطأ أثناء حفظ البعانات";
-        header("Location: /charity_projects_create");
-        exit();
-    }
-    
+} catch (PDOException $e) {
+    error_log($e->getMessage());
+    $_SESSION['error'] = "حدث خطأ أثناء حفظ البيانات";
+    header("Location: /charity_projects_create");
+    exit();
+}
+
 
 header("Location: " . $_SERVER["HTTP_REFERER"]);
 die();
-

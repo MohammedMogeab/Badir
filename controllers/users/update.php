@@ -66,7 +66,7 @@ $db = App::resolve(Database::class);
 //     ]);
 // } catch (PDOException $e) {
 //     error_log($e->getMessage());
-//     $_SESSION['error'] = "حدث خطأ أثناء حفظ البعانات";
+//     $_SESSION['error'] = "حدث خطأ أثناء حفظ البيانات";
 //     header("Location: /charity_projects_create");
 //     exit();
 // }
@@ -102,7 +102,6 @@ try {
             'user_id' => $_POST['user_id']
         ]
     );
-
 } catch (PDOException $e) {
     error_log($e->getMessage());
     $_SESSION['error'] = "حدث خطأ أثناء تحديث البيانات";
@@ -112,5 +111,5 @@ try {
 
 
 
-header("Location:". $_SERVER["HTTP_REFERER"]);
+header("Location:" . $_SERVER["HTTP_REFERER"]);
 die();

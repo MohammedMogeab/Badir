@@ -4,17 +4,17 @@
 <?php require('views/parts/header.php') ?>
 
 <main class="main_islamic_payments_zakat">
-<label for="sadaqah-calculator" class="section-label visually-hidden">حاسبة الصدقة</label>
+<label for="sadaqah-calculator" class="section-label visually-hidden"> </label>
 
   <section id="sadaqah-calculator" class="form_zakat">
   <!-- حسابة  الصدقه-->
   <form >
       <h2>حاسبة الصدقة</h2>
       
-      <label for="income">الدخل الشهري (بالريال)</label>
-      <input type="number" id="income" name="income" required>
-
-    <h2>احسب الصدقة</h2>
+      <!-- <label for="income">الدخل الشهري (بالريال)</label>
+      <input type="number" id="income" name="income" required> -->
+<!-- 
+    <h2>احسب الصدقة</h2> -->
 
     <div class="donate-section">
     <form action="/islamic_payments_checkout" method="get" class="donate-section" required>
@@ -24,14 +24,14 @@
     </form>
     <form class="fromCart" action="/islamic_payments_addcart" method="post">
       <input type="hidden" name="islamic_payment_id" value="1">
-      <button type="submit" class="donate_cart" aria-label="السله"><img src="views/media/images/cart.png" alt=""></button>
+      <!-- <button type="submit" class="donate_cart" aria-label="السله"><img src="views/media/images/cart.png" alt=""></button> -->
     </form>
   </div>
 
   </section>
 
 
-  <label for="sadaqah-info" class="section-label visually-hidden">معلومات عن الصدقة</label>
+  <label for="sadaqah-info" class="section-label visually-hidden"></label>
 
   <section id="sadaqah-info" class="info-section">
   <!-- تعريف عام  -->

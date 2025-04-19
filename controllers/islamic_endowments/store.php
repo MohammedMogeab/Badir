@@ -3,7 +3,7 @@ $heading = "Create test";
 
 
 
-use core\App ;
+use core\App;
 use core\Database;
 
 $db = App::resolve(Database::class);
@@ -85,18 +85,13 @@ try {
             'photo' => $filenamenew
         ]
     );
-    
-    
-    
-    }catch (PDOException $e) {
-        error_log($e->getMessage());
-        $_SESSION['error'] = "حدث خطأ أثناء حفظ البعانات";
-        header("Location: /charity_projects_create");
-        exit();
-    }
-    
+} catch (PDOException $e) {
+    error_log($e->getMessage());
+    $_SESSION['error'] = "حدث خطأ أثناء حفظ البيانات";
+    header("Location: /charity_projects_create");
+    exit();
+}
+
 
 header("Location: " . $_SERVER["HTTP_REFERER"]);
 die();
-
-

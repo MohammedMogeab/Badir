@@ -35,7 +35,7 @@
                 </div>
                 <h3> <?= htmlspecialchars($islamic_payment['type']) ?> </h3>
                 <div class="progress-bar">
-                  <div class="progress" style="text-align: left; width: <?= htmlspecialchars(($islamic_payment['paid_cost'] / $islamic_payment['cost']) * 100) ?>%;">%<?= htmlspecialchars((int)($islamic_payment['paid_cost'] / $islamic_payment['cost']) * 100) ?></div>
+                  <div class="progress" style="text-align: left; width: <?= htmlspecialchars(($islamic_payment['paid_cost'] / $islamic_payment['cost']) * 100) ?>%;">%<?= htmlspecialchars((int)(($islamic_payment['paid_cost'] / $islamic_payment['cost']) * 100)) ?></div>
                 </div>
                 <div class="donation-details">
                   <div>

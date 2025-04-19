@@ -70,7 +70,7 @@ if (isset($_POST["submit"])) {
 //  $accountType = $_POST['accountType']; 
 
 
- // التحقق من الحقول المطلوبة
+// التحقق من الحقول المطلوبة
 
 // if (!isset($_POST['category_id']) || !Validator::string($_POST['category_id'] ?? '', 1, 255)) {
 //     $errors["category_id"] = " يجب اختيار تصنيف صحيح للحملة";
@@ -151,24 +151,21 @@ try {
             'type' => $_POST['type']
         ]
     );
-    $levels = json_decode($_POST['levels'],true);
-    if(json_last_error() === JSON_ERROR_NONE){
+    $levels = json_decode($_POST['levels'], true);
+    if (json_last_error() === JSON_ERROR_NONE) {
         $project_id = $db->lastId();
-        for($i = 0;$i < count($levels);$i++){
-            $db->query("insert into levels (level_id, project_id, name) values(:level_id, :project_id , :name)",[
-                'level_id'=> $i,
-                'project_id'=>$project_id,
-                'name'=>$levels[$i]
+        for ($i = 0; $i < count($levels); $i++) {
+            $db->query("insert into levels (level_id, project_id, name) values(:level_id, :project_id , :name)", [
+                'level_id' => $i,
+                'project_id' => $project_id,
+                'name' => $levels[$i]
             ]);
         }
-    }else{
-
+    } else {
     }
-
-    
 } catch (PDOException $e) {
     error_log($e->getMessage());
-    $_SESSION['error'] = "حدث خطأ أثناء حفظ البعانات";
+    $_SESSION['error'] = "حدث خطأ أثناء حفظ البيانات";
     header("Location: /charity_projects_create");
     exit();
 }

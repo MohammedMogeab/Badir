@@ -21,6 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Basic validation
     if (empty($transaction_id) || empty($user_id) || empty($transaction_status)) {
         echo "Invalid input.";
+        header('Location: /users_index');
         exit();
     }
 
@@ -55,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } catch (PDOException $e) {
 
         error_log($e->getMessage());
-        $_SESSION['error'] = "حدث خطأ أثناء حفظ البعانات" . $e->getMessage();;
+        $_SESSION['error'] = "حدث خطأ أثناء حفظ البيانات" . $e->getMessage();;
         header("Location: /");
         exit();
     }

@@ -16,8 +16,12 @@
             <select id="category_id" name="category_id" required>
                 <!-- Dynamic Category List -->
                 <!-- Example: -->
-                <option value="1">Category 1</option>
-                <option value="2">Category 2</option>
+                <?php 
+                foreach($categories as $cat){?>
+                 <option value="<?= $cat['category_id']?>" ><?= $cat['name']?></option>
+                 <?php
+                }
+                ?>
             </select>
         </div>
         <div class="form-group">
@@ -25,8 +29,12 @@
             <select id="partner_id" name="partner_id" required>
                 <!-- Dynamic Partner List -->
                 <!-- Example: -->
-                <option value="1">Partner 1</option>
-                <option value="2">Partner 2</option>
+                <?php 
+                foreach($partners as $partner){?>
+                 <option value="<?= $partner['partner_id']?>" ><?= $partner['name']?></option>
+                 <?php
+                }
+                ?>
             </select>
         </div>
         <div class="form-group">
