@@ -6,12 +6,7 @@ use models\Campaign;
 
 $db = App::resolve(Database::class);
 $page = "charity_campaigns_index" ;
-<<<<<<< HEAD
-
-
-=======
 start_page:
->>>>>>> cc1cb0d306909c947a0638a0a4ef564055cc7fb8
 $page_campaigns_ids = [];
 $heading = "All My tests";
 if(!isset($_GET['page_number'])) $_GET['page_number'] = 1; // if page_number not set in $_GET
