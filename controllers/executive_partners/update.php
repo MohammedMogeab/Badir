@@ -11,124 +11,62 @@ $db = App::resolve(Database::class);
 
 
 
-// $userID = 1;
+require('controllers/parts/image_loader.php') ;
 
+$errors = [];
 
+if (!isset($_POST['partner_id']) || !Validator::number($_POST['partner_id'], 1, 999999)) {
+    $errors['partner_id'] = "رقم الشريك غير صالح";
+}
 
-// // $note = $db->query("SELECT * from executive_partners where id = :id ", [
-// //   'id' => $_POST['id'],
-// // ])->findOrFail();
+if (isset($_POST['name']) && !Validator::string($_POST['name'], 1, 255)) {
+    $errors['name'] = "الاسم يجب أن يكون بين 1 و 255 حرفاً";
+}
 
-// authorize($note['other_id'] == $userID);
+if (isset($_POST['description']) && !Validator::string($_POST['description'], 10, 1000)) {
+    $errors['description'] = "الوصف يجب أن يكون بين 10 و 1000 حرفاً";
+}
 
+if (isset($_POST['more_information']) && !Validator::string($_POST['more_information'], 0, 2000)) {
+    $errors['more_information'] = "المعلومات الإضافية طويلة جداً";
+}
 
+if (isset($_POST['email']) && !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+    $errors['email'] = "البريد الإلكتروني غير صالح";
+}
 
+if (isset($_POST['directorate']) && !Validator::string($_POST['directorate'], 1, 255)) {
+    $errors['directorate'] = "المديرية غير صالحة";
+}
 
-// $errors = [];
+if (isset($_POST['country']) && !Validator::string($_POST['country'], 1, 255)) {
+    $errors['country'] = "الدولة غير صالحة";
+}
 
-// if (!(Validator::string($_POST['anme'], 1, 255))) {
-//     $errors["titel"] = "Titel  is too short or too long";
-// }
-// // if (!(Validator::string($_POST['body'], 1, 1000))) {
-// //     $errors["titel"] = " body is too short or long";
-// // }
+if (isset($_POST['city']) && !Validator::string($_POST['city'], 1, 255)) {
+    $errors['city'] = "المدينة غير صالحة";
+}
 
+if (isset($_POST['street']) && !Validator::string($_POST['street'], 1, 255)) {
+    $errors['street'] = "الشارع غير صالح";
+}
 
-// if (! empty($errors)) {
-  
-//     require "views/pages/executive_partners/edit_view.php";
+if (isset($_POST['phone']) && !Validator::string($_POST['phone'], 7, 20)) {
+    $errors['phone'] = "رقم الهاتف غير صالح";
+}
+
+// if (!empty($errors)) {
+//     require "views/pages/partners/edit_view.php"; // adjust path if needed
 //     die();
 // }
- 
-
-// // $db->query("UPDATE executive_partners set name = :name  " , [
-// //     'name' => $_POST['name'],
-
-// // ]);
-// $partners = $db->query("SELECT * from partners where partner_id = :partner_id",[
-//     'partner_id' => $_POST['partner_id']
-// ])->findOrFail();
-
-// $partners['phones'] = $db->query(
-//     "SELECT phone, type from partners_phones
-//     WHERE partner_id = :partner_id",[
-//         'partner_id' => $_POST['partner_id']
-//     ]
-// )->fetchAll();
-
-// $partners['accounts'] = $db->query(
-//     "SELECT account, account_type from partners_accounts
-//     WHERE partner_id = :partner_id",[
-//         'partner_id' => $_POST['partner_id']
-//     ]
-// )->fetchAll();
-
-
-// // add validation code here ------------------------------------------------------------------------------------------
-
-// $db->query("UPDATE partners
-// SET
-// (
-//     name = :name,
-//     logo = :logo,
-//     description = :description,
-//     more_information = :more_information,
-//     email = :email,
-//     directorate = :directorate,
-//     county = :county,
-//     city = :city,
-//     street = :street
-// ) WHERE partner_id = :partner_id",[
-//     'name' => $_POST['name'],
-//     'logo' => $_POST['logo'],
-//     'description' => $_POST['description'],
-//     'more_information' => $_POST['more_information'],
-//     'email' => $_POST['email'],
-//     'directorate' => $_POST['directorate'],
-//     'county' => $_POST['county'],
-//     'city' => $_POST['city'],
-//     'street' => $_POST['street'],
-//     'partner_id' => $_POST['partner_id']
-// ]);
-// for($i = 0; $i < count($_POST['phones']); $i++){
-//     $phone = $_POST['phones'][$i];
-//     $db->query(
-//         "UPDATE partner_phones 
-//         SET
-//         (
-//             phone = :phone,
-//             type = :type
-//         )WHERE partner_id = :partner_id and phone = :L_phone and type = :L_type",[
-//             'partner_id' => $_POST['partner_id'],
-//             'phone' => $phone['phone'],
-//             'type' => $phone['type'],
-//             'L_type' => $partners['phones'][$i]['type'],
-//             'L_phone' => $partners['phones'][$i]['phone']
-//         ]
-//     );
-// }
-// for($i = 0; $i < count($_POST['accounts']); $i++){
-//     $account = $_POST['accounts'][$i];
-//     $db->query(
-//         "UPDATE partners_accounts 
-//         SET
-//         (
-//             account = :account,
-//             account_type = :account_type
-//         )WHERE partner_id = :partner_id and account = :L_account and account_type = :L_account_type",[
-//             'partner_id' => $_POST['partner_id'],
-//             'account' => $account['account'],
-//             'account_type' => $account['account_type'],
-//             'L_account' => $partners['accounts'][$i]['account'],
-//             'L_account_type' => $partners['accounts'][$i]['account_type']
-//         ]
-//     );
-// }
-
-
-
+if (!empty($errors)) {
+    $_SESSION['errors'] = $errors;
+    header("Location:". $_SERVER["HTTP_REFERER"]);
+    exit();
+}
 
 try {
+    require('controllers/parts/image_loader.php') ;
     $db->query(
         "UPDATE partners
         SET 

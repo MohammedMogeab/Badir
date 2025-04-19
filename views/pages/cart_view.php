@@ -11,7 +11,7 @@
             <h1>الحملات:</h1>
             <?php foreach ($campaigns as $campaign): ?>
                 <div class="project">
-                    <img src="project1.jpg" alt="مشروع 1" loading="lazy">
+                    <img src="views/media/images/<?= htmlspecialchars($campaign['photo'] ?? "11.png") ?>" alt=" حملة " loading="lazy">
                     <div class="project-details">
                         <h3>رقم الحملة :<?= htmlspecialchars($campaign['campaign_id']) ?></h3>
                         <h3>اسم الحمله :<?= htmlspecialchars($campaign['name']) ?></h3>
@@ -36,7 +36,7 @@
             <h1>المشاريع:</h1>
             <?php foreach ($projects as $project): ?>
                 <div class="project">
-                    <img src="project1.jpg" alt="مشروع 1" loading="lazy">
+                <img src="views/media/images/<?= htmlspecialchars($project['photo'] ?? "11.png") ?>" alt=" حملة " loading="lazy">
                     <div class="project-details">
                         <h3>رقم الحملة :<?= htmlspecialchars($project['project_id']) ?></h3>
                         <h3>اسم الحمله :<?= htmlspecialchars($project['name']) ?></h3>
@@ -61,7 +61,7 @@
             <h1>الاوقاف:</h1>
             <?php foreach ($endowments as $endowment): ?>
                 <div class="project">
-                    <img src="project1.jpg" alt="مشروع 1" loading="lazy">
+                <img src="views/media/images/<?= htmlspecialchars($endowment['photo'] ?? "11.png") ?>" alt=" حملة " loading="lazy">
                     <div class="project-details">
                         <h3>رقم الحملة :<?= htmlspecialchars($endowment['endowment_id']) ?></h3>
                         <h3>اسم الحمله :<?= htmlspecialchars($endowment['name']) ?></h3>
@@ -86,7 +86,7 @@
             <h1>المدفوعات الاسلاميه:</h1>
             <?php foreach ($islamic_payments as $islamic_payment): ?>
                 <div class="project">
-                    <img src="project1.jpg" alt="مشروع 1" loading="lazy">
+                <img src="views/media/images/<?= htmlspecialchars($islamic_payment['photo'] ?? "11.png") ?>" alt=" حملة " loading="lazy">
                     <div class="project-details">
                         <h3>رقم الحملة :<?= htmlspecialchars($islamic_payment['islamic_payment_id']) ?></h3>
                         <h3>اسم الحمله :<?= htmlspecialchars($islamic_payment['name']) ?></h3>

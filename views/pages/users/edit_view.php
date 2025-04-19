@@ -2,6 +2,7 @@
 <?php require('views/parts/adminbar.php') ?>
 <?php require('views/parts/navgtion.php') ?>
 <?php require('views/parts/header.php') ?>
+<?php $errors = ($_SESSION['errors'] ?? '' ) ; unset($_SESSION['errors']) ; ?>
 
 <main class="main_user">
 
@@ -17,16 +18,19 @@
       <div class="form-group">
         <label for="username">اسم المستخدم:</label>
         <input type="text" id="username" name="username" required value="<?= htmlspecialchars($users['username'] ?? '') ?>">
+        <h6 class="error_mseage"> <?= !empty($errors['username']) ? 'خطاء : ' . $errors['username'] : '' ?></h6>
       </div>
 
       <div class="form-group">
         <label for="password">كلمة المرور:</label>
         <input type="password" id="password" name="password" required>
+        <h6 class="error_mseage"> <?= !empty($errors['password']) ? 'خطاء : ' . $errors['password'] : '' ?></h6>
       </div>
 
       <div class="form-group">
         <label for="email">البريد الإلكتروني:</label>
         <input type="email" id="email" name="email" required value="<?= htmlspecialchars($users['email'] ?? '') ?>">
+        <h6 class="error_mseage"> <?= !empty($errors['email']) ? 'خطاء : ' . $errors['email'] : '' ?></h6>
       </div>
 
       <div class="form-group">
@@ -36,26 +40,31 @@
           <option value="admin" <?= ($users['type'] ?? '') === 'admin' ? 'selected' : '' ?>>مسؤول</option>
           <option value="manager" <?= ($users['type'] ?? '') === 'manager' ? 'selected' : '' ?>>مدير</option>
         </select>
+        <h6 class="error_mseage"> <?= !empty($errors['type']) ? 'خطاء : ' . $errors['type'] : '' ?></h6>
       </div>
 
       <div class="form-group">
         <label for="country">الدولة:</label>
         <input type="text" id="country" name="country" required value="<?= htmlspecialchars($users['country'] ?? '') ?>">
+        <h6 class="error_mseage"> <?= !empty($errors['country']) ? 'خطاء : ' . $errors['country'] : '' ?></h6>
       </div>
 
       <div class="form-group">
         <label for="city">المدينة:</label>
         <input type="text" id="city" name="city" required value="<?= htmlspecialchars($users['city'] ?? '') ?>">
+        <h6 class="error_mseage"> <?= !empty($errors['city']) ? 'خطاء : ' . $errors['city'] : '' ?></h6>
       </div>
 
       <div class="form-group">
         <label for="street">الشارع:</label>
         <input type="text" id="street" name="street" required value="<?= htmlspecialchars($users['street'] ?? '') ?>">
+        <h6 class="error_mseage"> <?= !empty($errors['street']) ? 'خطاء : ' . $errors['street'] : '' ?></h6>
       </div>
 
       <div class="form-group">
         <label for="phone">رقم الهاتف:</label>
         <input type="text" id="phone" name="phone" required value="<?= htmlspecialchars($users['phone'] ?? '') ?>">
+        <h6 class="error_mseage"> <?= !empty($errors['phone']) ? 'خطاء : ' . $errors['phone'] : '' ?></h6>
       </div>
 
       <div class="form-group">
@@ -64,11 +73,14 @@
         <?php if (!empty($users['photo'])): ?>
           <img src="uploads/<?= htmlspecialchars($users['photo']) ?>" alt="User Photo" width="100">
         <?php endif; ?>
+        <h6 class="error_mseage"> <?= !empty($errors['photo']) ? 'خطاء : ' . $errors['photo'] : '' ?></h6>
       </div>
 
       <div class="form-group">
         <label for="notifications">استقبال الإشعارات:</label>
         <input type="checkbox" id="notifications" name="notifications" <?= isset($users['notifications']) && $users['notifications'] ? 'checked' : '' ?>>
+        <label for="notifications">نعم</label>
+        <h6 class="error_mseage"> <?= !empty($errors['notifications']) ? 'خطاء : ' . $errors['notifications'] : '' ?></h6>
       </div>
 
       <div class="form-group">

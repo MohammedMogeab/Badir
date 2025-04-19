@@ -2,6 +2,9 @@
 <?php require('views/parts/adminbar.php') ?>
 <?php require('views/parts/navgtion.php') ?>
 <?php require('views/parts/header.php') ?>
+<?php $errors = ($_SESSION['errors'] ?? '' ) ; unset($_SESSION['errors']) ; ?>
+
+
 <style>
     .phases-section {
     font-family: 'Arial', sans-serif;
@@ -156,6 +159,7 @@
                             <?php endforeach?>
                             <!-- <option value="2">Partner 2</option> -->
                         </select>
+                        <h6 class = "error_mseage"> <?= !empty($errors['partner_id']) ? 'خطاء : '. $errors['partner_id'] : '' ?></h6>
                     </div>
                     <div class="form-group">
                         <label for="category_id">الفئة:</label>
@@ -167,38 +171,47 @@
                             <?php endforeach?>
                             <!-- <option value="2">Category 2</option> -->
                         </select>
+                        <h6 class = "error_mseage"> <?= !empty($errors['category_id']) ? 'خطاء : '. $errors['category_id'] : '' ?></h6>
                     </div>
                     <div class="form-group">
                         <label for="name">اسم المشروع:</label>
                         <input type="text" id="name" name="name" required>
+                        <h6 class = "error_mseage"> <?= !empty($errors['name']) ? 'خطاء : '. $errors['name'] : '' ?></h6>
                     </div>
                     <div class="form-group">
                         <label for="beneficiaries_count">عدد المستفيدين:</label>
                         <input type="number" id="beneficiaries_count" name="beneficiaries_count" required>
+                        <h6 class = "error_mseage"> <?= !empty($errors['beneficiaries_count']) ? 'خطاء : '. $errors['beneficiaries_count'] : '' ?></h6>
                     </div>
                     <div class="form-group">
                         <label for="short_description">وصف قصير:</label>
                         <textarea id="short_description" name="short_description" rows="3" required></textarea>
+                        <h6 class = "error_mseage"> <?= !empty($errors['short_description']) ? 'خطاء : '. $errors['short_description'] : '' ?></h6>
                     </div>
                     <div class="form-group">
                         <label for="full_description">الوصف الكامل:</label>
                         <textarea id="full_description" name="full_description" rows="5" required></textarea>
+                        <h6 class = "error_mseage"> <?= !empty($errors['full_description']) ? 'خطاء : '. $errors['full_description'] : '' ?></h6>
                     </div>
                     <div class="form-group">
                         <label for="cost">التكلفة:</label>
                         <input type="number" step="0.01" id="cost" name="cost" required>
+                        <h6 class = "error_mseage"> <?= !empty($errors['cost']) ? 'خطاء : '. $errors['cost'] : '' ?></h6>
                     </div>
                     <div class="form-group">
                         <label for="country">الدولة:</label>
                         <input type="text" id="country" name="country" required>
+                        <h6 class = "error_mseage"> <?= !empty($errors['country']) ? 'خطاء : '. $errors['country'] : '' ?></h6>
                     </div>
                     <div class="form-group">
                         <label for="city">المدينة:</label>
                         <input type="text" id="city" name="city" required>
+                        <h6 class = "error_mseage"> <?= !empty($errors['city']) ? 'خطاء : '. $errors['city'] : '' ?></h6>
                     </div>
                     <div class="form-group">
                         <label for="street">الشارع:</label>
                         <input type="text" id="street" name="street" required>
+                        <h6 class = "error_mseage"> <?= !empty($errors['street']) ? 'خطاء : '. $errors['street'] : '' ?></h6>
                     </div>
                     <div class="form-group">
                         <h2>مراحل المشروع</h2>
@@ -211,16 +224,19 @@
                         </div>
                         <!-- حقل مخفي لتخزين البيانات -->
                         <input type="hidden" id="phasesData" name="levels">
+
                     </div>
                     <div class="form-group">
                         <label for="level">المرحلة الحالية:</label>
                         <select id="levelselect" name="level">
                         </select>
+                        <h6 class = "error_mseage"> <?= !empty($errors['level']) ? 'خطاء : '. $errors['level'] : '' ?></h6>
                     </div>
 
                     <div class="form-group">
                         <label for="photo">صورة المشروع:</label>
                         <input type="file" id="photo" name="photo" accept="image/*">
+                        <h6 class = "error_mseage"> <?= !empty($errors['photo']) ? 'خطاء : '. $errors['photo'] : '' ?></h6>
                     </div>
                     <div class="form-group">
                         <button type="submit" name="submit" aria-label="اضافة">إضافة المشروع</button>

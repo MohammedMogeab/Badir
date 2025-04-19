@@ -11,44 +11,51 @@ $db = App::resolve(Database::class);
 
 
 
-// $userID = 1;
-// $endowments = $db->query("SELECT * from endowments where endowment_id = :endowment_id ", [
-//     'endowment_id' => $_GET['endowment_id']
-// ])->findOrFail();
 
+$errors = [];
 
-// // $note = $db->query("SELECT * from islamic_endowments where id = :id ", [
-// //   'id' => $_POST['id'],
-// // ])->findOrFail();
+if (!isset($_POST['endowment_id']) || !Validator::number($_POST['endowment_id'], 1)) {
+    $errors["endowment_id"] = "معرّف الوقف غير صالح";
+}
 
-// authorize($note['other_id'] == $userID);
+if (isset($_POST['category_id']) && !Validator::string($_POST['category_id'], 1, 255)) {
+    $errors["category_id"] = "تصنيف الوقف غير صالح";
+}
 
+if (isset($_POST['partner_id']) && !Validator::string($_POST['partner_id'], 1, 255)) {
+    $errors["partner_id"] = "الشريك غير صالح";
+}
 
+if (isset($_POST['name']) && !Validator::string($_POST['name'], 1, 255)) {
+    $errors["name"] = "الاسم يجب أن يكون بين 1 و 255 حرفاً";
+}
 
+if (isset($_POST['short_description']) && !Validator::string($_POST['short_description'], 10, 1000)) {
+    $errors["short_description"] = "الوصف المختصر يجب أن يكون بين 10 و 1000 حرفاً";
+}
 
-// $errors = [];
+if (isset($_POST['full_description']) && !Validator::string($_POST['full_description'], 30, 2000)) {
+    $errors["full_description"] = "الوصف الكامل يجب أن يكون بين 30 و 2000 حرفاً";
+}
 
-// if (!(Validator::string($_POST['anme'], 1, 255))) {
-//     $errors["titel"] = "Titel  is too short or too long";
-// }
-// // if (!(Validator::string($_POST['body'], 1, 1000))) {
-// //     $errors["titel"] = " body is too short or long";
-// // }
+if (isset($_POST['cost']) && !Validator::number($_POST['cost'], 1, 10000000)) {
+    $errors["cost"] = "المبلغ غير صالح";
+}
 
+if (!empty($errors)) {
+    $_SESSION['errors'] = $errors;
+    header("Location:". $_SERVER["HTTP_REFERER"]);
+    exit();
+}
 
-// if (! empty($errors)) {
-
-//     require "views/pages/islamic_endowments/edit_view.php";
+// if (!empty($errors)) {
+//     require "views/pages/endowments/edit_view.php"; // تأكد من صحة المسار
 //     die();
 // }
 
-
-// $db->query("UPDATE islamic_endowments set name = :name  " , [
-//     'name' => $_POST['name'],
-
-// ]);
-
 try {
+
+    require('controllers/parts/image_loader.php') ;
     $db->query(
         "UPDATE endowments
         SET 

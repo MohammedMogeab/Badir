@@ -6,6 +6,7 @@ use core\Database;
 $db = App::resolve(Database::class);
 $page = "charity_campaigns_index" ;
 
+
 $page_campaigns_ids = [];
 $heading = "All My tests";
 if(!isset($_GET['page_number'])) $_GET['page_number'] = 1; // if page_number not set in $_GET

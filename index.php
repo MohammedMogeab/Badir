@@ -36,4 +36,5 @@ $router->route($uri,$methode);
 
 //يطعبع كل خصائص السرفر اسفل الصفحه
 
+// dd($_SERVER);
 

@@ -24,9 +24,10 @@ class Validator
         return filter_var($value, FILTER_VALIDATE_URL);
     }
 
-    public static function number($value)
+    public static function number($value ,$min = 1 ,$max = INF)
     {
-        return is_numeric($value);
+        $number = floatval($value);
+        return $number >= $min && $number <= $max;
     }
 
     public static function greaterThan(int $value, int $greaterThan): bool
