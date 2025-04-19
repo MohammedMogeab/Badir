@@ -17,7 +17,7 @@
         </div>
         <!-- <h5>رقم الحملة : <?php  echo $projects['0']['campaign_id'] ?></h5> -->
         <div class="progress-bar">
-            <div class="progress" style="width:<?= htmlspecialchars(($projects['0']['collected_money']/$projects['0']['cost'])*100) ?>% " ></div>
+            <div class="progress" style="text-align: left;width:<?= htmlspecialchars(($projects['0']['collected_money']/$projects['0']['cost'])*100) ?>% " >%<?= htmlspecialchars((int)(($projects['0']['collected_money']/$projects['0']['cost'])*100)) ?></div>
         </div>
         <div class="donation-details">
             <p><strong style="display: inline;">SR <?= htmlspecialchars($projects['0']['collected_money']) ?>/</strong><?= htmlspecialchars($projects['0']['cost']) ?> </p>
@@ -34,7 +34,9 @@
         </section>
     </section>
 <!-- باقي البينات -->
-<section class="card_islamic_endowments CIE2" id="card_islamic_endowments">
+<label for="card_islamic_endowments" class="section-label visually-hidden">تفاصيل المشروع</label>
+
+<section class="card_islamic_endowments" id="card_islamic_endowments">
 
 
     <!-- <div class="details_show_ch">
@@ -83,7 +85,7 @@
         </div>
     <div class="news" >
     <h5>اخبار المشروع</h5>
-        <div><p>تم جمع <?= htmlspecialchars(($projects['0']['collected_money']/$projects['0']['cost'])*100) ?>% من التبرعات</p></div>
+        <div><p>تم جمع <?= htmlspecialchars((int)(($projects['0']['collected_money']/$projects['0']['cost'])*100)) ?>% من التبرعات</p></div>
         <!-- <div>30%<p>تم الانتهاء من المرحله الاولى </p></div> -->
     </div>
 

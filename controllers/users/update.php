@@ -38,14 +38,14 @@ if (!isset($_POST['street']) || !Validator::string($_POST['street'], 2, 255)) {
 
 if (!empty($errors)) {
     $_SESSION['errors'] = $errors;
-    header("Location:". $_SERVER["HTTP_REFERER"]);
+    header("Location:" . $_SERVER["HTTP_REFERER"]);
     exit();
 }
 
 
 
 try {
-    require('controllers/parts/image_loader.php') ;
+    require('controllers/parts/image_loader.php');
     $db->query(
         "UPDATE users
         SET 
@@ -76,7 +76,6 @@ try {
             'user_id' => $_POST['user_id']
         ]
     );
-
 } catch (PDOException $e) {
     error_log($e->getMessage());
     $_SESSION['error'] = "حدث خطأ أثناء تحديث البيانات";
@@ -86,5 +85,5 @@ try {
 
 
 
-header("Location:". $_SERVER["HTTP_REFERER"]);
+header("Location:" . $_SERVER["HTTP_REFERER"]);
 die();

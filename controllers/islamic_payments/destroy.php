@@ -1,7 +1,8 @@
 <?php
 $heading = "one test";
-use core\App ;
-use core\Database ;
+
+use core\App;
+use core\Database;
 
 
 $db = App::resolve(Database::class);
@@ -13,14 +14,12 @@ try {
             'islamic_payment_id' => $_POST['islamic_payment_id']
         ]
     );
-     
 } catch (PDOException $e) {
     error_log($e->getMessage());
-    $_SESSION['error'] = "حدث خطأ أثناء حفظ البعانات";
+    $_SESSION['error'] = "حدث خطأ أثناء حفظ البيانات";
     header("Location: /charity_campaigns_create");
     exit();
 }
 
 
 header("Location: " . $_SERVER["HTTP_REFERER"]);
-

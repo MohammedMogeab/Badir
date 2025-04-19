@@ -4,7 +4,9 @@
 <?php require('views/parts/header.php') ?>
 
 <main class="main_show_ch">
-            <section class="card_islamic_endowments">
+<!-- <label for="main-endowment-section" class="section-label visually-hidden">تفاصيل الوقف الرئيسية</label> -->
+
+            <section id="main-endowment-section" class="card_islamic_endowments">
             <!-- <h3 style="color: var(--font-color-bh);
         font-size: var(--font-size-xl);">التفاصيل</h3> -->
             <div class="imgs">
@@ -16,14 +18,16 @@
         </div>
             <h5>رقم الحملة : <?php  echo $endowments['0']['category_id'] ?> </h5>
             <div class="progress-bar">
-                <div class="progress" style="width:<?= htmlspecialchars(($endowments['0']['donate_cost']/$endowments['0']['cost'])*100) ?>% " ></div>
+                <div class="progress" style="text-align: left;width:<?= htmlspecialchars(($endowments['0']['donate_cost']/$endowments['0']['cost'])*100) ?>% " >%<?= htmlspecialchars((int)(($endowments['0']['donate_cost']/$endowments['0']['cost'])*100)) ?></div>
               </div>
               <div class="donation-details">
                 
                   <p><strong style="display: inline;">SR <?= htmlspecialchars($endowments['0']['donate_cost']) ?>/</strong><?= htmlspecialchars($endowments['0']['cost']) ?></p>
   
               </div>  
-              <section class="bar_actions">
+              <!-- <label for="donation-section" class="section-label visually-hidden">خيارات التبرع</label> -->
+
+              <section id="donation-section" class="bar_actions">
 <div class="donation-box">
         <h2>مبلغ التبرع</h2>
         <div class="donation-min-box">
@@ -68,23 +72,12 @@
         <h6>المبلغ الذي تم جمعة</h6>
         <p>  <?php  echo $endowments['0']['donate_cost'] ?> ر.س</p>
         <h6>عدد المتبرعين</h6>
-        <p>8000</p>
+        <p><?= htmlspecialchars($endowments['0']['donate_count']) ?></p>
         </div>
     </div>
-    <div class="card_insid" id="card_insid2">
-    <h5>مراحل المشروع</h5>
-
-    <p>المرحلة الاولى :  </p>
-    <p>المرحلة الثانية : </p>
-    <p>المرحلة الثالثة :</p>
-    </div>
-    <div class="time">
-        <p> تاريخ البدء  : </p>
-        <p>تاريخ الانتهاء :  </p>
-        </div>
     <div class="news" >
-    <h5>اخبار المشروع</h5>
-        <div><p>تم جمع <?= htmlspecialchars(($endowments['0']['donate_cost']/$endowments['0']['cost'])*100) ?>% من التبرعات</p></div>
+    <h5>خبار المشروع</h5>
+        <div><p>تم جمع <?= htmlspecialchars((int)(($endowments['0']['donate_cost']/$endowments['0']['cost'])*100)) ?>% من التبرعات</p></div>
         <!-- <div>30%<p>تم الانتهاء من المرحله الاولى </p></div> -->
     </div>
 

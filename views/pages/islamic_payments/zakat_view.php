@@ -126,7 +126,7 @@
     <br>
 
 
-    <button onclick="calculate()">حساب الزكاة </button>
+    <button onclick="calculate()" aria-label="حساب الزكاة">حساب الزكاة </button>
 
 
 
@@ -146,8 +146,9 @@
 
   </section>
 
+  <label for="zakat-info" class="section-label visually-hidden">معلومات عن الزكاة</label>
 
-  <section class="info-section">
+  <section id="zakat-info" class="info-section">
 
 
     <div>
@@ -179,8 +180,9 @@
   </section>
 
 
+  <label for="zakat-info" class="section-label visually-hidden">شروط زكاة بهيمة الانعام</label>
 
-  <section class="info-section">
+  <section id="zakat-info" class="info-section">
     <div>
       <p>
         <strong style="color: var(--font-color-gl);">شروط زكاة بهيمة الأنعام:</strong><br>
@@ -326,7 +328,10 @@
       </table>
     </div>
   </section>
-  <section class="info-section">
+
+  <label for="zakat-info" class="section-label visually-hidden">معلزمات عن زكاة الزروع والثمار</label>
+
+  <section id="zakat-info" class="info-section">
     <div>
       <p>
         <strong style="color: var(--font-color-gl);">زكاة الزروع والثمار:</strong><br><br>

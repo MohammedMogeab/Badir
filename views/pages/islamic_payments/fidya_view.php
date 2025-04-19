@@ -6,10 +6,12 @@
 
 
 <main class="main_islamic_payments_zakat">
-  <section class="form_zakat">
-    <!-- حسابة الفديه-->
-    <!-- فورم حساب الفدية -->
-    <form>
+<label for="fidya-calculator" class="section-label visually-hidden">حاسبة الفدية</label>
+
+  <section id="fidya-calculator" class="form_zakat">
+  <!-- حسابة الفديه-->
+     <!-- فورم حساب الفدية -->
+     <form >
       <h2>احسب الفدية حسب حالتك</h2>
 
       <label>سبب الفدية:</label>
@@ -45,12 +47,13 @@
 
   </section>
 
+     
+  <label for="fidya-info" class="section-label visually-hidden">معلومات عن الفدية</label>
 
-
-  <section>
-    <!-- تعريف عام  -->
-    <!-- معلومات حول الفدية -->
-    <div class="info-box info-section">
+  <section id="fidya-info" >
+  <!-- تعريف عام  -->
+     <!-- معلومات حول الفدية -->
+     <div class="info-box info-section">
       <h2>ما هي الفدية؟</h2>
       <p>
         الفدية هي مبلغ أو طعام يُقدَّم بدلاً من الصيام لمن لا يستطيع الصوم بعذر دائم أو شرعي. يجب إخراجها عن كل يوم يفطر فيه المسلم ولا يستطيع قضاؤه.

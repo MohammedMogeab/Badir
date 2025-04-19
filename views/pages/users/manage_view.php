@@ -26,7 +26,7 @@
           <th>اسم المستخدم</th>
           <th>نوع المستخدم</th>
           <th>الايميل </th>
-          <th> المبلغ المتبرع به</th>
+          <th>رقم الهاتف</th>
           <!-- <th>التقارير</th> -->
           <!-- <th>الخيارات</th> -->
         </tr>
@@ -34,18 +34,17 @@
       <tbody>
         <?php foreach ($users as $user): ?>
           <tr>
-
             <td><input type="checkbox" class="select-user"></td>
             <td><img src="views/media/images/<?= htmlspecialchars($user['photo'] ?? "default.png") ?>" alt="شعار المستخدم" class="user-logo" loading="lazy"></td>
             <td><?= htmlspecialchars($user['username']) ?>
               <nav class="options">
                 <ul>
-                  <li>
-                    <form action="/users_show" method="get">
-                      <input type="hidden" name="user_id" value="<?= htmlspecialchars($user['user_id']) ?>">
+                  <!-- <li>
+                    <form action="/users_edit" method="get">
+                      <input type="hidden" name="user_id" value="">
                       <button type="submit" aria-label="عرض">عرض</button>
                     </form>
-                  </li>
+                  </li> -->
                   <li>
                     <form action="/users_edit" method="get">
                       <input type="hidden" name="user_id" value="<?= htmlspecialchars($user['user_id']) ?>">
@@ -71,7 +70,7 @@
             </td>
             <td><?= htmlspecialchars($user['type']) ?></td>
             <td><?= htmlspecialchars($user['email']) ?></td>
-            <td><span>$</span></td>
+            <td><?= htmlspecialchars($user['phone'])?></td>
           </tr>
         <?php endforeach; ?>
       </tbody>

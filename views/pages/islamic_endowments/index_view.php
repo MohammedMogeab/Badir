@@ -7,12 +7,15 @@
 ?>
 
 <main>
- 
-  <section class="Carousel_card">
+<label for="endowments-carousel" class="section-label visually-hidden"></label>
+
+  <section id="endowments-carousel" class="Carousel_card">
     <!-- حاوية البطاقات -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <main class="main_cart" >
-      <section class="container_card"  >
+    <label for="endowments-container" class="section-label visually-hidden"></label>
+
+      <section id="endowments-container" class="container_card"  >
         <?php foreach ($islamic_endowments as $islamic_endowment): ?>
           <div class="donation-card" >
             <a href="/islamic_endowments_show?endowment_id=<?= htmlspecialchars($islamic_endowment['endowment_id']) ?>">
@@ -44,10 +47,10 @@
         <?php endforeach; ?>
       </section>
       <!-- begin pagination -->
-      <section style="display: flex; justify-content: center; ">
 
-      <div style="display: flex; width: 50%; justify-content: space-around; border-radius: 15px; height:20px; padding: 30px; border: 2px solid var(--button-bg-h); align-self:center; align-items: center; text-align: center;    margin: var(--margin-s);">
-      <a href="/islamic_endowments_index?page_number=<?= isset($_GET['page_number']) ? $_GET['page_number'] - 1 : 1 ?>" style="<?php echo !isset($_GET['page_number']) || $_GET['page_number'] - 1 <= 0 ? 'pointer-events: none; cursor: default; opacity: 0.3; ' : 'pointer-events: auto; cursor: pointer; ' ?>"><img src="views/media/images/left.png" alt="previous" loading="lazy" heigh= "50px" width= "50px"></a>
+      <div style="display: flex; justify-content: space-around; width: 100%;">
+      <div style="display: flex; width: 50%; justify-content: space-around; ; height:20px; padding: 40px; align-self:center; align-items: center; text-align: center;">          <a href="/islamic_endowments_index?page_number=<?= isset($_GET['page_number']) ? $_GET['page_number'] - 1 : 1 ?>" style="<?php echo !isset($_GET['page_number']) || $_GET['page_number'] - 1 <= 0 ? 'pointer-events: none; cursor: default; opacity: 0.3; ' : 'pointer-events: auto; cursor: pointer; ' ?>"><img src="views/media/images/left.png" alt="previous" loading="lazy" heigh= "50px" width= "50px"></a>
+
           <div style="height: inherit; width: auto; font-size: larger; font-family: 'Times New Roman', Times, serif;" >
             <div style="display: flex; flex-direction: row; justify-content: space-around; width: 100%;">
               <div style="width: fit-content;"><?php echo (isset($_GET['page_number'])? $_GET['page_number'] - 1 : 0) . " . . . " ; ?></div>
@@ -55,9 +58,12 @@
               <div style="width: fit-content;"><?php echo " . . . " . (isset($_GET['page_number'])? $_GET['page_number'] + 1: 2 ); ?></div>
             </div>
           </div>
-          <a href="/islamic_endowments_index?page_number=<?= isset($_GET['page_number']) ? $_GET['page_number'] + 1 : 2 ?>"style="<?php echo !isset($_GET['page_number']) || $_GET['page_number'] + 1 > $pages_count['endowments']? 'pointer-events: none; cursor: default; opacity: 0.3;  ' : 'pointer-events: auto; cursor: pointer; ' ?>"><img src="views/media/images/next.png" alt="next" loading="lazy" heigh= "50px" width= "50px" ></a>
+          <a href="/islamic_endowments_index?page_number=<?= isset($_GET['page_number']) ? $_GET['page_number'] + 1 : 2 ?>"style="<?php echo !isset($_GET['page_number']) || $_GET['page_number'] + 1 >= $pages_count['endowments']? 'pointer-events: none; cursor: default; opacity: 0.3;  ' : 'pointer-events: auto; cursor: pointer; ' ?>"><img src="views/media/images/next.png" alt="next" loading="lazy" heigh= "50px" width= "50px" ></a>
         </div>
-    
+
+      </div>
+      <section class="bar_action">
+
       <!-- end pagination -->
       </section>
     </main>

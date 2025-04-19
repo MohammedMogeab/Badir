@@ -9,7 +9,9 @@ use models\Partner;
 
 
 <main class="main_show_ch">
-  <section class="card_islamic_endowments">
+<label for="partner-main-section" class="section-label visually-hidden">تفاصيل الشريك الرئيسية</label>
+
+  <section id="partner-main-section" class="card_islamic_endowments">
     <!-- Partner Image -->
     <div class="img">
       <img src="views/media/images/<?php echo $partners['0']['photo'] ?? "default.png" ?>" alt=" شعار الشريك" loading="lazy">

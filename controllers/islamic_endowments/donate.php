@@ -1,7 +1,8 @@
 <?php
 $heading = "one test";
-use core\App ;
-use core\Database ;
+
+use core\App;
+use core\Database;
 
 
 $db = App::resolve(Database::class);
@@ -20,11 +21,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Basic validation
     if (empty($transaction_id) || empty($user_id) || empty($transaction_status)) {
         echo "Invalid input.";
+        header('Location: /users_index');
         exit();
     }
 
     try {
-        
+
 
         $db->query(
             "INSERT INTO users_donate_endowments (
@@ -51,16 +53,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'donate_date' => date('Y-m-d H:i:s') // Defaulting to current timestamp if not provided
             ]
         );
-
-
     } catch (PDOException $e) {
 
         error_log($e->getMessage());
-        $_SESSION['error'] = "حدث خطأ أثناء حفظ البعانات" . $e->getMessage();;
+        $_SESSION['error'] = "حدث خطأ أثناء حفظ البيانات" . $e->getMessage();;
         header("Location: /");
         exit();
     }
 } else {
     echo "Invalid request method.";
 }
-

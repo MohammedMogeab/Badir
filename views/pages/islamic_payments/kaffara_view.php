@@ -6,8 +6,10 @@
 
 
 <main class="main_islamic_payments_zakat">
-  <section class="form_zakat">
-    <!-- حسابة الكفاره-->
+<label for="kaffarah-calculator" class="section-label visually-hidden"> </label>
+
+  <section id="kaffarah-calculator" class="form_zakat">
+  <!-- حسابة الكفاره-->
 
 
     <!-- فورم حساب الكفارة -->
@@ -44,10 +46,11 @@
   </section>
 
 
+  <label for="kaffarah-info" class="section-label visually-hidden"></label>
 
-  <section>
-    <!-- تعريف عام  -->
-
+  <section id="kaffarah-info" >
+  <!-- تعريف عام  -->
+   
     <!-- معلومات حول الكفارة -->
     <div class="info-box info-section">
       <h2>ما هي الكفارة؟</h2>

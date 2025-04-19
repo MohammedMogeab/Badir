@@ -1,7 +1,8 @@
 <?php
 $heading = "one test";
-use core\App ;
-use core\Database ;
+
+use core\App;
+use core\Database;
 
 
 $db = App::resolve(Database::class);
@@ -17,7 +18,8 @@ try {
     $partners = $db->query(
         "SELECT * FROM partners"
     )->fetchAll(); // Fetch all rows from the query result
-    $projects = $db->query("
+    $projects = $db->query(
+        "
     SELECT
         P.project_id,
         P.partner_id,
@@ -38,22 +40,23 @@ try {
         P.directorate
     FROM projects P
     LEFT JOIN users_donate_projects B ON P.project_id = B.project_id
-    WHERE P.project_id = :project_id
-    GROUP BY P.project_id, P.partner_id, P.category_id, P.level, P.name, P.photo,
-             P.short_description, P.full_description, P.type, P.cost, P.start_at,
-             P.end_at, P.state, P.directorate
-", [
-    'project_id' => $_GET['project_id'] ]
+    GROUP BY P.project_id
+    HAVING P.project_id = :project_id
+    
+",
+        [
+            'project_id' => $_GET['project_id']
+        ]
     )->fetchAll();
-$levels = $db->query(
-    "SELECT * FROM levels where project_id = :project_id",
-    [
-        'project_id' => $_GET['project_id']
-    ])->fetchAll();
-
+    $levels = $db->query(
+        "SELECT * FROM levels where project_id = :project_id",
+        [
+            'project_id' => $_GET['project_id']
+        ]
+    )->fetchAll();
 } catch (PDOException $e) {
     error_log($e->getMessage());
-    $_SESSION['error'] = "حدث خطأ أثناء حفظ البعانات";
+    $_SESSION['error'] = "حدث خطأ أثناء حفظ البيانات";
     header("Location: /charity_campaigns_create");
     exit();
 }

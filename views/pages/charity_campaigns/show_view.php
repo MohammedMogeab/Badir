@@ -6,7 +6,8 @@
 <?php //dd($campaigns) ?>
 
 <main class="main_show_ch">
-            <section class="card_islamic_endowments">
+<label for="main-campaign-section" class="section-label visually-hidden"></label>
+            <section id="main-campaign-section" class="card_islamic_endowments">
             <!-- <h3 style="color: var(--font-color-bh);
         font-size: var(--font-size-xl);">التفاصيل</h3> -->
             <div class="imgs">
@@ -25,7 +26,9 @@
                   <p><strong style="display: inline;">SR <?= htmlspecialchars($campaigns['0']['collected_money']) ?>/</strong><?= htmlspecialchars($campaigns['0']['cost']) ?></p>
   
               </div>  
-              <section class="bar_actions">
+              <label for="donation-actions-section" class="section-label visually-hidden">إجراءات التبرع</label>
+
+              <section id="donation-actions-section" class="bar_actions">
 <div class="donation-box">
         <h2>مبلغ التبرع</h2>
         <div class="donation-min-box">

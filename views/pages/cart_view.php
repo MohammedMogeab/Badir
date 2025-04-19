@@ -5,7 +5,10 @@
 
 <main class="main_cart_view">
     <div class="div_cart_view">
-        <section class="projects-list">
+
+    <label for="donation-cart" class="section-label visually-hidden">سلة التبرعات</label>
+
+        <section id="donation-cart" class="projects-list">
             <!-- قائمة المشاريع -->
             <h2>سلة التبرعات</h2>
             <h1>الحملات:</h1>

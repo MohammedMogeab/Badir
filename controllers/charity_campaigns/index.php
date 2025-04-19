@@ -2,25 +2,44 @@
 
 use core\App;
 use core\Database;
+use models\Campaign;
 
 $db = App::resolve(Database::class);
 $page = "charity_campaigns_index" ;
+<<<<<<< HEAD
 
 
+=======
+start_page:
+>>>>>>> cc1cb0d306909c947a0638a0a4ef564055cc7fb8
 $page_campaigns_ids = [];
 $heading = "All My tests";
 if(!isset($_GET['page_number'])) $_GET['page_number'] = 1; // if page_number not set in $_GET
 
-if(isset($_SESSION['campaigns_pages']) && isset($_SESSION['campaigns_pages'][$_GET['page_number']])){
-    $page_campaigns_ids = $_SESSION['campaigns_pages'][$_GET['page_number']];
-}else if(!isset($_SESSION['campaigns_count_all'])){
+if(!isset($_SESSION['campaigns_count_all'])){
     $page_campaigns_ids = [];
     $_SESSION['campaigns_count_all'] = $db->query(
-        "select count(*) as count from campaigns;"
-        )->fetchAll()['0']['count'];
+        "select count(*) as count from campaigns where state = 'active';"
+    )->fetchAll()['0']['count'];
+}else{
+    $campaigns_current_count = $db->query( "select count(*) as count from campaigns where state = 'active';")->fetchAll()['0']['count'];
+    if($campaigns_current_count != $_SESSION['campaigns_count_all']){
+        if($campaigns_current_count > $_SESSION['campaigns_count_all']){// changes are adding
+            if(count($_SESSION['campaigns_pages'][$_GET['page_number']]) < '10'){ // there is an empty place for the added value
+                $_SESSION['campaigns_pages'][$_GET['page_number']] = [];
+            }else{// no empty place for the new item added
+                $latest_page = intval($_SESSION['campaigns_count_all']/10 + 1);
+                $_SESSION['campaigns_pages'][$latest_page] = [];
+            }
+        }else{// changes are deleting
+            $_SESSION['campaigns_pages'] = [];
+        }
+        $_SESSION['campaigns_count_all'] = $campaigns_current_count;
+        goto start_page;
+    }
 }
-
 $pages_count['campaigns'] = $_SESSION['campaigns_count_all']/10 + 1;
+
 try {
     // Fetch categories for the dropdown
     $categories = $db->query("SELECT category_id, name FROM categories")->fetchAll();
@@ -45,8 +64,8 @@ try {
             g.end_at
         FROM campaigns g  
         LEFT JOIN users_donate_campaigns u ON g.campaign_id = u.campaign_id 
-        GROUP BY g.campaign_id
-        HAVING g.campaign_id > 0
+        GROUP BY g.campaign_id 
+        HAVING g.state ='active' 
     ";
     if(!empty($search) || ($filter !== 'all') || (isset($_GET['submit']) && $_GET['submit'] == "foryou") ){
         $params = [];

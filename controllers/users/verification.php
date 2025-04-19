@@ -10,6 +10,9 @@ use PHPMailer\PHPMailer\Exception;
 
 require 'vendor/autoload.php';
 $config = require 'config.php';
+$verification_code = rand(100000, 999999);
+$_SESSION['verification_code'] = $verification_code;
+$_SESSION['code_expiry'] = time() + 300;
 
 $heading = "Create test";
 
@@ -19,6 +22,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $message = htmlspecialchars($_POST['descripe_problem'] ?? '');
   $email = filter_var($_POST['email'] ?? '', FILTER_SANITIZE_EMAIL);
   $_SESSION['user_email'] = $email;
+  setcookie(
+    'user_email',
+    $email,
+    [
+      'expires' => time() + 3600,
+      'path' => '/',
+      'domain' => '', //    
+      'secure' => true, // send cookie by HTTPS
+      'httponly' => true, //it does not arrive to cookie by JavaScript
+      'samesite' => 'Strict'
+    ]
+  );
   $db = App::resolve(Database::class);
   // $errors = [];
 
@@ -38,52 +53,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header("Location:/users_create_view?error={$error}");
     exit();
   }
-  sendEmail($config, $email, $message);
+  sendEmail($config, $email, $message, $verification_code);
 } elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
   // Check if the user is logged in and has a session
-  $email = $_SESSION['user_data']['email'] ?? '';
+  $email = $_SESSION['user_email'] ?? $_COOKIE['user_email'] ?? '';
   $message = $_SESSION['user_data']['descripe_problem'] ?? '';
   $address = $_SESSION['user_data']['address'] ?? '';
 
-
-  sendEmail($config, $email, $message);
+  sendEmail($config, $email, $message, $verification_code); // send the email with the verification code
 }
 
 
 
-function sendEmail($config, $email, $message) // this function sends the email
-{
 
+function sendEmail($config, $email, $message, $verification_code) // this function sends the email
+{
+  if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $error = urlencode("البريد الإلكتروني غير صالح أو انتهت الجلسة");
+    header("Location:/users_create_view?error={$error}");
+    exit();
+  }
+
+  blockUser();
+
+  $mail = new PHPMailer(true);
 
   try {
-
-
-
-    // I will uncomment this code later, please don't delete it, it is important for the future...
-    // we will make the user request to send the email again, after five minutes if it's trying more than once
-
-    // cheak if the email is valid
-    //  if (isset($_SESSION['code_expiry']) && time() < $_SESSION['code_expiry']) {
-    //   $remaining = $_SESSION['code_expiry'] - time();
-    //   $minutes = floor($remaining / 60);
-    //   $seconds = $remaining % 60;
-    //   $timeLeft = "$minutes دقيقة و $seconds ثانية";
-
-    //   die("لا يمكنك إعادة الإرسال الآن. يرجى الانتظار $timeLeft قبل إعادة المحاولة.");
-    // }
-
-
-    // if there is a code in the session, unset it
-    unset($_SESSION['verification_code']);
-    unset($_SESSION['code_expiry']);
-
-    //  create code Verification
-    $verification_code = rand(100000, 999999);
-    $_SESSION['verification_code'] = $verification_code;
-    $_SESSION['code_expiry'] = time() + 300; // five minutes expiry time
-
-    $mail = new PHPMailer(true);
 
     // srvice provider which sends the email 
     $mail->isSMTP();
@@ -191,7 +187,7 @@ function sendEmail($config, $email, $message) // this function sends the email
   <body>
       <div class='email-container'>
           <div class='email-header'>
-              <img src='https://i.postimg.cc/kMV8zNyC/bader.png' alt='Badir Charity Logo'>
+              <img src='https://i.postimg.cc/mgq2V5Wf/badir-logo.jpg' alt='Badir Charity Logo'>
               <h3>رسالة جديدة من بادر الخيرية</h3>
           </div>
           <div class='email-content'>
@@ -226,4 +222,47 @@ function sendEmail($config, $email, $message) // this function sends the email
   } catch (PDOException $e) {
     die("حدث خطأ أثناء الحفظ: " . $e->getMessage());
   }
+}
+function blockUser()
+{
+  $now = time();
+  $attempts = $_SESSION['send_attempts'] ?? 0;
+  $last_sent_time = $_SESSION['last_sent_time'] ?? 0;
+  $ban_time = $_SESSION['ban_time'] ?? 0;
+
+  //check if the user is banned
+  if ($ban_time > $now) {
+
+    $remaining = ceil(($ban_time - $now) / 60); // waiting time in minutes
+    // header("Location: /user_blocked_view");
+    // exit();
+    die("🚫 تم حظرك مؤقتًا<br>⏳ حاول مرة أخرى بعد: $remaining دقيقة.");
+  }
+
+  // check if the user has exceeded the allowed attempts
+  if ($attempts >= 4) {
+    // if the user has exceeded the allowed attempts, ban him for 24 hours
+    $_SESSION['ban_time'] = $now + 86400; // ban for 24 hours
+    header("Location: /user_blocked_view");
+    exit();
+  }
+
+  // calculate the waiting time
+  $wait_time = 30 * pow(2, $attempts);
+  if (($now - $last_sent_time) < $wait_time) {
+    $remaining = $wait_time - ($now - $last_sent_time);  // الوقت المتبقي
+    // header("Location: /user_blocked_view");
+    die("🚫 تم حظرك مؤقتًا<br>⏳ حاول مرة أخرى بعد: " .$remaining . " ثانية.");
+    exit();
+  }
+
+  // increment the number of attempts and update the last sent time
+  $_SESSION['send_attempts'] = $attempts + 1;
+  $_SESSION['last_sent_time'] = $now;
+
+  // reset the ban time if it has expired
+  // if ($ban_time <= $now) {
+  //   $_SESSION['send_attempts'] = 0;
+  //   $_SESSION['ban_time'] = 0;
+  // }
 }

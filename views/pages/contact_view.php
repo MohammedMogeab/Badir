@@ -7,7 +7,10 @@
     <div class="contact" >
             <!-- عرض الرسائل -->
             <h1>الشكاوي والاقتراحات</h1>
-      <section class="form_contact">
+
+      <label for="complaints-section" class="section-label visually-hidden">الشكاوى والاقتراحات</label>
+
+      <section id="complaints-section" class="form_contact">
          
             <div class="no3">
 
@@ -37,7 +40,10 @@
       <!-- الاسئله الشائعه -->
 
       <h1>:الأسئلة الشائعة</h1>
-      <section class="form_contact">
+
+      <label for="faq-section" class="section-label visually-hidden">الأسئلة الشائعة</label>
+
+      <section id="faq-section" class="form_contact">
 
       <section calss="form_contact">
         <h1>:الأسئلة الشائعة</h1>

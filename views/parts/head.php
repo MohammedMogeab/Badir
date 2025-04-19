@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="views/css/style.css"> 
     <title>Badir</title>
-    <link rel="icon" type="image/png" href="views/media/images/badir.png">
+    <link rel="icon" type="image/png" href="views/media/images/bader.png">
 
     <!-- بينات CEO -->
     <meta name="description" content="بادر هي منصة رقمية موثوقة تربط المتبرعين بالمشاريع الإنسانية والتنموية عالميًا بكل شفافية وسهولة. نوفر قنوات آمنة لإدارة التبرعات وتوجيهها لمستحقيها.">

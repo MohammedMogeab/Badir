@@ -6,10 +6,16 @@
 
 
 <main class="main_islamic_payments_zakat">
-  <section class="form_zakat">
+<label for="aqeeqah-calculator" class="section-label visually-hidden">حاسبة العقيقة</label>
 
-    <h2>احسب العقيقة</h2>
-    <label>نوع المولود :</label>
+  <section id="aqeeqah-calculator" class="form_zakat">
+  <!-- لحسابة  العقيعه-->
+   <!-- Form Section -->
+   <form action="">
+      <h2>احسب العقيقة</h2>
+
+      <!-- اختيار نوع المولود -->
+      <label>نوع المولود :</label>
       <div class="type-options">
         <div class="option-box" onclick="calculate('male')">ذكر</div>
         <div class="option-box" onclick="calculate('female')">انثى</div>
@@ -36,16 +42,11 @@
 
   </section>
 
+  <label for="aqeeqah-info" class="section-label visually-hidden">معلومات عن العقيقة</label>
 
-
-
-
-
-
-
-  <section>
-    <!-- تعريف عام  -->
-    <div class="info-section">
+  <section id="aqeeqah-info" >
+  <!-- تعريف عام  -->
+  <div class="info-section">
       <h2>ما هي العقيقة؟</h2>
       <p>
         العقيقة هي ذبح شاة أو أكثر عن المولود في اليوم السابع من ولادته. وهي سنة مؤكدة، ولها العديد من الفوائد.

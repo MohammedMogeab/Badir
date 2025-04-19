@@ -5,7 +5,9 @@
 
 <main>
 
-     <section class="card_islamic_endowments">
+<label for="donation-section" class="section-label visually-hidden">تفاصيل التبرع</label>
+
+     <section id="donation-section" class="card_islamic_endowments">
         
 
         <div class="imgs">
@@ -17,7 +19,9 @@
         </div>
         <h5>الرقم  : </h5><h5 id="product_id"><?= $donation['product_id'] ?></h5>
 
-        <section class="bar_actions">
+        <label for="payment-section" class="section-label visually-hidden">خيارات الدفع</label>
+
+        <section id="payment-sections" class="bar_actions">
             <div class="donation-box">
                 <h2>مبلغ التبرع</h2>
                 <div class="donation-min-box">

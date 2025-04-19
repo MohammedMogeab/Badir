@@ -6,14 +6,28 @@ $db = App::resolve(Database::class);
 
 $page = "islamic_endowments_index" ;
 if(!isset($_GET['page_number'])) $_GET['page_number'] = 1; // if page_number not set in $_GET
-
-if(isset($_SESSION['endowments_pages']) && isset($_SESSION['endowments_pages'][$_GET['page_number']])){
-    $page_endowments_ids = $_SESSION['endowments_pages'][$_GET['page_number']];
-}else if(!isset($_SESSION['endowments_count_all'])){
+start_page:
+if(!isset($_SESSION['endowments_count_all'])){
     $page_endowments_ids = [];
     $_SESSION['endowments_count_all'] = $db->query(
-        "select count(*) as count from endowments;"
+        "select count(*) as count from endowments where state = 'active';"
         )->fetchAll()['0']['count'];
+}else{
+    $endowments_current_count = $db->query( "select count(*) as count from endowments where state = 'active';")->fetchAll()['0']['count'];
+    if($endowments_current_count != $_SESSION['endowments_count_all']){
+        if($endowments_current_count > $_SESSION['endowments_count_all']){// changes are adding
+            if(count($_SESSION['endowments_pages'][$_GET['page_number']]) < '10'){ // there is an empty place for the added value
+                $_SESSION['endowments_pages'][$_GET['page_number']] = [];
+            }else{// no empty place for the new item added
+                $latest_page = intval($_SESSION['endowments_count_all']/10 + 1);
+                $_SESSION['endowments_pages'][$latest_page] = [];
+            }
+        }else{// changes are deleting
+            $_SESSION['endowments_pages'] = [];
+        }
+        $_SESSION['endowments_count_all'] = $endowments_current_count;
+        goto start_page;
+    }
 }
 
 $pages_count['endowments'] = $_SESSION['endowments_count_all']/10 + 1;
@@ -25,9 +39,10 @@ try {
     // Get search and filter inputs from $_GET
     $search = $_GET['search'] ?? '';
     $filter = $_GET['filter'] ?? 'all';
+    
 
     // Base Query
-    $query = "SELECT * FROM endowments WHERE 1=1";
+    $query = "SELECT * FROM endowments WHERE state = 'active'";
     if(!empty($search) || ($filter !== 'all') || (isset($_GET['submit']) && $_GET['submit'] == "foryou") ){
         $params = [];
 
