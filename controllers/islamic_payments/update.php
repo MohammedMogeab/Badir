@@ -2,7 +2,6 @@
 
 $heading = "update test";
 
-//require 'core\\' . "Validator.php";
 
 use core\App ;
 use core\Database;
@@ -11,65 +10,57 @@ $db = App::resolve(Database::class);
 
 
 
-$userID = 1;
 
+$errors = [];
 
+// التحقق من الحقول المطلوبة
 
-// $note = $db->query("SELECT * from islamic_payments where id = :id ", [
-//   'id' => $_POST['id'],
-// ])->findOrFail();
+if (!isset($_POST['islamic_payment_id']) || !Validator::number($_POST['islamic_payment_id'], 1, 999999)) {
+    $errors["islamic_payment_id"] = "معرّف الدفع الإسلامي غير صالح";
+}
 
-// authorize($note['other_id'] == $userID);
+if (isset($_POST['type']) && !Validator::string($_POST['type'], 1, 255)) {
+    $errors["type"] = "نوع الدفع غير صالح";
+}
 
+if (isset($_POST['count']) && !Validator::number($_POST['count'], 1, 1000000)) {
+    $errors["count"] = "عدد المدفوعات غير صالح";
+}
 
+if (isset($_POST['cost']) && !Validator::number($_POST['cost'], 1, 10000000)) {
+    $errors["cost"] = "قيمة المبلغ غير صالحة";
+}
 
+if (isset($_POST['paid_cost']) && !Validator::number($_POST['paid_cost'], 0, 10000000)) {
+    $errors["paid_cost"] = "قيمة المبلغ المدفوع غير صالحة";
+}
 
-// $errors = [];
+if (isset($_POST['name']) && !Validator::string($_POST['name'], 1, 255)) {
+    $errors["name"] = "الاسم غير صالح";
+}
 
-// if (!(Validator::string($_POST['anme'], 1, 255))) {
-//     $errors["titel"] = "Titel  is too short or too long";
-// }
-// // if (!(Validator::string($_POST['body'], 1, 1000))) {
-// //     $errors["titel"] = " body is too short or long";
-// // }
+if (isset($_POST['short_description']) && !Validator::string($_POST['short_description'], 10, 1000)) {
+    $errors["short_description"] = "الوصف المختصر يجب أن يكون بين 10 إلى 1000 حرفًا";
+}
 
+if (isset($_POST['payment_date']) && !strtotime($_POST['payment_date'])) {
+    $errors["payment_date"] = "تاريخ الدفع غير صالح";
+}
 
-// if (! empty($errors)) {
-  
+// معالجة الأخطاء
+// if (!empty($errors)) {
 //     require "views/pages/islamic_payments/edit_view.php";
 //     die();
 // }
- 
-
-// // $db->query("UPDATE islamic_payments set name = :name  " , [
-// //     'name' => $_POST['name'],
-
-// // ]);
-// $IslamicPayments = $db->query("SELECT * FROM islamic_payments where islamic_payment_id = :islamic_payment_id",[
-//     'islamic_payment_id' => $_POST['islamic_payment_id']
-// ])->findOrFail();
-
-// $db->query("UPDATE islamic_payments SET
-// (
-//     type = :type, 
-//     count = :count, 
-//     cost = :cost, 
-//     paid_cost = :paid_cost, 
-//     paid_for = :paid_for, 
-//     payment_date = :payment_date, 
-//     user_id = :user_id
-// )WHERE islamic_payment_id = :islamic_payment_id",[
-//     'type' => $_POST['type'],
-//     'count' => $_POST['count'],
-//     'cost' => $_POST['cost'],
-//     'paid_cost' => $_POST['paid_cost'],
-//     'paid_for' => $_POST['paid_for'],
-//     'payment_date' => $_POST['payment_date'],
-//     'user_id' => $_POST['user_id'],
-//     'islamic_payment_id' => $_POST['islamic_payment_id']
-// ]);
+if (!empty($errors)) {
+    $_SESSION['errors'] = $errors;
+    header("Location:". $_SERVER["HTTP_REFERER"]);
+    exit();
+}
 
 try {
+    require('controllers/parts/image_loader.php') ;
+
     $db->query(
         "UPDATE islamic_payments
         SET 

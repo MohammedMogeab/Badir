@@ -2,7 +2,7 @@
 
 
 // add deract access to views
-
+$router->get('/user_blocked_view', 'views/pages/users/blocked_view.php');
 $router->get('/items_view', 'views/pages/items/index_view.php');
 $router->get('/view', 'views/pages/home_view.php');
 $router->get('/home_view', 'views/pages/home_view.php');
@@ -117,6 +117,7 @@ $router->get('/users_store_view', 'views/pages/users/store_view.php');
 $router->get('/users_update_view', 'views/pages/users/update_view.php');
 $router->get('/users_verification_view', 'views/pages/users/verification_view.php');
 $router->get('/user_blocked_view', 'views/pages/users/blocked_view.php');
+$router->get('/users_changePassword_view', 'views/pages/users/chanagePassword_view.php');
 
 
 
@@ -128,7 +129,7 @@ $router->get('/user_blocked_view', 'views/pages/users/blocked_view.php');
 
 $router->get('/', 'controllers/home.php');
 $router->get('/about', 'controllers/about.php');
-$router->get('/contact', 'controllers/contact.php');
+$router->get('/contact', 'controllers/contact.php')->only('registered');
 $router->post('/services/phpmailer/send-email', 'services/phpmailer/send-email.php');
 $router->get('/policies_privacy', 'controllers/policies_privacy.php');
 $router->get('/cart', 'controllers/cart.php')->only('registered');
@@ -248,6 +249,8 @@ $router->post('/users_verification', 'controllers/users/verification.php');
 $router->get('/users_manage', 'controllers/users/manage.php')->only('manager');
 $router->post('/users_store', 'controllers/users/store.php');
 $router->put('/users_update', 'controllers/users/update.php');
+$router->get('/users_changePassword', 'controllers/users/changePassword.php');
+$router->post('/users_changePassword', 'controllers/users/changePassword.php');
 
 
 

@@ -7,13 +7,13 @@
 ?>
 
 <main>
-<label for="endowments-carousel" class="section-label visually-hidden">عرض الأوقاف الإسلامية</label>
+<label for="endowments-carousel" class="section-label visually-hidden"></label>
 
   <section id="endowments-carousel" class="Carousel_card">
     <!-- حاوية البطاقات -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <main class="main_cart" >
-    <label for="endowments-container" class="section-label visually-hidden">حاوية الأوقاف</label>
+    <label for="endowments-container" class="section-label visually-hidden"></label>
 
       <section id="endowments-container" class="container_card"  >
         <?php foreach ($islamic_endowments as $islamic_endowment): ?>

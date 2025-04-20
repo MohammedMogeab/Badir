@@ -19,7 +19,7 @@ require('views/parts/navgtion.php');
 
 
 <main class="main_user MUV">
-  التحقق من الحساب
+  <!-- التحقق من الحساب -->
   <section class="user" id="show_user">
     <h1>verification</h1>
 

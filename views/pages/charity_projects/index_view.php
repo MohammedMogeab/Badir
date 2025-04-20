@@ -43,7 +43,7 @@
             </div>
             <h3> <?= htmlspecialchars($project['name']) ?> </h3>
             <div class="progress-bar">
-              <div class="progress" style="text-align: left; width:<?= htmlspecialchars(($project['collected_money'] / $project['cost']) * 100) ?>% ">%<?=htmlspecialchars(string:(int) ($project['collected_money'] / $project['cost'] * 100)) ?></div>
+              <div class="progress" style="text-align: left; width:<?= htmlspecialchars(($project['collected_money'] / $project['cost']) * 100) ?>% ">%<?=htmlspecialchars(string:(int) (($project['collected_money'] / $project['cost'] * 100))) ?></div>
             </div>
             <div class="donation-details">
               <div>

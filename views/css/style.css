@@ -124,6 +124,7 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
     scrollbar-color: var(--bgcolor-H) var(--bgcolor-N);
 }
 
@@ -142,6 +143,10 @@ main {
     background-color: rgb(255, 255, 255);
     min-height: 60vh;
     min-width: 250px;
+
+    & button{
+        cursor: pointer;
+    }
 }
 
 footer {
@@ -203,11 +208,6 @@ footer {
     border-bottom: 1px solid #dadada;
     background: rgba(255, 255, 255,0.9);
     backdrop-filter:blur(5px);
-
-
-
-
-
 }
 
 .box_link{
@@ -232,8 +232,7 @@ footer {
 
         display: none;
         cursor: pointer;
-
-
+        
         & img {
             width: 30px;
             height: 30px;
@@ -288,9 +287,10 @@ footer {
     color: var(--font-color-bh);
     padding: 0.2em;
     & a{
+        font-weight: bold;
         height: 100%;
         text-decoration: none;
-        color: var(--font-color-bh);
+        color: var(--bgcolor-dark);
         font-size: var(--font-size-l);
         transition: color 0.3s ease;
     }
@@ -332,7 +332,7 @@ gap: 10px;
     align-items: center;
     width: 8rem;
     height: 35px ;
-    background-color:var(--button-bg-l) ;
+    background-color:var(--button-bg-h) ;
     border-radius: 0.3em;
     border: none;
     color: #ffffff;
@@ -792,6 +792,7 @@ gap: 10px;
     background-color: #003337;
 
 }
+
 .user{
     margin: 0 auto;
     padding: var(--padding-xl);
@@ -822,12 +823,10 @@ gap: 10px;
     }
     & label {
         width: 80%;
-        opacity: 0.7;
-
         display: block;
         font-size: var(--font-size-l);
-        color: var(--font-color-black);
-        padding: var(--padding-s) 0 var(--padding-s) 0;
+        padding: var(--padding-s) 0 var(--padding-s) 0; 
+        color: #000;
     }
 
  
@@ -2450,7 +2449,7 @@ gap: 10px;
   
 
     .news {
-        background-color: rgba(0, 167, 181,0.1);
+        background-color: var(--bgcolor-Hh);
         padding: var(--padding-l);
         border-radius: var(--border-radius-s);
         width: 100%;
@@ -2479,7 +2478,7 @@ gap: 10px;
             font-size: var(--font-size-l);
 
         }
-    }
+    
 
 
     & img {
@@ -2495,11 +2494,11 @@ gap: 10px;
 }
 
 .CIE2 {
-    background-color: var(--bgcolor-Hh);
+    background-color: var(--bgcolor-white);
 
     & .details_show_ch{
         margin-top: var(--margin-s);
-        background-color: var(--bgcolor-dark);
+        background-color: var(--bgcolor-Hh);
         padding: 20px;
         border-radius: var(--border-radius-s);
         width: 100%;
@@ -2520,7 +2519,7 @@ gap: 10px;
     }
 }
 .time {
-    background-color: rgba(0, 167, 181,0.1);
+    background-color: var(--bgcolor-Hh);
     padding: var(--padding-l);
 border-radius: var(--border-radius);
 margin-bottom: var(--margin-s) ;
@@ -2528,7 +2527,7 @@ margin-bottom: var(--margin-s) ;
 & p{
     font-size: var(--font-size-l);
     padding: 0;
-    color: white;
+    color: rgb(255, 255, 255);
 
 }
 }
@@ -2545,7 +2544,7 @@ margin-bottom: var(--margin-s) ;
         width: 100%;
         font-size: var(--font-size-xl);
         padding: var(--padding-m) 0 var(--padding-s) var(--padding-xl);
-        color: var(--font-color-gl);
+        color: var(--font-color-gh);
 
 
     }
@@ -2553,7 +2552,7 @@ margin-bottom: var(--margin-s) ;
         width: 100%;
         font-size: var(--font-size-l);
         padding: 0;
-        color: white;
+        color: rgb(0, 0, 0);
     }
     & h5 {
         color: var(--font-color-gl);
@@ -3024,6 +3023,95 @@ margin-bottom: var(--margin-s) ;
   }
 
 
+/* --- أنماط صفحة الخطأ 404 --- */
+
+.safha_error_container {
+    display: flex;
+    justify-content: center; /* توسيط أفقي */
+    align-items: center;     /* توسيط رأسي */
+    min-height: 70vh;        /* ارتفاع أدنى لملء جزء كبير من الشاشة */
+    padding: var(--padding-l);
+    background-color: var(--bgcolor-light, #f4f4f9); /* لون خلفية فاتح مع قيمة احتياطية */
+    direction: rtl; /* ضمان اتجاه النص من اليمين لليسار */
+    font-family: var(--font-family-main, sans-serif); /* استخدام الخط الرئيسي */
+  }
+  
+  /* بطاقة الرسالة الرئيسية - تكييف لأسلوب .main_card */
+  .risala_card {
+    background-color: var(--card-bgcolor, #ffffff);
+    padding: var(--padding-xl); /* حشوة داخلية واسعة */
+    border-radius: var(--card-radius, var(--border-radius, 10px));
+    box-shadow: var(--card-shadow, 0 0 0.5em rgba(0, 0, 0, 0.1));
+    border: var(--card-border, 1px solid var(--border-color, #dadada));
+    max-width: 550px; /* استخدام عرض أقصى بدلاً من نسبة مئوية ثابتة للعرض */
+    width: 90%;       /* أكثر استجابة من عرض ثابت مثل 20% */
+    /* min-height: 30vh; */ /* يمكن استخدام ارتفاع أدنى بدلاً من ارتفاع ثابت */
+    display: flex;
+    flex-direction: column;   /* ترتيب العناصر عمودياً */
+    align-items: center;      /* توسيط العناصر أفقياً داخل العمود */
+    justify-content: center; /* توسيط المحتوى رأسياً */
+    text-align: center;       /* توسيط النصوص داخل العناصر */
+    transition: background-color 0.3s ease; /* تأثير انتقال ناعم للخلفية عند المرور */
+  }
+  
+  /* تصميم العناصر داخل البطاقة */
+  
+  /* تصميم رمز الخطأ ٤٠٤ */
+  .risala_card .error_code {
+    font-size: 6em; /* حجم خط كبير جداً */
+    font-weight: bold;
+    color: var(--font-color-bh, #00575F); /* لون مميز */
+    margin-bottom: var(--margin-s);
+    line-height: 1; /* تعديل ارتفاع السطر للخط الكبير */
+    font-family: var(--font-family-secandry, var(--font-family-main, sans-serif)); /* خط ثانوي أو رئيسي */
+  }
+  
+  /* تصميم العنوان H1 */
+  .risala_card h1 {
+    font-size: var(--font-size-ll, 2em); /* حجم خط كبير */
+    color: var(--font-color-black, #000000);
+    margin-bottom: var(--margin-m);
+    font-weight: bold;
+  }
+  
+  /* تصميم الفقرة P */
+  .risala_card p {
+    font-size: var(--font-size-m, 1em); /* حجم خط عادي */
+    color: var(--text-color, #424242); /* لون نص عام */
+    margin-bottom: var(--margin-l);
+    line-height: 1.7; /* ارتفاع سطر مناسب للعربية */
+  }
+  
+  /* تصميم الرابط A (المظهر كزر) */
+  .risala_card a {
+    display: inline-block; /* للسماح بالحشوة والهوامش */
+    padding: var(--padding-s) var(--padding-l); /* استخدام متغيرات الحشوة */
+    background-color: var(--button-bgcolor, var(--button-bg-h, #00575F)); /* لون خلفية الزر */
+    color: var(--button-color, #ffffff); /* لون نص الزر */
+    font-size: var(--font-size-m, 1em);
+    font-weight: bold;
+    text-decoration: none; /* إزالة الخط تحت الرابط */
+    border-radius: var(--button-radius, 0.2em); /* استخدام متغير نصف قطر الزر */
+    border: var(--button-border, 1px solid #dddddd); /* استخدام متغير إطار الزر */
+    box-shadow: var(--button-shadow, 0 0 0.5em rgba(0, 0, 0, 0.1)); /* استخدام متغير ظل الزر */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* تأثير انتقال ناعم */
+    cursor: pointer; /* تغيير شكل المؤشر */
+  }
+  
+  /* تصميم حالة المرور والتركيز للرابط (الزر) */
+  .risala_card a:hover,
+  .risala_card a:focus {
+    background-color: var(--button-hover-bgcolor, var(--bgcolor-white, #ffffff)); /* لون الخلفية عند المرور/التركيز */
+    color: var(--button-hover-color, #00575F); /* لون النص عند المرور/التركيز */
+    border-color: var(--button-hover-border, #006770); /* لون الإطار عند المرور/التركيز */
+    box-shadow: var(--button-hover-shadow, 0 0 1em rgba(0, 0, 0, 0.1)); /* الظل عند المرور/التركيز */
+    outline: none; /* إزالة المخطط الافتراضي عند التركيز */
+  }
+  
+  /* تأثير المرور على البطاقة نفسها */
+  .risala_card:hover {
+    background-color: var(--card-hover-bgcolor, var(--bgcolor-light)); /* استخدام متغير لون الخلفية عند المرور */
+  }
 /* islamic payments */
 /* zalat */
 /* تنسيق عام للصفحة */
@@ -3430,6 +3518,18 @@ table input[type="text"]:focus, table select:focus {
     color: var(--primary-color);
     font-weight: bold;
   }
+
+.titel{
+    text-align: center;
+    color: var(--font-color-bh);
+    margin: var(--margin-xl);
+}
+.error_mseage{
+    color: red;
+}
+
+
+
   
   /* استجابة الشاشة */
   @media (max-width: 768px) {

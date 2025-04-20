@@ -187,7 +187,7 @@ function sendEmail($config, $email, $message, $verification_code) // this functi
   <body>
       <div class='email-container'>
           <div class='email-header'>
-              <img src='https://i.postimg.cc/kMV8zNyC/bader.png' alt='Badir Charity Logo'>
+              <img src='https://i.postimg.cc/mgq2V5Wf/badir-logo.jpg' alt='Badir Charity Logo'>
               <h3>رسالة جديدة من بادر الخيرية</h3>
           </div>
           <div class='email-content'>
@@ -213,6 +213,7 @@ function sendEmail($config, $email, $message, $verification_code) // this functi
 
 
       header("Location: /users_verification_view?sent=success");
+      
       exit();
     } else {
       die("فشل في إرسال البريد: " . $mail->ErrorInfo);

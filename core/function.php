@@ -65,3 +65,15 @@ function logOut()
     $params =  session_get_cookie_params();
     setcookie('PHPSESSID', '', time() - 3600, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
 }
+
+function base_path($path)
+{
+    return __DIR__ . $path;
+}
+
+function view($path, $attributes = [])
+{
+    extract($attributes);
+
+    require base_path('views/' . $path);
+}

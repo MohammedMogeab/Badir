@@ -3,12 +3,11 @@
 <?php require('views/parts/navgtion.php') ?>
 <?php require('views/parts/header.php') ?>
 
-<?php //dd($campaigns) ?>
+<?php //dd($campaigns) 
+?>
 
 
-  <h1 style="  text-align: center;
-    color: var(--font-color-bh);
-    margin: var(--margin-xl);">حملات التبرع المتاحة</h1>
+<h1 class="titel">حملات التبرع المتاحة</h1>
 
    
 
@@ -39,36 +38,38 @@
               <div class="donate-section">
               <?php if (isset($_SESSION['user_id'])): ?> 
               <!-- إذا كان المستخدم مسجل الدخول -->
-                <form action="/charity_campaigns_checkout" method="get" class="donate-section">
-                  <input class="inp" type="number" name="cost" placeholder="$" required min="0" max="<?= htmlspecialchars($campaign['cost'] - $campaign['collected_money']) ?>"> 
-                  <input type="hidden" name="campaign_id" value="<?= htmlspecialchars($campaign['campaign_id']) ?>">
-                  <button type="submit" class="donate-btn" aria-label="التبرع">تبرع الأن</button>
-                </form>
-                <form action="/charity_campaigns_addcart" method="post" >
-                  <input type="hidden" name="campaign_id" value="<?= htmlspecialchars($campaign['campaign_id']) ?>">
-                  <button type="submit" class="donate_cart"><img src="views/media/images/cart.png" alt="السلة" loading="lazy" aria-label="السلة"></button>
-                </form>
-                <?php else: ?>
-                      <!-- إذا لم يكن المستخدم مسجل الدخول -->
-                    <form action="/users_index" method="get" class="donate-section">
-                  <input class="inp" type="number" name="cost" placeholder="$" required min="0" max="<?= htmlspecialchars($campaign['cost'] - $campaign['collected_money']) ?>"> 
-                  <input type="hidden" name="campaign_id" value="<?= htmlspecialchars($campaign['campaign_id']) ?>">
-                  <button type="submit" class="donate-btn" aria-label="التبرع">تبرع الأن</button>
-                </form>
-                <form action="/users_index" method="post" >
-                  <input type="hidden" name="campaign_id" value="<?= htmlspecialchars($campaign['campaign_id']) ?>">
-                  <button type="submit" class="donate_cart"><img src="views/media/images/cart.png" alt="السلة" loading="lazy" aria-label="التبرع"></button>
-                </form>
-                <?php endif; ?>
-              </div>
-              <div class="details">
-                <a href="/charity_campaigns_show?campaign_id=<?= htmlspecialchars($campaign['campaign_id']) ?>">عرض التفاصيل</a>
-              </div>
-            </div>
+              <form action="/charity_campaigns_checkout" method="get" class="donate-section">
+                <input class="inp" type="number" name="cost" placeholder="$" required min="0" max="<?= htmlspecialchars($campaign['cost'] - $campaign['collected_money']) ?>">
+                <input type="hidden" name="campaign_id" value="<?= htmlspecialchars($campaign['campaign_id']) ?>">
+                <button type="submit" class="donate-btn" aria-label="التبرع">تبرع الأن</button>
+              </form>
+              <form action="/charity_campaigns_addcart" method="post">
+                <input type="hidden" name="campaign_id" value="<?= htmlspecialchars($campaign['campaign_id']) ?>">
+                <button type="submit" class="donate_cart"><img src="views/media/images/cart.png" alt="السلة" loading="lazy" aria-label="السلة"></button>
+              </form>
+            <?php else: ?>
+              <!-- إذا لم يكن المستخدم مسجل الدخول -->
+              <form action="/users_index" method="get" class="donate-section">
+                <input class="inp" type="number" name="cost" placeholder="$" required min="0" max="<?= htmlspecialchars($campaign['cost'] - $campaign['collected_money']) ?>">
+                <input type="hidden" name="campaign_id" value="<?= htmlspecialchars($campaign['campaign_id']) ?>">
+                <button type="submit" class="donate-btn" aria-label="التبرع">تبرع الأن</button>
+              </form>
+              <form action="/users_index" method="post">
+                <input type="hidden" name="campaign_id" value="<?= htmlspecialchars($campaign['campaign_id']) ?>">
+                <button type="submit" class="donate_cart"><img src="views/media/images/cart.png" alt="السلة" loading="lazy" aria-label="التبرع"></button>
+              </form>
+            <?php endif; ?>
+
+
           </div>
-        <?php endforeach; endif; ?>
+          <div class="details">
+            <a href="/charity_campaigns_show?campaign_id=<?= htmlspecialchars($campaign['campaign_id']) ?>">عرض التفاصيل</a>
+          </div>
+        </div>
+      </div>
+  <?php endforeach;
+  endif; ?>
       </section>
-    </section>
 
       <div style="display: flex; justify-content: space-around; width: 100%;">
         <div style="display: flex; width: 50%; justify-content: space-around; ; height:20px; padding: 40px; align-self:center; align-items: center; text-align: center;">

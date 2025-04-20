@@ -6,7 +6,7 @@
 <?php //dd($campaigns) ?>
 
 <main class="main_show_ch">
-<label for="main-campaign-section" class="section-label visually-hidden">تفاصيل الحملة الرئيسية</label>
+<label for="main-campaign-section" class="section-label visually-hidden"></label>
             <section id="main-campaign-section" class="card_islamic_endowments">
             <!-- <h3 style="color: var(--font-color-bh);
         font-size: var(--font-size-xl);">التفاصيل</h3> -->

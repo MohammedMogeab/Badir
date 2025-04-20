@@ -1,7 +1,8 @@
 <?php
 $heading = "one test";
-use core\App ;
-use core\Database ;
+
+use core\App;
+use core\Database;
 
 
 $db = App::resolve(Database::class);
@@ -17,7 +18,8 @@ try {
     $partners = $db->query(
         "SELECT * FROM partners"
     )->fetchAll(); // Fetch all rows from the query result
-    $projects = $db->query("
+    $projects = $db->query(
+        "
     SELECT
         P.project_id,
         P.partner_id,
@@ -41,18 +43,20 @@ try {
     GROUP BY P.project_id
     HAVING P.project_id = :project_id
     
-", [
-    'project_id' => $_GET['project_id'] ]
+",
+        [
+            'project_id' => $_GET['project_id']
+        ]
     )->fetchAll();
-$levels = $db->query(
-    "SELECT * FROM levels where project_id = :project_id",
-    [
-        'project_id' => $_GET['project_id']
-    ])->fetchAll();
-
+    $levels = $db->query(
+        "SELECT * FROM levels where project_id = :project_id",
+        [
+            'project_id' => $_GET['project_id']
+        ]
+    )->fetchAll();
 } catch (PDOException $e) {
     error_log($e->getMessage());
-    $_SESSION['error'] = "حدث خطأ أثناء حفظ البعانات";
+    $_SESSION['error'] = "حدث خطأ أثناء حفظ البيانات";
     header("Location: /charity_campaigns_create");
     exit();
 }

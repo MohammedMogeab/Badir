@@ -26,7 +26,7 @@ function closeMenu(){
 }
 
 function checkScreenSize() {
-    if (window.matchMedia("(max-width: 750px)").matches) {
+    if (window.matchMedia("(max-width: 900px)").matches) {
         menubut.style.display= 'block';
         if(menulist.style.display = 'flex'){
             menulist.style.display= 'none';

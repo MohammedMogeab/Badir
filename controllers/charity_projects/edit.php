@@ -17,16 +17,18 @@ try {
     )->fetchAll();
     $project = $db->query(
         "    SELECT * from projects where project_id = :project_id
-", [
-    'project_id' => $_GET['project_id'] ]
+",
+        [
+            'project_id' => $_GET['project_id']
+        ]
     )->findOrFail();
-    $levels = $db->query("SELECT * FROM LEVELS WHERE project_id = :project_id",[
+    $levels = $db->query("SELECT * FROM LEVELS WHERE project_id = :project_id", [
         'project_id' => $_GET['project_id']
     ])->fetchAll();
 } catch (PDOException $e) {
 
     error_log($e->getMessage());
-    $_SESSION['error'] = "حدث خطأ أثناء حفظ البعانات";
+    $_SESSION['error'] = "حدث خطأ أثناء حفظ البيانات";
     header("Location: /");
     exit();
 }

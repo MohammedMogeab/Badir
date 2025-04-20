@@ -16,7 +16,7 @@
 
   <!-- الصوره الكبير الي بل البدايه -->
 
-  <label for="hero-section" class="section-label">القسم الرئيسي</label>
+  <label style="display: none;" for="hero-section" class="section-label">القسم الرئيسي</label>
 
   <section id="hero-section" class="hero">
     <!-- <img src="views/media/images/andrewSmall.jpg" alt="">
@@ -122,9 +122,9 @@
   </section>
 
 
-  <h1 style="         margin: var(--margin-xl); text-align: center;    color: var(--font-color-bh); ">الصَّدَقَةُ لَا تَنْقُصُ الْمَالَ، بَلْ تَزِيدُهُ بَرَكَةً وَطُهْرًا</h1>
+  <h1 style="         margin: var(--margin-xl); text-align: center;    color: var(--bgcolor-dark); ">الصَّدَقَةُ لَا تَنْقُصُ الْمَالَ، بَلْ تَزِيدُهُ بَرَكَةً وَطُهْرًا</h1>
 
-  <label for="campaigns-section" class="section-label">حملات التبرع</label>
+  <label style="display: none;" for="campaigns-section" class="section-label">حملات التبرع</label>
 
   <section id="campaigns-section" class="Carousel_card box ">
     <!-- حاوية البطاقات -->
@@ -180,9 +180,9 @@
 
   </section>
   <!-- الاحداث السريعه -->
-  <h1 style="background-color: white; color: var(--font-color-bh);text-align: center;         margin: var(--margin-xl); " >بِتَكاتُفِنا، نَسْتَطِيعُ تَحْقِيقَ الْمُسْتَحِيل </h1>
+  <h1 style="background-color: white; color: var(--bgcolor-dark);text-align: center;         margin: var(--margin-xl); " >بِتَكاتُفِنا، نَسْتَطِيعُ تَحْقِيقَ الْمُسْتَحِيل </h1>
 
-  <label for="stats-section" class="section-label">الإحصائيات</label>
+  <label style="display: none;" for="stats-section" class="section-label">الإحصائيات</label>
 
   <section id="stats-section" class="Fast-acting" >
     <div class="tbr3">
@@ -212,7 +212,7 @@
     </div>
 
     <div class="login_home box">
-      <h1> بإنشاء حسابك
+      <h1 style="color: var(--bgcolor-dark);"> بإنشاء حسابك
       </h1>
       <p id="plogin">
         تحصل على فرصة للمشاركة <br>
