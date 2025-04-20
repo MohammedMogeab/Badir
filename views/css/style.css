@@ -1661,12 +1661,15 @@ gap: 10px;
     padding: var(--padding-m);
     border: var(--bg-border-l);
     border-radius: 10px;
-    & img {
-        width: auto;
-        height: 100%;
-        border-radius: 8px;
-        margin-left: 15px;
-    }
+
+    & img{
+        top:15px;
+        width:40%;
+        height:80%;
+        display: block;
+      
+     
+      }
 
     & .input_delet{
         display: flex;
@@ -1684,8 +1687,15 @@ gap: 10px;
         color: var(--font-color-bh);
 
 
+        
     }
 
+    & img {
+        top:15px;
+        height:60%;
+        width:auto;
+        display: block;
+    }
     & p {
         margin: 5px 0;
         color: var(--font-color-bl);
@@ -1697,6 +1707,7 @@ gap: 10px;
         margin-top: 10px;
         border: 1px solid #ccc;
         border-radius: 4px;
+        
     }
 
     & button {
@@ -3052,6 +3063,9 @@ margin-bottom: var(--margin-s) ;
     justify-content: center; /* توسيط المحتوى رأسياً */
     text-align: center;       /* توسيط النصوص داخل العناصر */
     transition: background-color 0.3s ease; /* تأثير انتقال ناعم للخلفية عند المرور */
+    & img {
+        width: 90%;
+    }
   }
   
   /* تصميم العناصر داخل البطاقة */
@@ -3528,7 +3542,64 @@ table input[type="text"]:focus, table select:focus {
     color: red;
 }
 
+/* =-----------------------= */
 
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: var(--padding-m);
+}
+
+.section-title {
+    font-size: var(--font-size-xl);
+    color: var(--font-color-bh);
+    text-align: center;
+    margin-bottom: var(--margin-l);
+}
+
+.section-paragraph {
+    font-size: var(--font-size-m);
+    color: var(--text-color);
+    text-align: center;
+    line-height: 1.8;
+}
+
+
+.goal-boxes {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: var(--margin-m) 0;
+}
+
+.goal-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--padding-s);
+    background: var(--white-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    width: 200px;
+    text-align: center;
+    margin-bottom: var(--margin-m);
+}
+
+.dual-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--margin-m);
+}
+
+.dual-boxes .box {
+    flex: 1;
+    min-width: 280px;
+    padding: var(--padding-m);
+    background: var(--white-color);
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
+}
 
   
   /* استجابة الشاشة */
@@ -3564,6 +3635,13 @@ table input[type="text"]:focus, table select:focus {
   .infoZ{
     display: flex;
   }
+  .visually-hidden{
+    display:none;
+  }
+
+
+/*   التحكم بي الموقع عند اختلاف المقاسات الشاشة*/
+
 
 
 

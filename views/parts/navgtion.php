@@ -31,14 +31,7 @@
             <li><div class="box_link"><a href="/charity_campaigns_index">الحملات الخيرية</a></div></li>
             <li><div class="box_link"><a href="/islamic_payments_index">المصارف الاسلامية</a></div></li>
             <li><div class="box_link"><a href="/notifications_index">الإشعارات</a></div></li>
-            <li><div class="box_link"><a href="/contact">اتصل بنا</a></div></li>
-<!-- >>>>>>> ef135f2029314f088deaacb8c2fb8c484fedb803 -->
-            <!-- <li><a href="#">الماهمات</a></li> -->
-            <!-- <li><a href="#">الاخبار</a></li> -->
-            <!-- <li><a href="#">التقييمات</a></li> -->
-            <!-- <li><a href="/contact">الدعم الفني</a></li> -->
-
-
+            <!-- <li><div class="box_link"><a href="/contact">اتصل بنا</a></div></li> -->
         </ul>
         <div class="all_icon_nav">
             <!-- <a href=""><img src="" alt=""></a> -->
