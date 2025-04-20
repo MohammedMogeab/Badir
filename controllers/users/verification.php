@@ -213,6 +213,7 @@ function sendEmail($config, $email, $message, $verification_code) // this functi
 
 
       header("Location: /users_verification_view?sent=success");
+      
       exit();
     } else {
       die("فشل في إرسال البريد: " . $mail->ErrorInfo);

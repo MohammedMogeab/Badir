@@ -45,7 +45,7 @@ if (!empty($errors)) {
 
 
 try {
-    require('controllers/parts/image_loader.php');
+    // require('controllers/parts/image_loader.php');
     $db->query(
         "UPDATE users
         SET 

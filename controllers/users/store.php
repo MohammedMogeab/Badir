@@ -3,9 +3,9 @@
 
 // die(" وصلنا لـ store.php");
 
-// if (session_status() === PHP_SESSION_NONE) {
-//   session_start();
-// }
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
 
 use core\App;
 use core\Database;
@@ -13,6 +13,7 @@ use core\Database;
 
 $db = App::resolve(Database::class);
 
+$data = $_SESSION['user_data'];
 
 $errors = [];
 
@@ -60,19 +61,19 @@ if (isset($_POST["submit"])) {
   if ($current_time > $code_expiry) {
     $_SESSION['error'] = "كود التحقق منتهي الصلاحية. يرجى إعادة الإرسال.";
     session_destroy();
-    header("Location: /users_verification_view");
+    header("Location: /users_verification_view?error = " . urlencode("كود التحقق منتهي الصلاحية. يرجى إعادة الإرسال."));
     exit();
   }
 
   // cheak if the code is correct
   if ($entered_code != $saved_code) {
     $_SESSION['error'] = "رمز التحقق غير صحيح.";
-    header("Location: /users_verification_view");
+    header("Location: /users_verification_view?error = .urlencode(رمز التحقق غير صحيح.)");
     exit();
   }
 
   //  get the user data from the sessionn
-  $data = $_SESSION['user_data'];
+  // $data = $_SESSION['user_data'];
 
 
 
@@ -96,7 +97,7 @@ if (isset($_POST["submit"])) {
 
 
   try {
-    require('controllers/parts/image_loader.php');
+    // require('controllers/parts/image_loader.php');
     $db->query(
       "INSERT INTO users (
                 username,
