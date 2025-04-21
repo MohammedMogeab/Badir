@@ -3,6 +3,8 @@ use core\App ;
 use core\Database ;
 $db = App::resolve(Database::class);
 
+$search = $_GET['search'] ?? '';
+$filter = $_GET['filter'] ?? 'all';
 
 $page = "islamic_endowments_index" ;
 if(!isset($_GET['page_number'])) $_GET['page_number'] = 1; // if page_number not set in $_GET
@@ -31,19 +33,21 @@ if(!isset($_SESSION['endowments_count_all'])){
 }
 
 $pages_count['endowments'] = $_SESSION['endowments_count_all']/10 + 1;
+$has_next = !isset($_GET['page_number']) || $_GET['page_number'] + 1 >= $pages_count['endowments'];
+$filtered = (!empty($search) || ($filter !== 'all') || (isset($_GET['submit']) && $_GET['submit'] == "foryou") ) ;
+
 
 try {
     // Fetch categories for filtering
     $categories = $db->query("SELECT category_id, name FROM categories")->fetchAll();
 
     // Get search and filter inputs from $_GET
-    $search = $_GET['search'] ?? '';
-    $filter = $_GET['filter'] ?? 'all';
+
     
 
     // Base Query
     $query = "SELECT * FROM endowments WHERE state = 'active'";
-    if(!empty($search) || ($filter !== 'all') || (isset($_GET['submit']) && $_GET['submit'] == "foryou") ){
+    if($filtered){
         $params = [];
 
         // 🔎 Add Search Filter

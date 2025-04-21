@@ -16,7 +16,7 @@
             <h5><?php  echo $endowments['0']['name'] ?></h5>
             <p class="details_p"><?php  echo $endowments['0']['short_description'] ?></p>
         </div>
-            <h5>رقم الحملة : <?php  echo $endowments['0']['category_id'] ?> </h5>
+            <h5>رقم الحملة : <?php  echo $endowments['0']['endowment_id'] ?> </h5>
             <div class="progress-bar">
                 <div class="progress" style="text-align: left;width:<?= htmlspecialchars(($endowments['0']['donate_cost']/$endowments['0']['cost'])*100) ?>% " >%<?= htmlspecialchars((int)(($endowments['0']['donate_cost']/$endowments['0']['cost'])*100)) ?></div>
               </div>
@@ -47,30 +47,30 @@
 <section class="card_islamic_endowments CIE2" id="card_islamic_endowments">
 
 
-<div class="details_show_ch">
+<!-- <div class="details_show_ch">
                 <h5>تفاصيل تكاليف العمليات</h5>
                 <p>الفحوصات الطبية</p>
                 <p>العمليات الجراحية</p>
                 <p>الادوية</p>
-        </div>
+        </div> -->
 
         <div class="card_insid" id="card_insid">
         <div>
         <h6>نوع المشروع</h6>
-        <p> </p>
+        <p> <?= htmlspecialchars($categories[$endowments['0']['category_id']]['name']) ?></p>
         <h6>المبلغ المستهدف</h6>
-        <p> ر.س</p>
+        <p><?= htmlspecialchars($endowments['0']['cost']) ?> ر.س</p>
 
         </div>
-        <div>
+        <!-- <div>
         <h6>عدد المستفيدين</h6>
         <p>100 محتاج</p>
         <h6>الوقت المتبقي</h6>
         <p>يوم</p>
-        </div>
+        </div> -->
         <div>
         <h6>المبلغ الذي تم جمعة</h6>
-        <p>  <?php  echo $endowments['0']['donate_cost'] ?> ر.س</p>
+        <p>  <?= htmlspecialchars(isset($endowments['0']['donate_cost'])?$endowments['0']['donate_cost']:0) ?> ر.س</p>
         <h6>عدد المتبرعين</h6>
         <p><?= htmlspecialchars($endowments['0']['donate_count']) ?></p>
         </div>

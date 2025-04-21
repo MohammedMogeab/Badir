@@ -11,6 +11,9 @@ $page_campaigns_ids = [];
 $heading = "All My tests";
 if(!isset($_GET['page_number'])) $_GET['page_number'] = 1; // if page_number not set in $_GET
 
+$search = $_GET['search'] ?? '';
+$filter = $_GET['filter'] ?? 'all';
+
 if(!isset($_SESSION['campaigns_count_all'])){
     $page_campaigns_ids = [];
     $_SESSION['campaigns_count_all'] = $db->query(
@@ -34,14 +37,15 @@ if(!isset($_SESSION['campaigns_count_all'])){
     }
 }
 $pages_count['campaigns'] = $_SESSION['campaigns_count_all']/10 + 1;
+$has_next = !isset($_GET['page_number']) || $_GET['page_number'] + 1 >= $pages_count['campaigns'];
+$filtered = (!empty($search) || ($filter !== 'all') || (isset($_GET['submit']) && $_GET['submit'] == "foryou"));
 
 try {
     // Fetch categories for the dropdown
     $categories = $db->query("SELECT category_id, name FROM categories")->fetchAll();
 
     // Get search and filter inputs
-    $search = $_GET['search'] ?? '';
-    $filter = $_GET['filter'] ?? 'all';
+    
     $query = 
     "SELECT 
             g.campaign_id, 
@@ -62,7 +66,7 @@ try {
         GROUP BY g.campaign_id 
         HAVING g.state ='active' 
     ";
-    if(!empty($search) || ($filter !== 'all') || (isset($_GET['submit']) && $_GET['submit'] == "foryou") ){
+    if($filtered){
         $params = [];
         if (!empty($search)) {
             $query .= " AND MATCH(g.name, g.short_description, g.full_description) AGAINST (:search IN NATURAL LANGUAGE MODE)";

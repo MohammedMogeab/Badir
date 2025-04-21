@@ -4,6 +4,9 @@ use core\Database ;
 $db = App::resolve(Database::class);
 //$page_projects_ids = $pages_count = $_SESSION['projects_pages'] = $_SESSION['projects_pages'][$_GET['page_number']] = array(); // [];
 
+$search = $_GET['search'] ?? '';
+$filter = $_GET['filter'] ?? 'all';
+
 $page = "charity_projects_index" ;
 if(!isset($_GET['page_number'])) $_GET['page_number'] = 1; // if page_number not set in $_GET
 start_page:
@@ -40,6 +43,10 @@ if(!isset($_SESSION['projects_count_all'])){
 }
 
 $pages_count['projects'] = $_SESSION['projects_count_all']/10 + 1;
+$has_next = !isset($_GET['page_number']) || $_GET['page_number'] + 1 >= $pages_count['projects'];
+$filtered = (!empty($search) || ($filter !== 'all') || (isset($_GET['submit']) && $_GET['submit'] == "foryou"));
+
+
 // $page_projects_ids = [];
 // $_SESSION['projects_pages'][$_GET['page_number']] = [];
 try {
@@ -47,8 +54,7 @@ try {
     $categories = $db->query("SELECT category_id, name FROM categories")->fetchAll();
 
     // Get search and filter inputs
-    $search = $_GET['search'] ?? '';
-    $filter = $_GET['filter'] ?? 'all';
+    
 
     // Base Query
     $query = 
@@ -76,7 +82,7 @@ try {
         Group by P.project_id 
         HAVING P.state = 'active'
     ";
-    if(!empty($search) || ($filter !== 'all') || (isset($_GET['submit']) && $_GET['submit'] == "foryou") ){
+    if($filtered){
         $params = [];
 
         // 🔎 Add Search Filter

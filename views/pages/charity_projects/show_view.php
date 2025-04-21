@@ -8,14 +8,14 @@
         <!-- <h3 style="color: var(--font-color-bh);
     font-size: var(--font-size-xl);">التفاصيل</h3> -->
         <div class="imgs">
-            <img src="views/media/images/<?php  echo $projects['0']['photo'] ?? "11.png" ?>" alt=" " loading="lazy">
+            <img src="views/media/images/<?= $projects['0']['photo'] ?? "11.png" ?>" alt=" " loading="lazy">
         </div>
         <p class="localshin">المنطقة تعز</p>
         <div>
-            <h5> <?php  echo $projects['0']['name'] ?> </h5>
-            <p class="details_p"><?php  echo $projects['0']['short_description'] ?></p>
+            <h5> <?= $projects['0']['name'] ?> </h5>
+            <p class="details_p"><?= $projects['0']['short_description'] ?></p>
         </div>
-        <!-- <h5>رقم الحملة : <?php  echo $projects['0']['campaign_id'] ?></h5> -->
+        <!-- <h5>رقم الحملة : <?= $projects['0']['campaign_id'] ?></h5> -->
         <div class="progress-bar">
             <div class="progress" style="text-align: left;width:<?= htmlspecialchars(($projects['0']['collected_money']/$projects['0']['cost'])*100) ?>% " >%<?= htmlspecialchars((int)(($projects['0']['collected_money']/$projects['0']['cost'])*100)) ?></div>
         </div>
@@ -49,19 +49,19 @@
     <div class="card_insid" id="card_insid">
         <div>
             <h6>نوع المشروع</h6>
-            <p><?php  echo $categories[$projects['0']['category_id']]['name']?></p>
+            <p><?= $categories[$projects['0']['category_id']]['name']?></p>
             <h6>المبلغ المستهدف</h6>
-            <p>  <?php  echo $projects['0']['cost'] ?>  ر.س</p>
+            <p>  <?= $projects['0']['cost'] ?>  ر.س</p>
         </div>
         <div>
             <h6>عدد المستفيدين</h6>
-            <p><?php  echo $projects['0']['beneficiaries_count']?></p>
+            <p><?= $projects['0']['beneficiaries_count']?></p>
             <h6>الوقت المتبقي</h6>
             <p> <?php echo ceil((strtotime($projects['0']['end_at']) - strtotime($projects['0']['start_at'])) / (60 * 60 * 24)); ?>  يوم </p>
         </div>
         <div>
             <h6>المبلغ الذي تم جمعة</h6>
-            <p> <?php  echo $projects['0']['collected_money'] ?>  ر.س</p>
+            <p> <?= $projects['0']['collected_money'] ?>  ر.س</p>
             <h6>عدد المتبرعين</h6>
             <p><?= $projects['0']['donators_count']?></p>
         </div>
@@ -71,7 +71,7 @@
         <h5>مراحل المشروع</h5>
         <ol type="1">
             <?php foreach($levels as $level):?>
-            <li><p><?php  echo $level['name']; echo $projects['0']['level'] == $level['level_id'] ? "(المرحلة الحالية)" : " ";?></p></li>
+            <li><p><?= $level['name']; echo $projects['0']['level'] == $level['level_id'] ? "(المرحلة الحالية)" : " ";?></p></li>
             <?php endforeach; ?>
             <!-- <p>المرحلة الاولى :  </p>
             <p>المرحلة الثانية : </p>
@@ -80,8 +80,8 @@
     </div>
     <?php endif; ?>
     <div class="time">
-        <p> تاريخ البدء  : <?php  echo $projects['0']['start_at'] ?></p>
-        <p>تاريخ الانتهاء : <?php  echo $projects['0']['end_at'] ?> </p>
+        <p> تاريخ البدء  : <?= $projects['0']['start_at'] ?></p>
+        <p>تاريخ الانتهاء : <?= $projects['0']['end_at'] ?> </p>
         </div>
     <div class="news" >
     <h5>اخبار المشروع</h5>
