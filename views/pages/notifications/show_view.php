@@ -5,7 +5,7 @@
 <main class="main_show_ch">
     <section class="card_islamic_endowments">
         <div class="imgs">
-            <img src="views/media/images/<?php echo $notifications['0']['photo'] ?? 'default.png'; ?>" alt="Notification Image" loading="lazy">
+            <img src="views/media/images/<?php echo $notifications['0']['photo'] ?? 'default.png'; ?>" alt="صورة الإشعار" loading="lazy">
         </div>
         <div>
             <h5><?php echo htmlspecialchars($notifications['0']['title']); ?></h5>

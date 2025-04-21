@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\.github",
+    "\\controllers",
+    "\\controllers\\sessions",
+    "\\views",
+    "\\views\\sessions"
+  ],
+  "SelectedNode": "\\index.php",
+  "PreviewInSolutionExplorer": false
+}

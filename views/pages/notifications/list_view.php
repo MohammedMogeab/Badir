@@ -8,10 +8,10 @@
   <!-- شريط البحث -->
   <section class="bar_search_notifications">
     <form action="" method="">
-       <button class="read" name="read">✔  مقروءة</button>
-       <button class="delete" name="delete">🗑  حذف</button>
-       <button class="obstruction" name="obstruction">❗  تعطيل الإشعارات</button>
-       <button class="white-button">
+       <button class="read" name="read" aria-label="مقروءة">✔  مقروءة</button>
+       <button class="delete" name="delete" aria-label="حذف">🗑  حذف</button>
+       <button class="obstruction" name="obstruction" aria-label="تعطيل الاشعارات">❗  تعطيل الإشعارات</button>
+       <button class="white-button" aria-label="تصفية الحسابات">
       <span class="icon">تصفية الحسابات▾</button>
       <input class="search" type="text" name="search" placeholder="مربع بحث">
     </form>
@@ -36,7 +36,7 @@
           
           <h2>أخبار جديدة في منصة بادر! </h2>
         
-          <button class="show" id="show" name="show">عرض التفاصيل</button>
+          <button class="show" id="show" name="show" aria-label="عرض التفاصيل">عرض التفاصيل</button>
         
       
 

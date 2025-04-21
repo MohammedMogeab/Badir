@@ -6,6 +6,9 @@
 <main>
   <section>
 
+
+
+
   </section>
 </main>
 <?php require('views/parts/footer.php') ?>

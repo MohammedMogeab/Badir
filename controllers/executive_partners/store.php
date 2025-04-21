@@ -8,51 +8,6 @@ $db = App::resolve(Database::class);
 $errors = [];
 
 
-if (isset($_POST["submit"])) {
-
-    $file = $_FILES['photo']['name'];
-    $tmp = $_FILES['photo']['tmp_name'];
-    $size = $_FILES['photo']['size'];
-    $type = $_FILES['photo']['type'];
-    $error = $_FILES['photo']['error'];
-    $fileExt = explode('.', $file);
-    $fileActual = strtolower(end($fileExt));
-    $allow = array('jpg', 'jpeg', 'png', 'pdf');
-    if (in_array($fileActual, $allow)) {
-        if ($error === 0) {
-            if ($size < 10000000) {
-                $filenamenew = uniqid('', true) . "." . $fileActual;
-                $fileDestination = __DIR__ . '/../../views/media/images/' . $filenamenew;
-
-                echo $fileDestination;
-                move_uploaded_file($tmp, $fileDestination);
-            } else {
-                echo "your file is too big";
-            }
-        } else {
-            echo "there was an error uploading your file";
-        }
-    } else {
-        echo "you are not allow to uplaod file";
-    }
-} else {
-    echo "error";
-}
-
-
-//-------------------------------------------------------------
-
-
-$name = $_POST['name'];
-$description = $_POST['description'];
-$more_information = $_POST['more_information'];
-$email = $_POST['email'];
-$directorate = $_POST['directorate'];
-$county = $_POST['country'];
-$city = $_POST['city'];
-$street = $_POST['street'];
-$phone = $_POST['phone'];
-
 
 // التحقق من الحقول المطلوبة
 if (!isset($_POST['name']) || !Validator::string($_POST['name'] ?? '', 1, 255)) {
@@ -86,19 +41,27 @@ if (!isset($_FILES['photo']) || $_FILES['photo']['error'] !== UPLOAD_ERR_OK) {
     $errors["photo"] = "يجب تحميل شعار صالح";
 }
 
-//  معالجة رفع الشعار
-// $logo = $_FILES['photo']['name'];
-// $logo_tmp = $_FILES['photo']['tmp_name'];
-// $logo_path = "views\media\uploads/" . basename($logo);
+if (!isset($_POST['country']) || !Validator::string($_POST['country'], 1, 255)) {
+    $errors["country"] = "الدولة يجب أن تكون بين 1 و 255 حرفًا";
+}
 
-// if (!move_uploaded_file($logo_tmp, $logo_path)) {
-//     $errors["photo"] = "فشل في تحميل الشعار";
-//     require "views/pages/executive_partners/create_view.php";
-//     die();
+// if (!isset($_POST['phone']) || !Validator::string($_POST['phone'], 1, 255)) {
+//     $errors["phone"] = "رقم الهاتف يجب أن يكون بين 1 و 255 حرفًا";
 // }
+
+if (!isset($_POST['street']) || !Validator::string($_POST['street'], 1, 255)) {
+    $errors["street"] = "الشارع يجب أن يكون بين 1 و 255 حرفًا";
+}
+
+if (!empty($errors)) {
+    $_SESSION['errors'] = $errors;
+    header("Location:". $_SERVER["HTTP_REFERER"]);
+    exit();
+}
 
 
 try {
+    require('controllers/parts/image_loader.php') ;
     $db->query(
         "INSERT INTO partners (
             name,
@@ -138,7 +101,7 @@ try {
     );
 } catch (PDOException $e) {
     error_log($e->getMessage());
-    $_SESSION['error'] = "حدث خطأ أثناء حفظ البعانات";
+    $_SESSION['error'] = "حدث خطأ أثناء حفظ البيانات";
     header("Location: /charity_projects_create");
     exit();
 }

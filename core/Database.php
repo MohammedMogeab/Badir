@@ -102,6 +102,10 @@ class Database
         return $result;
     }
 
+    public function lastId(){
+        return $this->conection->lastInsertId();
+    }
+
 
     public function fetchAll()
     {

@@ -17,6 +17,8 @@
         <button class="btn_filter" name="btn_filter">فلترة</button>
         <button class="btn_search" name="btn_search">بحث</button>
       </section> -->
+      <div class="campaigns-table-container">
+
     <table class="campaigns-table">
       <thead>
         <tr>
@@ -36,7 +38,7 @@
         <?php foreach ($campaigns as $campaign): ?>
           <tr>
             <td><input type="checkbox" class="select-campaign"></td>
-            <td><img src="views/media/images/<?= htmlspecialchars($campaign['photo'] ?? "11.png") ?>" alt="شعار الحملة" class="campaign-logo"></td>
+            <td><img src="views/media/images/<?= htmlspecialchars($campaign['photo'] ?? "11.png") ?>" alt="شعار الحملة" class="campaign-logo" loading="lazy"></td>
             <td><?= htmlspecialchars($campaign['name']) ?>
               <nav class="options">
                 <ul>
@@ -44,28 +46,28 @@
                     <form action="/charity_campaigns_show" method="get">
                       <input type="hidden" name="" value="">
                       <input type="hidden" name="campaign_id" value="<?= htmlspecialchars($campaign['campaign_id']) ?>">
-                      <button type="submit">عرض</button>
+                      <button type="submit" aria-label="عرض">عرض</button>
                     </form>
                   </li>
                   <li>
                     <form action="/charity_campaigns_edit" method="get">
                       <input type="hidden" name="" value="">
                       <input type="hidden" name="campaign_id" value="<?= htmlspecialchars($campaign['campaign_id']) ?>">
-                      <button type="submit">تعديل</button>
+                      <button type="submit" aria-label="تعديل">تعديل</button>
                     </form>
                   </li>
                   <li>
                     <form action="/charity_campaigns_destroy" method="post">
                       <input type="hidden" name="_method" value="DELETE">
                       <input type="hidden" name="campaign_id" value="<?= htmlspecialchars($campaign['campaign_id']) ?>">
-                      <button type="submit">حذف</button>
+                      <button type="submit" aria-label="حذف">حذف</button>
                     </form>
                   </li>
                   <li>
                     <form action="/notifications_create" method="get">
                       <input type="hidden" name="" value="">
                       <input type="hidden" name="campaign_id" value="<?= htmlspecialchars($campaign['campaign_id']) ?>">
-                      <button type="submit">اشعار</button>
+                      <button type="submit" aria-label="اشعار">اشعار</button>
                     </form>
                   </li>
                 </ul>
@@ -81,6 +83,7 @@
         <?php endforeach; ?>
       </tbody>
     </table>
+      </div>
 
   </section>
 </main>

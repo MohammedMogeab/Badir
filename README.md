@@ -122,15 +122,16 @@ This project is distributed under the **MIT License**. See the [LICENSE](LICENSE
 
 The following individuals have contributed to the Bader Charity Association Platform:
 
-- **Ahmed Anwar**
-- **Mohammed Mogeab Ahmed Al-Hajj** [(@MohammedMogeab)](https://github.com/MohammedMogeab)
-- **Hafeez Shaheed**
-- **Ali Abdulsalam Mohammed Ali**
-- **Gamal Sadek Saeed Qaid** [(@gamal729)](https://github.com/gamal729)
-- **Mohammed Ali Mahyoob**
-- **Zyad Faisal**
-- **Ahmed Abdullah**
-- **Mubarak Ashraf Alqadasi** [(@MubarakAshrafAlrawy)](https://github.com/MubarakAshrafAlrawy)
+- **Ismail Saeed Alsharehi (IS-4-PM)** [(@Ismailalsharehi)](https://github.com/Ismailalsharehi),  **(Project Manager)**
+- **Ahmed Anwar (A2)**
+- **Mohammed Mogeab Ahmed Al-Hajj (M37)** [(@MohammedMogeab)](https://github.com/MohammedMogeab)
+- **Hafeez Shaheed (H17)**
+- **Ali Abdulsalam Mohammed Ali (A30)**
+- **Gamal Sadek Saeed Qaid (G14)** [(@gamal729)](https://github.com/gamal729)
+- **Mohammed Ali Mahyoob (M36)**
+- **Zyad Faisal (Z24)**
+- **Ahmed Abdullah (A3)**
+- **Mubarak Ashraf Alqadasi (M32)** [(@MubarakAshrafAlrawy)](https://github.com/MubarakAshrafAlrawy)
 
 ---
 
@@ -144,15 +145,133 @@ You can contact **Mohammed Mogeab** via X (Twitter): [@MohammedMogeab](https://t
 
 The following individuals are part of the development team:
 
-- **Ahmed Anwar**
-- **Mohammed Mogeab Ahmed Al-Hajj** [(@MohammedMogeab)](https://github.com/MohammedMogeab)
-- **Hafeez Shaheed**
-- **Ali Abdulsalam Mohammed Ali**
-- **Gamal Sadek Saeed Qaid** [(@gamal729)](https://github.com/gamal729)
-- **Mohammed Ali Mahyoob**
-- **Zyad Faisal**
-- **Ahmed Abdullah**
-- **Mubarak Ashraf Alqadasi** [(@MubarakAshrafAlrawy)](https://github.com/MubarakAshrafAlrawy)
+- **Ismail Saeed Alsharehi (IS-4-PM)** [(@Ismailalsharehi)](https://github.com/Ismailalsharehi),  **(Project Manager)**
+- **Ahmed Anwar (A2)**, **Head of this team** 
+- **Mohammed Mogeab Ahmed Al-Hajj (M37)** [(@MohammedMogeab)](https://github.com/MohammedMogeab)
+- **Hafeez Shaheed (H17)**
+- **Ali Abdulsalam Mohammed Ali (A30)**
+- **Gamal Sadek Saeed Qaid (G14)** [(@gamal729)](https://github.com/gamal729)
+- **Zyad Faisal (Z24)**
+- **Ahmed Abdullah (A3)**
+- **Mubarak Ashraf Alqadasi (M32)** [(@MubarakAshrafAlrawy)](https://github.com/MubarakAshrafAlrawy)
+- **Mohammed Ali  Mahyoob (M36)**
+
 
 ---
 
+## Project Maintenance Team
+
+The Foloing individuals are part of Maintenance Team :
+
+- **Ismail Saeed Alsharehi (IS-4-PM)** [(@Ismailalsharehi)](https://github.com/Ismailalsharehi), **(Project Manager)**
+- **Mohammed Ali  Mahyoob (M36)**, **Head of this team** 
+- **Boshra Yahia (B11)**
+- **Gamal Sadek Saeed Qaid (J14)** [(@gamal729)](https://github.com/gamal729)
+- **Zyad Faisal (Z24)**
+- **Moharram Algarady (M33)**
+- **Shatha Albanna (SH25)**
+- **Alaa Ahmed (A5)**
+- **Ahmed Anwar (A2)**
+- **Mubarak Ashraf Alqadasi (M32)** [(@MubarakAshrafAlrawy)](https://github.com/MubarakAshrafAlrawy)
+
+
+---
+## Project Teasting Team
+
+The Following individuals are part of Testing Team :
+
+- **Mohammed Mogeab Ahmed Al-Hajj (M37)** [(@MohammedMogeab)](https://github.com/MohammedMogeab), **Head of this team**
+- **Ali Abdulsalam Mohammed Ali (A30)**
+- ** Hind Shaif (H47)**
+- **Ahmed Abdullah (A3)**
+- **Ahmed Anwar (A2)**
+- **Hafeed Shahead (H17)**
+- **Hifdh Allah Abdulkhaliq (H16)**
+- **Mohammed Ahmed Shulaif**
+
+
+---
+## Project Design Team
+
+The Foloing individuals are part of Design Team :
+
+- **Ala'a Ahmed (A5)** , **(Head of this team)**
+- **Moharram Algaradi (M33)**
+- **Shatha Albana'a(SH25)**
+- **Roa'a Khaled (R20)**
+- **Roa'a Ja'afer (R19)**
+- **Amani Qaied (A6)**
+- **Hadeel Abduljabar (H46)**
+- **Aisha Ali Saif (A26)**
+- **Hind Shaif (H47)**
+- **Ayah Abdullah (A8)**
+- **Abdulrahman Faisal (A27)**
+- **Hafed Ebrahim Alkadi (H15)**
+- **Boshra Yahia (B11)**
+- **Rawan Alhaj (R23)**
+
+
+---
+
+
+## Project Analaysis Team
+
+The Foloing individuals are part of Analaysis Team :
+
+-  **Mubarak Ashraf Alqadasi (M38)** [(@MubarakAshrafAlrawy)](https://github.com/MubarakAshrafAlrawy) , **Head of this team**
+- **Manar Hanbala (M39)**
+- **Baghdad Hazza'a (B12)**
+- **Khaldon Mohammed Saeed (KH18)**
+- **Tahani Ahmed (T13)**
+- **Hadeel Abduljabar (H46)**
+- **Abdulrahman Faisal (A27)**
+- **Abdullah Omar (A28)**
+- **Ezzey Aldeen Alsabaee (E29)**
+- **Ahlam Ali Abduh (A1)**
+- Hifdh Allah Abdulkhaliq (H16)**
+- **Hafed Ebrahim (H15)**
+- **Mohammed Ahmed Shulaif (M34)**
+- **Mithaq Abdulqader (M40)**
+
+
+---
+
+## Project Feasibility Team
+
+The Foloing individuals are part of Feasibility Team :
+
+-  **Khaldon Mohammed Saeed (KH18)**, **Head of this team**
+- **Noha Alhashemy (N41)**
+- **Huda Ahmed Saleh (H45)**
+- **Baghdad Hazza'a (B12)**
+- **Roa'a Khaled (R20)**
+- **Roa'a Ja'afer (R19)**
+- **Wala'a Nasser (W48)**
+- **Ezzey Aldeen Alsabaee (E29)**
+- **Mithaq Abdulqader (M40)**
+- **Ahlam Ali Ghaleb (A1)**
+- **Rawan ALhaj (R23)**
+- **Raghed Tariq (R22)** 
+
+
+ ---
+
+## Project Documentation Team
+
+The Foloing individuals are part of Documentation Team :
+
+-  **Mohammed Nabeel (M38)**, **Head of this team**
+- **Huda Mohammed Saleh (H45)**
+- **Aisha Ali Saif (A26)**
+- **Noha Alhashemy (N41)**
+- **Amani Qaied (A6)**
+- **Mohammed Radwan (M35)**
+- **Wala'a Nasser (W48)**
+- **Manar Ossamah (M39)**
+
+  ---
+
+
+
+
+Alaa Ahmed --A5 (MAINTANCE TEAM)

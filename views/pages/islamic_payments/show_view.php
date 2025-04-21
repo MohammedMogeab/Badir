@@ -6,9 +6,11 @@
 <?php require('views/parts/navgtion.php') ?>
 <?php require('views/parts/header.php') ?>
 <main class="main_show_ch">
-    <section class="card_islamic_endowments">
+<label for="main-payment-section" class="section-label visually-hidden">تفاصيل الدفعة الإسلامية</label>
+
+    <section id="main-payment-section" class="card_islamic_endowments">
         <div class="imgs">
-            <img src="views/media/images/<?php echo $IslamicPayments['0']['photo'] ?? "default.png"; ?>" alt="Payment Photo" loading="lazy">
+            <img src="views/media/images/<?php echo $IslamicPayments['0']['photo'] ?? "default.png"; ?>" alt="شعار الوقف الإسلامي" loading="lazy">
         </div>
         <p class="localshin">المنطقة: صنعاء</p>
         <div>
@@ -22,19 +24,24 @@
         <div class="donation-details">
             <p><strong style="display: inline;">SR <?= htmlspecialchars($IslamicPayments['0']['paid_cost']); ?>/</strong><?= htmlspecialchars($IslamicPayments['0']['cost']); ?></p>
         </div>
-        <section class="bar_actions">
+
+        <label for="contribution-section" class="section-label visually-hidden">قسم المساهمة</label>
+
+        <section id="contribution-section" class="bar_actions">
             <div class="donation-box">
                 <h2>مبلغ المساهمة</h2>
                 <div class="donation-min-box">
-                    <input type="number" id="customAmount" placeholder="قيمة المساهمة" oninput="updateDonateButton()">
-                    <a class="icon_cart" id="icon_nav_search" href=""><img class="icon_img" src="views/media/images/cart.png" alt=""></a>
+                    <input type="number" id="customAmount" placeholder="قيمة المساهمة" oninput="updateDonateButton()" required min="0" max="<?= htmlspecialchars($islamic_payment['0']['cost'] - $islamic_payment['0']['paid_cost']) ?>" >
+                    <a class="icon_cart" id="icon_nav_search" href=""><img class="icon_img" src="views/media/images/cart.png" alt="السلة" loading="lazy"></a>
                 </div>
-                <button id="donate">ساهم الآن</button>
+                <button id="donate" aria-label="ساهم الان">ساهم الآن</button>
             </div>
         </section>
     </section>
+    
+    <label for="card_islamic_endowments" class="section-label visually-hidden">تفاصيل إضافية عن الدفعة</label>
 
-    <section class="card_islamic_endowments" id="card_islamic_endowments">
+    <section class="card_islamic_endowments CIE2" id="card_islamic_endowments">
         <div class="details_show_ch">
             <h5>تفاصيل المدفوعات</h5>
             <p>نوع المدفوعات: <?php echo $IslamicPayments['0']['type']; ?></p>

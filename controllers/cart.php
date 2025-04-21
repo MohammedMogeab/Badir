@@ -15,7 +15,7 @@ $db = App::resolve(Database::class);
 
 $projects = $db->query(
     "SELECT 
-    c.user_id,c.project_id, m.name ,m.short_description
+    c.user_id,c.project_id, m.name ,m.short_description ,m.photo
     FROM
     users_cart_projects c JOIN projects m
     WHERE
@@ -28,7 +28,7 @@ $projects = $db->query(
 
 $campaigns = $db->query(
     "SELECT 
-    c.user_id,c.campaign_id, m.name ,m.short_description
+    c.user_id,c.campaign_id, m.name ,m.short_description ,m.photo
     FROM
     users_cart_campaigns c JOIN campaigns m
     WHERE
@@ -41,7 +41,7 @@ $campaigns = $db->query(
 
 $endowments = $db->query(
     "SELECT 
-    c.user_id,c.endowment_id, m.name ,m.short_description
+    c.user_id,c.endowment_id, m.name ,m.short_description ,m.photo
     FROM
     users_cart_endowments c JOIN endowments m
     WHERE
@@ -54,7 +54,7 @@ $endowments = $db->query(
 
 $islamic_payments = $db->query(
     "SELECT 
-    c.user_id,c.islamic_payment_id, m.name ,m.short_description
+    c.user_id,c.islamic_payment_id, m.name ,m.short_description ,m.photo
     FROM
     users_cart_islamic_payments c JOIN islamic_payments m
     WHERE

@@ -1,44 +1,60 @@
 <?php
 $heading = "one test";
-use core\App ;
-use core\Database ;
+
+use core\App;
+use core\Database;
 
 
 $db = App::resolve(Database::class);
- 
+echo "1";
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $transaction_id = $_POST['transaction_id'] ?? '';
+    $user_id = $_POST['user'] ?? '';
+    $transaction_status = $_POST['transaction_status'] ?? '';
+    $product_id = $_POST['product_id'] ?? '';
+    $cost = $_POST['cost'] ?? '';
 
-try {
-    $db->query(
-        "INSERT INTO users_donate_campaigns (
-            user_id,
-            campaign_id,
-            cost,
-            donate_date
-        ) VALUES (
-            :user_id,
-            :campaign_id,
-            :cost,
-            :donate_date
-        )",
-        [
-            'user_id' => filter_var( $_SESSION['user']['id'], FILTER_SANITIZE_NUMBER_INT),
-            'campaign_id' => $_POST['campaign_id'],
-            'cost' => filter_var($_POST['cost'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION),
-            'donate_date' => date('Y-m-d H:i:s') // Defaulting to current timestamp if not provided
-        ]
-    );
-    
-    
-} catch (PDOException $e) {
-    error_log($e->getMessage());
-    $_SESSION['error'] = "حدث خطأ أثناء حفظ البعانات";
-    header("Location: /charity_campaigns_create");
-    exit();
+    // Basic validation
+    if (empty($transaction_id) || empty($user_id) || empty($transaction_status)) {
+        echo "Invalid input.";
+        header('Location: /users_index');
+        exit;
+    }
+
+    try {
+        $db->query(
+            "INSERT INTO users_donate_campaigns (
+                user_id,
+                campaign_id,
+                transaction_id,
+                status,
+                cost,
+                donate_date
+            ) VALUES (
+                :user_id,
+                :campaign_id,
+                :transaction_id,
+                :status,
+                :cost,
+                :donate_date
+            )",
+            [
+                'user_id' => filter_var($_SESSION['user']['id'], FILTER_SANITIZE_NUMBER_INT),
+                'campaign_id' => $_POST['product_id'],
+                'transaction_id' => filter_var($transaction_id, FILTER_SANITIZE_STRING),
+                'status' => filter_var($transaction_status, FILTER_SANITIZE_STRING),
+                'cost' => filter_var($_POST['cost'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION),
+                'donate_date' => date('Y-m-d H:i:s') // Defaulting to current timestamp if not provided
+            ]
+        );
+    } catch (PDOException $e) {
+
+        error_log($e->getMessage());
+        $_SESSION['error'] = "حدث خطأ أثناء حفظ البيانات" . $e->getMessage();;
+        header("Location: /charity_campaigns_create");
+        exit();
+    }
+} else {
+    echo "Invalid request method.";
 }
-
-
-header("Location: " . $_SERVER["HTTP_REFERER"]);
-
-
-

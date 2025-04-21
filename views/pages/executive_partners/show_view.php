@@ -9,10 +9,12 @@ use models\Partner;
 
 
 <main class="main_show_ch">
-  <section class="card_islamic_endowments">
+<label for="partner-main-section" class="section-label visually-hidden">تفاصيل الشريك الرئيسية</label>
+
+  <section id="partner-main-section" class="card_islamic_endowments">
     <!-- Partner Image -->
-    <div class="imgs">
-      <img src="views/media/images/<?php echo $partners['0']['photo'] ?? 'default.png'; ?>" alt="Partner Image" loading="lazy">
+    <div class="img">
+      <img src="views/media/images/<?php echo $partners['0']['photo'] ?? "default.png" ?>" alt=" شعار الشريك" loading="lazy">
     </div>
     <div>
       <!-- Partner Name -->
@@ -31,7 +33,7 @@ use models\Partner;
       <p>المعلومات الإضافية: <?php echo htmlspecialchars($partners['0']['more_information']); ?></p>
     </div>
     <!-- Partner Location -->
-    <div class="card_insid" id="card_insid">
+    <div class="news" id="news">
       <div>
         <h6>المديرية</h6>
         <p><?php echo htmlspecialchars($partners['0']['directorate']); ?></p>

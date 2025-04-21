@@ -16,6 +16,8 @@
         <button class="btn_filter" name="btn_filter">فلترة</button>
         <button class="btn_search" name="btn_search">بحث</button>
       </section> -->
+      <div class="campaigns-table-container">
+
     <table class="campaigns-table">
       <thead>
         <tr>
@@ -33,34 +35,34 @@
         <?php foreach ($islamic_payments as $payment): ?>
           <tr>
             <td><input type="checkbox" class="select-payment"></td>
-            <td><img src="views/media/images/<?= htmlspecialchars($payment['photo'] ?? "default.png") ?>" alt="شعار المصرف" class="payment-logo"></td>
+            <td><img src="views/media/images/<?= htmlspecialchars($payment['photo'] ?? "default.png") ?>" alt="شعار المصرف" class="payment-logo" loading="lazy"></td>
             <td><?= htmlspecialchars($payment['name']) ?>
               <nav class="options">
                 <ul>
                   <li>
                     <form action="/islamic_payments_show" method="get">
                       <input type="hidden" name="islamic_payment_id" value="<?= htmlspecialchars($payment['islamic_payment_id']) ?>">
-                      <button type="submit">عرض</button>
+                      <button type="submit" aria-label="عرض">عرض</button>
                     </form>
                   </li>
                   <li>
                     <form action="/islamic_payments_edit" method="get">
                       <input type="hidden" name="islamic_payment_id" value="<?= htmlspecialchars($payment['islamic_payment_id']) ?>">
-                      <button type="submit">تعديل</button>
+                      <button type="submit" aria-label="تعديل">تعديل</button>
                     </form>
                   </li>
                   <li>
                     <form action="/islamic_payments_destroy" method="post">
                       <input type="hidden" name="_method" value="DELETE">
                       <input type="hidden" name="islamic_payment_id" value="<?= htmlspecialchars($payment['islamic_payment_id']) ?>">
-                      <button type="submit">حذف</button>
+                      <button type="submit" aria-label="حذف">حذف</button>
                     </form>
                   </li>
                   <li>
                       <form action="/notifications_create" method="get">
                         <input type="hidden" name="" value="">
                         <input type="hidden" name="islamic_payment_id" value="<?= htmlspecialchars($campaign['islamic_payment_id']) ?>">
-                        <button type="submit">اشعار</button>
+                        <button type="submit" aria-label="اشعار">اشعار</button>
                       </form>
                   </li>
                 </ul>
@@ -76,7 +78,7 @@
 
 
     </table>
-
+      </div>
   </section>
 </main>
 <?php require('views/parts/footer.php') ?>

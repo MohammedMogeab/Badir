@@ -18,7 +18,7 @@
       <img src="" alt="">
       <p>
         العدد الكلي للمستفيدين <br>
-        <?php echo $users_statistics['count'] ?> مستفيد
+        <?php echo $beneficiaries_project_campain['beneficiaries_count'] ?> مستفيد
       </p>
 
     </article>
@@ -26,7 +26,7 @@
       <img src="" alt="">
       <p>
         عدد الحملات <br> 
-        <?php echo $campaigns_statistics['count'] ?> حملة
+        <?php echo $campaigns_statistics['count']['count'] ?> حملة
       </p>
       
 
@@ -37,7 +37,7 @@
       <img src="" alt="">
       <p>
         عدد المشاريع <br>
-        <?php echo $projects_statistics['count'] ?> مشروع
+        <?php echo $projects_statistics['count']['count'] ?> مشروع
       </p>
 
     </article>
@@ -45,7 +45,7 @@
       <img src="" alt="">
       <p>
         عدد الشركاء <br>
-        <?php echo $partners_statistics['count'] ?? "0" ?> جمعية
+        <?php echo $partners_statistics['count']['count'] ?? "0" ?> جمعية
       </p>
       
 
@@ -56,7 +56,7 @@
       
       <p>
         مشاريع مكتملة <br>
-        <?php echo $projects_statistics['completed'] ?? "0" ?> مشروع
+        <?php echo $projects_statistics['completed']['completed']?? "0" ?> مشروع
       </p>
 
     </article>

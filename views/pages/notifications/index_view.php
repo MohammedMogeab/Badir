@@ -12,7 +12,7 @@
       <img src="views/media/images/<?= htmlspecialchars($notification['photo'] ?? "11.png") ?>" alt="مشروع نور السعودية" loading="lazy">
   </a>
       <h2><?= htmlspecialchars($notification['title']) ?></h2>
-      <p class="time">منذ 5 دقائق</p>
+      <p class="time"><?= htmlspecialchars($notification['send_at']) ?></p>
 
       <p style="color: white;    padding: var(--padding-m); ">
       <?= htmlspecialchars($notification['content']) ?>

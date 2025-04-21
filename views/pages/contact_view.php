@@ -7,21 +7,29 @@
     <div class="contact" >
             <!-- عرض الرسائل -->
             <h1>الشكاوي والاقتراحات</h1>
-      <section class="form_contact">
+
+      <label for="complaints-section" class="section-label visually-hidden">الشكاوى والاقتراحات</label>
+
+      <section id="complaints-section" class="form_contact">
          
             <div class="no3">
 
               <form action="/services/phpmailer/send-email" method="post">
                 <label for="type">:النوع</label><br>
-
                 <div class="group_type">
-                  <select name="" id=""></select>
+                  <select name="" id="" class="group_type" style="width: 100%; text-align:right;">
+                      <?php foreach($contact_type as $type):?>
+                        <option value="<?= $type['problem_type']?>"><?= $type['problem_type']?></option>
+                        <?php endforeach; ?>
+                  </select>
+                
+                   <!-- <input type="text"> -->
                 </div>
                 <label for="address">:العنوان</label>
                 <input id="address" type="text" name="address">
                 <label for="descripe_problem">:وصف المشكلة</label>
                 <textarea name="descripe_problem"  id="descripe_problem"></textarea><br>
-                <button class="button_send" id="button_send" type="submit">إرسال</button>
+                <button class="button_send" id="button_send" type="submit" aria-label="ارسال">إرسال</button>
               </form>
             </div>
           
@@ -32,7 +40,10 @@
       <!-- الاسئله الشائعه -->
 
       <h1>:الأسئلة الشائعة</h1>
-      <section class="form_contact">
+
+      <label for="faq-section" class="section-label visually-hidden">الأسئلة الشائعة</label>
+
+      <section id="faq-section" class="form_contact">
 
       <section calss="form_contact">
         <h1>:الأسئلة الشائعة</h1>

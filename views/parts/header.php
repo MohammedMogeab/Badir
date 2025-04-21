@@ -29,7 +29,7 @@ try {
                         placeholder="ابحث هنا "
                         value="<?= htmlspecialchars($_GET['search'] ?? '') ?>">
 
-                    <button type="submit" name="submit" value="search" class="my-items-btn">بحث</button>
+                    <button type="submit" name="submit" value="search" class="my-items-btn" aria-label="بحث">بحث</button>
 
                     <select name="filter" class="filter-select">
                         <option value="all" <?= ($_GET['filter'] ?? 'all') === 'all' ? 'selected' : '' ?>>الجميع</option>
@@ -41,7 +41,7 @@ try {
                         <?php endforeach; ?>
                     </select>
                     <?php if ( false) : ?>
-                        <button type="submit" name="submit" value="foryou">خاصه بك</button>
+                        <button type="submit" name="submit" value="foryou" aria-label="خاصة بك">خاصه بك</button>
                     <?php endif; ?>
                 </form>
 

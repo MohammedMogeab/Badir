@@ -7,9 +7,9 @@ use core\Database;
 
 $db = App::resolve(Database::class);
 
-$_SESSION['user_id'] = 1;
+// if(!isset($_SESSION['user_id'])) $_SESSION['user_id'] = 1;
 
-
+if (!isset($_GET['user_id'])) $_GET['user_id'] = $_SESSION['user']['id'] ?? 1;
 
 
 
@@ -26,15 +26,18 @@ try {
     "SELECT * FROM partners"
   )->fetchAll(); // Fetch all rows from the query result
   $users = $db->query("SELECT * from users where user_id = :user_id ", [
-    'user_id' => $_SESSION['user_id']
+    'user_id' => $_GET['user_id'] ?? $_SESSION['user_id'] ?? -1
   ])->findOrFail();
 } catch (PDOException $e) {
   error_log($e->getMessage());
-  $_SESSION['error'] = "حدث خطأ أثناء حفظ البعانات";
+  $_SESSION['error'] = "حدث خطأ أثناء حفظ البيانات";
   header("Location: /charity_campaigns_create");
   exit();
 }
-
+// echo "<br><br><br><br><br><br><br><br>" . $_SESSION['user_id'] ."<pre>";
+// print_r($users);
+// print_r($_SESSION);
+// echo "</pre>" ;
 //authorize($note['other_id'] == $userID);
 
 

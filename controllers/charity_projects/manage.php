@@ -29,6 +29,7 @@ try {
             COALESCE(SUM(B.cost), 0) AS collected_money, 
             P.start_at, 
             P.end_at, 
+            P.beneficiaries_count,
             P.state, 
             P.directorate
         FROM 
