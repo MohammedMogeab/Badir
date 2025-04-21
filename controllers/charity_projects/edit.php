@@ -26,11 +26,8 @@ try {
         'project_id' => $_GET['project_id']
     ])->fetchAll();
 } catch (PDOException $e) {
-
     error_log($e->getMessage());
-    $_SESSION['error'] = "حدث خطأ أثناء حفظ البيانات";
-    header("Location: /");
-    exit();
+    abort(500);
 }
 
 

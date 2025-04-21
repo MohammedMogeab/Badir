@@ -290,9 +290,13 @@ function sendEmail($config, $email, $message, $verification_code) // this functi
       die("فشل في إرسال البريد: " . $mail->ErrorInfo);
     }
   } catch (Exception $e) {
-    die("خطأ في الإرسال: " . $e->getMessage());
+    // die("خطأ في الإرسال: " . $e->getMessage());
+    error_log($e->getMessage());
+    abort(500);
   } catch (PDOException $e) {
-    die("حدث خطأ أثناء الحفظ: " . $e->getMessage());
+    // die("حدث خطأ أثناء الحفظ: " . $e->getMessage());
+    error_log($e->getMessage());
+    abort(500);
   }
 }
 

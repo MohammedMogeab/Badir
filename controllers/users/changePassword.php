@@ -95,7 +95,9 @@ function sendEmail($config, $email, $code)
     header("Location: /users_verification?sent=1");
     exit();
   } catch (Exception $e) {
-    die("فشل الإرسال: " . $mail->ErrorInfo);
+    // die("فشل الإرسال: " . $mail->ErrorInfo);
+    error_log($e->getMessage());
+    abort(500);
   }
 }
 

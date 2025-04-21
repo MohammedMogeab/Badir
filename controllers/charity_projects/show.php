@@ -20,7 +20,7 @@ try {
     )->fetchAll(); // Fetch all rows from the query result
     $projects = $db->query(
         "
-    SELECT
+    SELECT 
         P.project_id,
         P.partner_id,
         P.category_id,
@@ -54,11 +54,10 @@ try {
             'project_id' => $_GET['project_id']
         ]
     )->fetchAll();
+
 } catch (PDOException $e) {
     error_log($e->getMessage());
-    $_SESSION['error'] = "حدث خطأ أثناء حفظ البيانات";
-    header("Location: /charity_campaigns_create");
-    exit();
+    abort(500);
 }
 
 // $note = $db->query("SELECT * from charity_projects where id = :id ", [

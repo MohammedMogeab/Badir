@@ -7,34 +7,39 @@ use core\Database ;
 $db = App::resolve(Database::class);
 
 
+try {
+
+    $projects = $db->query("
+    SELECT project_id,
+        partner_id,
+        category_id,
+        level,
+        name,
+        short_description,
+        full_description,
+        type,
+        cost,
+        start_at,
+        beneficiaries_count,
+        stop_at,
+        end_at,
+        state,
+        directorate,
+        country,
+        city,
+        street,
+        photo
+    FROM projects 
+    WHERE project_id = :project_id
+    ", [
+    'project_id' => $_GET['project_id'] 
+    ])->findOrFail();
+} catch (PDOException $e) {
+    error_log($e->getMessage());
+    abort(500);
+}
 
 
-
-$projects = $db->query("
-SELECT project_id,
-    partner_id,
-    category_id,
-    level,
-    name,
-    short_description,
-    full_description,
-    type,
-    cost,
-    start_at,
-    beneficiaries_count,
-    stop_at,
-    end_at,
-    state,
-    directorate,
-    country,
-    city,
-    street,
-    photo
-FROM projects 
-WHERE project_id = :project_id
-", [
-'project_id' => $_GET['project_id'] 
-])->findOrFail();
 
 
 $donation = [

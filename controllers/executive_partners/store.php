@@ -37,9 +37,9 @@ if (!isset($_POST['street']) || !Validator::string($_POST['street'], 1, 255)) {
     $errors["street"] = "الشارع يجب أن يكون بين 1 و 255 حرفًا";
 }
 
-if (!isset($_FILES['photo']) || $_FILES['photo']['error'] !== UPLOAD_ERR_OK) {
-    $errors["photo"] = "يجب تحميل شعار صالح";
-}
+// if (!isset($_FILES['photo']) || $_FILES['photo']['error'] !== UPLOAD_ERR_OK) {
+//     $errors["photo"] = "يجب تحميل شعار صالح";
+// }
 
 if (!isset($_POST['country']) || !Validator::string($_POST['country'], 1, 255)) {
     $errors["country"] = "الدولة يجب أن تكون بين 1 و 255 حرفًا";
@@ -101,9 +101,7 @@ try {
     );
 } catch (PDOException $e) {
     error_log($e->getMessage());
-    $_SESSION['error'] = "حدث خطأ أثناء حفظ البيانات";
-    header("Location: /charity_projects_create");
-    exit();
+    abort(500);
 }
 
 

@@ -82,9 +82,7 @@ try {
 
 } catch (PDOException $e) {
     error_log($e->getMessage());
-    $_SESSION['error'] = "حدث خطأ أثناء جلب البيانات";
-    header("Location: /islamic_payments");
-    exit();
+    abort(500);
 }
 
 // $IslamicPayments = $db->query("SELECT * FROM islamic_payments")->fetchAll();

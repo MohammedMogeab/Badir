@@ -33,9 +33,7 @@ try {
 
 } catch (PDOException $e) {
     error_log($e->getMessage());
-    $_SESSION['error'] = "حدث خطأ أثناء جلب البيانات";
-    header("Location: /partners");
-    exit();
+    abort(500);
 }
 
 // foreach($partners as $key => $value){
