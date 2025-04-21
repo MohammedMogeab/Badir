@@ -30,11 +30,14 @@ if (! Validator::string($_POST['password'])) {
 if (! empty($erorrs)) {
     require 'views/sessions/create_view.php';
 }
-
-$user = $db->query("select * from users where email = :email ; ", [
-    "email" => $_POST['email']
-])->fetch();
-
+try {
+    $user = $db->query("select * from users where email = :email ; ", [
+        "email" => $_POST['email']
+    ])->fetch();
+} catch (PDOException $e) {
+    error_log($e->getMessage());
+    abort(500);
+}
 
 if ($user) {
     if (password_verify($_POST['password'], $user['password'])) {

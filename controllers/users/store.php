@@ -173,9 +173,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
       } catch (PDOException $e) {
         error_log($e->getMessage());
-        $_SESSION['error'] = "حدث خطأ أثناء حفظ البيانات.";
-        header("Location: /");
-        exit();
+        abort(500);
       }
     } elseif ($_SESSION['process_type'] === 'change_password') {
 
@@ -232,9 +230,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
       } catch (PDOException $e) {
         error_log($e->getMessage());
-        $_SESSION['error'] = "حدث خطأ أثناء حفظ البيانات.";
-        header("Location: /");
-        exit();
+        abort(500);
       }
     } else {
       $error = urlencode("حدث خطأ أثناء تغيير الباسورد .");

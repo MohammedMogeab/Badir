@@ -91,9 +91,7 @@ try {
 
 } catch (PDOException $e) {
     error_log($e->getMessage());
-    $_SESSION['error'] = "حدث خطأ أثناء تحديث البيانات";
-    header("Location: /charity_projects_edit");
-    exit();
+    abort(500);
 }
 
 

@@ -36,7 +36,7 @@
             </div>
           </div>
           <div class="donate-section">
-            <?php if (isset($_SESSION['user_id'])): ?>
+
               <!-- إذا كان المستخدم مسجل الدخول -->
               <form action="/charity_campaigns_checkout" method="get" class="donate-section">
                 <input class="inp" type="number" name="cost" placeholder="$" required min="0" max="<?= htmlspecialchars($campaign['cost'] - $campaign['collected_money']) ?>">
@@ -47,18 +47,7 @@
                 <input type="hidden" name="campaign_id" value="<?= htmlspecialchars($campaign['campaign_id']) ?>">
                 <button type="submit" class="donate_cart"><img src="views/media/images/cart.png" alt="السلة" loading="lazy" aria-label="السلة"></button>
               </form>
-            <?php else: ?>
-              <!-- إذا لم يكن المستخدم مسجل الدخول -->
-              <form action="/users_index" method="get" class="donate-section">
-                <input class="inp" type="number" name="cost" placeholder="$" required min="0" max="<?= htmlspecialchars($campaign['cost'] - $campaign['collected_money']) ?>">
-                <input type="hidden" name="campaign_id" value="<?= htmlspecialchars($campaign['campaign_id']) ?>">
-                <button type="submit" class="donate-btn" aria-label="التبرع">تبرع الأن</button>
-              </form>
-              <form action="/users_index" method="post">
-                <input type="hidden" name="campaign_id" value="<?= htmlspecialchars($campaign['campaign_id']) ?>">
-                <button type="submit" class="donate_cart"><img src="views/media/images/cart.png" alt="السلة" loading="lazy" aria-label="التبرع"></button>
-              </form>
-            <?php endif; ?>
+
 
 
           </div>

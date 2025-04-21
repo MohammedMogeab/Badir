@@ -30,9 +30,7 @@ try {
   ])->findOrFail();
 } catch (PDOException $e) {
   error_log($e->getMessage());
-  $_SESSION['error'] = "حدث خطأ أثناء حفظ البيانات";
-  header("Location: /charity_campaigns_create");
-  exit();
+  abort(500);
 }
 // echo "<br><br><br><br><br><br><br><br>" . $_SESSION['user_id'] ."<pre>";
 // print_r($users);

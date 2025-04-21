@@ -52,9 +52,9 @@ if (empty($_POST['cost'])) {
 
 
 // ط. التحقق من الصورة (إذا تم إدخالها)
-if (empty($filenamenew)) {
-    $errors['photo'] = "رابط الصورة غير صالح. يجب أن يكون رابطاً صحيحاً";
-}
+// if (empty($filenamenew)) {
+//     $errors['photo'] = "رابط الصورة غير صالح. يجب أن يكون رابطاً صحيحاً";
+// }
 //dd($errors);
 // إذا كان هناك أخطاء، عرضها
 // if (!empty($errors)) {

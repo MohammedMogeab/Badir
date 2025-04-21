@@ -6,21 +6,27 @@ use core\Database ;
 
 $db = App::resolve(Database::class);
 
+try {
+ 
+    $islamic_payments = $db->query("SELECT 
+        islamic_payment_id,
+        type,
+        count,
+        cost,
+        paid_cost,
+        name,
+        payment_date,
+        user_id,
+        short_description,
+        photo
+    FROM islamic_payments where islamic_payment_id =:islamic_payment_id  ",[
+          'islamic_payment_id' => $_GET['islamic_payment_id'],
+    ])->findOrFail();
 
-$islamic_payments = $db->query("SELECT 
-    islamic_payment_id,
-    type,
-    count,
-    cost,
-    paid_cost,
-    name,
-    payment_date,
-    user_id,
-    short_description,
-    photo
-FROM islamic_payments where islamic_payment_id =:islamic_payment_id  ",[
-      'islamic_payment_id' => $_GET['islamic_payment_id'],
-])->findOrFail();
+} catch (PDOException $e) {
+    error_log($e->getMessage());
+    abort(500);
+}
 
 
 $donation = [

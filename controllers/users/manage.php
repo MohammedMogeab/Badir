@@ -44,9 +44,7 @@ try {
 
 } catch (PDOException $e) {
     error_log($e->getMessage());
-    $_SESSION['error'] = "حدث خطأ أثناء جلب البيانات";
-    header("Location: /users");
-    exit();
+    abort(500);
 }
 
 

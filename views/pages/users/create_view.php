@@ -71,14 +71,14 @@ if (isset($_SESSION['ban_time']) && $_SESSION['ban_time'] > time()) {
               <h6 class="error_mseage"> <?= !empty($errors['type']) ? 'خطاء : ' . $errors['type'] : '' ?></h6>
             </div> -->
 
-        <div class="form-group box_h">
+        <!-- <div class="form-group box_h">
           <label for="type">نوع المستخدم:</label>
           <select id="type" name="type">
             <option value="normal">عادي</option>
             <option value="admin">مسؤول</option>
             <option value="manager">مدير</option>
           </select>
-        </div>
+        </div> -->
 
         <!-- 
             <div class="form-group">

@@ -54,11 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ]
         );
     } catch (PDOException $e) {
-
         error_log($e->getMessage());
-        $_SESSION['error'] = "حدث خطأ أثناء حفظ البيانات" . $e->getMessage();;
-        header("Location: /");
-        exit();
+        abort(500);
     }
 } else {
     echo "Invalid request method.";

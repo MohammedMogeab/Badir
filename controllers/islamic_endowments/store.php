@@ -82,9 +82,7 @@ try {
     );
 } catch (PDOException $e) {
     error_log($e->getMessage());
-    $_SESSION['error'] = "حدث خطأ أثناء حفظ البيانات";
-    header("Location: /charity_projects_create");
-    exit();
+    abort(500);
 }
 
 
