@@ -3,8 +3,6 @@
 <?php $errors = ($_SESSION['errors'] ?? '');
 unset($_SESSION['errors']); ?>
 <?php
-session_start();
-
 if (isset($_SESSION['ban_time']) && $_SESSION['ban_time'] > time()) {
   header("Location: /user_blocked_view");
   exit();

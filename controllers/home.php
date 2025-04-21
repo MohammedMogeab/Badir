@@ -30,7 +30,7 @@ try {
         FROM campaigns g  
         LEFT JOIN users_donate_campaigns u ON g.campaign_id = u.campaign_id  
         GROUP BY g.campaign_id
-        ORDER BY g.start_at;"
+        ORDER BY RAND() limit 8;"
     )->fetchAll();
 
 

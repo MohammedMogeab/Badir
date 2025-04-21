@@ -17,43 +17,108 @@ $_SESSION['code_expiry'] = time() + 300;
 $heading = "Create test";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  //validate the data
-  $address = htmlspecialchars($_POST['address'] ?? '');
-  $message = htmlspecialchars($_POST['descripe_problem'] ?? '');
-  $email = filter_var($_POST['email'] ?? '', FILTER_SANITIZE_EMAIL);
-  $_SESSION['user_email'] = $email;
-  setcookie(
-    'user_email',
-    $email,
-    [
-      'expires' => time() + 3600,
-      'path' => '/',
-      'domain' => '', //    
-      'secure' => true, // send cookie by HTTPS
-      'httponly' => true, //it does not arrive to cookie by JavaScript
-      'samesite' => 'Strict'
-    ]
-  );
-  $db = App::resolve(Database::class);
-  // $errors = [];
 
-  $_SESSION['user_data'] = $_POST;
-  $_SESSION['file'] = $_FILES['photo'];
 
-  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    $error = urlencode("البريد الإلكتروني غير صالح");
-    header("Location:/users_create_view?error={$error}");
+
+  if (isset($_POST['submit'])) {
+
+    $_SESSION['process_type'] = 'register';
+    $verification_code = rand(100000, 999999);
+    $_SESSION['verification_code'] = $verification_code;
+    $_SESSION['code_expiry'] = time() + 300;
+
+    // }
+
+    //validate the data
+    $address = htmlspecialchars($_POST['address'] ?? '');
+    $message = htmlspecialchars($_POST['descripe_problem'] ?? '');
+    $email = filter_var($_POST['email'] ?? '', FILTER_SANITIZE_EMAIL);
+    $_SESSION['user_email'] = $email;
+    setcookie(
+      'user_email',
+      $email,
+      [
+        'expires' => time() + 3600,
+        'path' => '/',
+        'domain' => '', //    
+        'secure' => true, // send cookie by HTTPS
+        'httponly' => true, //it does not arrive to cookie by JavaScript
+        'samesite' => 'Strict'
+      ]
+    );
+    $db = App::resolve(Database::class);
+    // $errors = [];
+
+    $_SESSION['user_data'] = $_POST;
+    $_SESSION['file'] = $_FILES['photo'];
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      $error = urlencode("البريد الإلكتروني غير صالح");
+      header("Location:/users_create_view?error={$error}");
+      exit();
+    }
+
+    $user = $db->query('SELECT * FROM users WHERE email = :email', ['email' => $email])->fetch();
+
+    if ($user) {
+      $error = urlencode("البريد الإلكتروني مسجل بالفعل");
+      header("Location:/users_create_view?error={$error}");
+      exit();
+    }
+
+    if (sendEmail($config, $email, $message, $verification_code)) {
+      header("Location: /users_verification_view");
+      exit();
+    }
+  } elseif (isset($_POST['btn_chang_password'])) {
+    // Handle the change password request
+    $_SESSION['process_type'] = 'change_password';
+    $verification_code = rand(100000, 999999);
+    $_SESSION['verification_code'] = $verification_code;
+    $_SESSION['code_expiry'] = time() + 300;
+    $message = htmlspecialchars($_POST['descripe_problem'] ?? '');
+    $_SESSION['change_password_data'] = $_POST;
+
+    $email = filter_var($_POST['email'] ?? '', FILTER_SANITIZE_EMAIL);
+    $new_password = $_POST['new_password'] ?? '';
+    $confirm_password = $_POST['confirm_password'] ?? '';
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      $error = urlencode("البريد الإلكتروني غير صالح");
+      header("Location:/users_changePassword_view?error={$error}");
+      exit();
+    }
+
+    if (strlen($new_password) < 6) {
+      $error = urlencode("كلمة المرور قصيرة جداً");
+      header("Location:/users_changePassword_view?error={$error}");
+      exit();
+    }
+
+    if ($new_password !== $confirm_password) {
+      $error = urlencode("كلمة المرور غير متطابقة");
+      header("Location:/users_changePassword_view?error={$error}");
+      exit();
+    }
+
+    // Proceed with changing the password logic here
+    // ... 
+    $db = App::resolve(Database::class);
+    $user = $db->query('SELECT * FROM users WHERE email = :email', ['email' => $email])->fetch();
+    if (!$user) {
+      $error = urlencode("هذا البريد غير مسجل");
+      header("Location:/users_changePassword_view?error={$error}");
+      exit();
+    }
+    if (sendEmail($config, $email, $message, $verification_code)) {
+      header("Location: /users_verification_view");
+      exit();
+    }
+  } else {
+    // If the form is not submitted, redirect to the create view
+    header("Location: /users_create_view");
     exit();
   }
-
-  $user = $db->query('SELECT * FROM users WHERE email = :email', ['email' => $email])->fetch();
-
-  if ($user) {
-    $error = urlencode("البريد الإلكتروني مسجل بالفعل");
-    header("Location:/users_create_view?error={$error}");
-    exit();
-  }
-  sendEmail($config, $email, $message, $verification_code);
 } elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
   // Check if the user is logged in and has a session
@@ -62,6 +127,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $address = $_SESSION['user_data']['address'] ?? '';
 
   sendEmail($config, $email, $message, $verification_code); // send the email with the verification code
+} else {
+  // If the request method is not POST or GET, redirect to the create view
+  error_log("Invalid request method: " . $_SERVER['REQUEST_METHOD']);
+  header("Location: /users_create_view");
+  exit();
 }
 
 
@@ -210,12 +280,13 @@ function sendEmail($config, $email, $message, $verification_code) // this functi
     if ($mail->send()) {
 
       // $_SESSION['success'] = "تم إرسال الكود بنجاح، تحقق من بريدك.";
+      return true;
 
+      // header("Location: /users_verification_view?sent=success");
 
-      header("Location: /users_verification_view?sent=success");
-      
-      exit();
+      // exit();
     } else {
+      return false;
       die("فشل في إرسال البريد: " . $mail->ErrorInfo);
     }
   } catch (Exception $e) {
@@ -224,6 +295,11 @@ function sendEmail($config, $email, $message, $verification_code) // this functi
     die("حدث خطأ أثناء الحفظ: " . $e->getMessage());
   }
 }
+
+
+
+
+
 function blockUser()
 {
   $now = time();
@@ -253,7 +329,7 @@ function blockUser()
   if (($now - $last_sent_time) < $wait_time) {
     $remaining = $wait_time - ($now - $last_sent_time);  // الوقت المتبقي
     // header("Location: /user_blocked_view");
-    die("🚫 تم حظرك مؤقتًا<br>⏳ حاول مرة أخرى بعد: " .$remaining . " ثانية.");
+    die("🚫 تم حظرك مؤقتًا<br>⏳ حاول مرة أخرى بعد: " . $remaining . " ثانية.");
     exit();
   }
 

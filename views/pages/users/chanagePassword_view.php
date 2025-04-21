@@ -8,7 +8,7 @@
     <h1>تغير كلمة المرور</h1>
     <div class="group">
       
-      <form action="/users_changePassword" method="POST">
+      <form action="/users_verification" method="POST">
       <div class="box_h">
         <div class="box_h">
         <label for="email">البريدالإلكتروني :</label>
@@ -22,7 +22,7 @@
         <label for="confirm_password"> تاكيد كلمة المرور</label>
         <input id="name" type="text" name="confirm_password" placeholder=" تاكيد كلمة المرور" require></div>
         </div>
-        <button class="btn_chang_password" id="btn_chang_password" name="btn_chang_password" aria-label="تغيير كلمة المرور">تغيير كلمة المرور </button>
+        <button type = "submit" class="btn_chang_password" id="btn_chang_password" name="btn_chang_password" aria-label="تغيير كلمة المرور">تغيير كلمة المرور </button>
         </form>
     
       
