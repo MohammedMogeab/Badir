@@ -47,13 +47,13 @@
 <!-- باقي البينات -->
 <section class="card_islamic_endowments CIE2" id="card_islamic_endowments">
 
-
+<!-- 
 <div class="details_show_ch">
                 <h5>تفاصيل تكاليف العمليات</h5>
                 <p>الفحوصات الطبية</p>
                 <p>العمليات الجراحية</p>
                 <p>الادوية</p>
-        </div>
+        </div> -->
 
         <div class="card_insid" id="card_insid">
         <div>
@@ -76,13 +76,13 @@
         <p><?php  echo $campaigns['0']['donators_count'] ?></p>
         </div>
     </div>
-    <div class="card_insid" id="card_insid2">
+    <!-- <div class="card_insid" id="card_insid2">
     <h5>مراحل المشروع</h5>
 
     <p>المرحلة الاولى :  </p>
     <p>المرحلة الثانية : </p>
     <p>المرحلة الثالثة :</p>
-    </div>
+    </div> -->
     <div class="time">
         <p> تاريخ البدء  : <?php  echo $campaigns['0']['start_at'] ?> </p>
         <p>تاريخ الانتهاء : <?php  echo $campaigns['0']['end_at'] ?>  </p>
